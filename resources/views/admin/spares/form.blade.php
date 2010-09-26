@@ -124,7 +124,7 @@
 <div class="form-group {{ $errors->has('image') ? 'has-error' : '' }}">
     <label for="image" class="col-md-2 control-label">Link de imagen</label>
     <div class="col-md-10">
-        <input class="form-control" name="image" type="text" id="image" value="{{ old('image', optional($spare)->image) }}" min="0" max="255" >
+        <input class="form-control" name="image" type="text" id="image" value="{{ old('image', optional($spare)->image) }}" min="0" max="1000" >
         {!! $errors->first('image', '<p class="help-block text-danger">:message</p>') !!}
     </div>
 </div>

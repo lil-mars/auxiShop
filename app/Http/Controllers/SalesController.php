@@ -23,8 +23,7 @@ class SalesController extends Controller
      */
     public function index()
     {
-        $sales = Sale::with('client', 'store', 'user')->paginate(25);
-
+        $sales = Sale::orderBy('created_at', 'desc')->get();
         return view('admin.sales.index', compact('sales'));
     }
 

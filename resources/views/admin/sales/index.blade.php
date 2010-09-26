@@ -90,9 +90,6 @@
 
         </div>
 
-        <div class="card-footer">
-            {!! $sales->render() !!}
-        </div>
 
         @endif
 

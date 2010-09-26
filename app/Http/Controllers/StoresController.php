@@ -158,6 +158,11 @@ class StoresController extends Controller
     {
         try {
             $store = Store::findOrFail($id);
+            foreach ($store->store_spares as $store_spare) {
+                $spare = Spare::find($store_spare->spare_id);
+                $spare->quantity += $store_spare->quantity;
+                $spare->save();
+            }
             $store->delete();
 
             return redirect()->route('stores.store.index')

@@ -124,7 +124,7 @@ class Sale extends Model
      */
     public function get_creation(){
         $now = Carbon::now();
-        $diff = $this->updated_at->diffForHumans($now);
+        $diff = $this->created_at->diffForHumans($now);
         return $diff;
     }
     public function get_last_update(){
