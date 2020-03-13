@@ -2,11 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a6344b7-60f9-4a93-bcd9-e7d5362b97b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d295095-06f6-46a7-a99f-87d62905189a.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d295095-06f6-46a7-a99f-87d62905189a/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/mars.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ProviderController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PurchaseController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/SaleController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/SpareController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/StoreController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Bill.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Brand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/CarLine.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Client.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Provider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Purchase.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/PurchaseSpare.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Sale.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/SaleDetail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Spare.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Store.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/StoreSpare.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_02_28_231945_create_clients.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_02_28_232631_create_spares.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_02_28_233105_create_stores.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_02_28_233106_create_sales.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_02_28_233107_sale_details.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_02_28_233802_create_providers.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_02_28_233803_create_purchases.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_02_28_233913_create_bills.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4d1acaa0-afd1-48a4-aad6-fb16993eb695.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4d1acaa0-afd1-48a4-aad6-fb16993eb695.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,13 +73,6 @@
         <item name="@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="saleAux: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="saleAux: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="products: table" type="dbc44a63:MariaImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -153,24 +172,28 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1Xp58LJiwi6SdeaPrS6Z726uLMG" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mariadb" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/js/product" />
-      <recent name="$PROJECT_DIR$/resources/views/admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Models" />
       <recent name="$PROJECT_DIR$/public/js" />
       <recent name="$PROJECT_DIR$/public/css" />
       <recent name="$PROJECT_DIR$/resources/views/layouts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/js/product" />
+      <recent name="$PROJECT_DIR$/resources/views/admin" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -198,7 +221,12 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@53d30b31" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@aa956682" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@aa956682" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@621c6dee" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -219,6 +247,10 @@
       <workItem from="1581730038117" duration="7778000" />
       <workItem from="1581790993182" duration="23966000" />
       <workItem from="1582573180847" duration="1336000" />
+      <workItem from="1582930869016" duration="11444000" />
+      <workItem from="1582980762887" duration="10532000" />
+      <workItem from="1583005493940" duration="1063000" />
+      <workItem from="1584133012358" duration="2642000" />
     </task>
     <servers />
   </component>
@@ -230,10 +262,15 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

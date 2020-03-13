@@ -18,5 +18,4 @@ Route::get('/layout', function () {
 Route::resource('products', 'ProductController');
 Route::post('filter-products', 'ProductController@filter')->name('filter-products');
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
