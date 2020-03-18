@@ -10,7 +10,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{ $spare_count }}</h3>
 
                         <p>Productos</p>
                     </div>
@@ -24,7 +24,7 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3>{{ $user_count }}</h3>
                         <p>Empleados</p>
                     </div>
                     <div class="icon">
@@ -37,7 +37,7 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>65</h3>
+                        <h3>{{ $client_count }}</h3>
 
                         <p>Clientes</p>
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Spare;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,24 @@ class SpareController extends Controller
      */
     public function index()
     {
-        //
+        $spares = Spare::all();
+        return view('admin.spare.index',compact('spares'));
+    }
+    public function filter(Request $request) {
+        $filters = array_filter($request->all(), function ($value) {
+            return !is_null($value);
+        });
+        // Filter products
+        $spares = Spare::all();
+        $spares = $spares->filter(function ($product) use ($filters) {
+            foreach ($filters as $key => $filter ) {
+                if (strripos($product[$key],$filter) === false){
+                    return false;
+                }
+            }
+            return true;
+        });
+        return view('admin.spare.index', compact('spares'));
     }
 
     /**

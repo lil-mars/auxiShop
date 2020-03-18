@@ -16,31 +16,8 @@ class ProductController extends Controller
      */
     public function index($products = null)
     {
-        if (is_null($products)){
-            $products = Product::all();
-        }
-        return view('admin.product.index',compact('products'));
     }
 
-    public function filter(Request $request) {
-        // Deleting null filters and token
-        $filters = array_filter($request->all(), function ($value) {
-            return !is_null($value);
-        });
-        unset($filters['_token']);
-
-        // Filter products
-        $products = Product::all();
-        $products = $products->filter(function ($product) use ($filters) {
-            foreach ($filters as $key => $filter ) {
-                if (strripos($product[$key],$filter) === false){
-                    return false;
-                }
-            }
-            return true;
-        });
-        return view('admin.product.index', compact('products'));
-    }
     /**
      * Show the form for creating a new resource.
      *

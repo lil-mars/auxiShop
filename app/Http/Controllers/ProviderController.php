@@ -14,7 +14,7 @@ class ProviderController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**

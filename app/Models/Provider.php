@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Provider extends Model
 {
     protected $fillable = [
-        'id','company_name', 'father_last_name', 'mother_last_name', 'second_name',
+        'id','company_name', 'last_name',
         'name', 'occupation', 'address', 'phone', 'fax'
     ];
     protected $dates = [
@@ -15,5 +15,8 @@ class Provider extends Model
     ];
     public function purchases() {
         return $this->hasMany('App\Models\Purchase', 'provider_id', 'id');
+    }
+    public function spares() {
+        return $this->belongsToMany(Spare::class, 'spare_provider', 'provider_id', 'spare_id');
     }
 }

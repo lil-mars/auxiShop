@@ -17,6 +17,13 @@ class Spare extends Model
     ];
 
 
+    //Providers
+    public function providers() {
+        return $this->belongsToMany(Provider::class, 'spare_provider', 'spare_id', 'provider_id');
+    }
+    public function spare_providers() {
+        return $this->hasMany(SpareProvider::class, 'spare_id','id');
+    }
 
     // Has many relations
     public function purchase_spares() {
@@ -25,13 +32,13 @@ class Spare extends Model
     public function store_spares() {
         return $this->hasMany('App\Models\StoreSpare','spare_id', 'id');
     }
+    public function sales_details() {
+        return $this->hasMany(SaleDetail::class, 'spare_id', 'id');
+    }
 
 
 
     // Belongs to relations
-    public function provider() {
-        return $this->belongsTo('App\Models\Provider', 'provider_id');
-    }
     public function brand() {
         return $this->belongsTo('App\Models\Brand', 'brand_id');
     }

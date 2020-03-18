@@ -13,8 +13,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h5>Filtros de busqueda:</h5>
-                        <form action="{{route('filter-products')}}" method="post">
-                            @csrf
+                        <form action="{{route('filter-products')}}" method="get">
                             <div class="row">
                                 <div class="form-group col-lg-4 col-6">
                                     <input value="{{ old('code') }}" type="text" name="code"
@@ -29,6 +28,10 @@
                                            class="form-control" placeholder="Categoria">
                                 </div>
                                 <div class="form-group col-lg-4 col-6">
+                                    <input value="" type="text" name="brand"
+                                           class="form-control" placeholder="Marca">
+                                </div>
+                                <div class="form-group col-lg-4 col-6">
                                     <input value="{{ old('originalCode') }}"type="text" name="originalCode"
                                            class="form-control" placeholder="Codigo original">
                                 </div>
@@ -36,6 +39,7 @@
                                     <input value="{{ old('measure') }}"type="text" name="measure"
                                            class="form-control" placeholder="Medida">
                                 </div>
+
                             </div>
                             <input  type="submit" class="btn btn-outline-primary" value="Filtrar">
                         </form>
@@ -46,7 +50,6 @@
                             <thead class="bg-secondary">
                                 <tr>
                                     <th>Codigo</th>
-                                    <th>Descripcion</th>
                                     <th>Categoria</th>
                                     <th>Marca</th>
                                     <th>Nacion</th>
@@ -55,37 +58,61 @@
                                     <th>Venta</th>
                                     <th>Compra</th>
                                     <th>Cod. Original</th>
+                                    <th >Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($products as $product)
+                                @foreach($spares as $spare)
                                     <tr>
-                                        <td>{{ $product->code }}</td>
-                                        <td>{{ $product->description }}</td>
-                                        <td>{{ $product->category }}</td>
-                                        <td>{{ $product->brand }}</td>
-                                        <td>{{ $product->country }}</td>
-                                        <td>{{ $product->measure }}</td>
-                                        <td>{{ $product->productCode }}</td>
-                                        <td>{{ $product->price }}</td>
-                                        <td>{{ $product->investment }}</td>
+                                        <td>{{ $spare->id }}</td>
+                                        <td>{{ $spare->category->name }}</td>
+                                        <td>{{ $spare->brand->name }}</td>
+                                        <td>{{ $spare->nationality }}</td>
+                                        <td>{{ $spare->measure }}</td>
+                                        <td>{{ $spare->product_code }}</td>
+                                        <td>{{ $spare->price }}</td>
+                                        <td>{{ $spare->investment }}</td>
                                         <td>
                                             <a class="text-primary show-image"
                                                style="cursor: pointer"
-                                               data-productImg="{{$product->image}}"
-                                               data-productDesc="{{$product->description}}"
-                                               data-productCode="{{$product->code}}"
+                                               data-productImg="{{$spare->image}}"
+                                               data-productDesc="{{$spare->description}}"
+                                               data-productCode="{{$spare->code}}"
                                             >
-                                                {{ $product->originalCode }}
+                                                {{ $spare->original_code }}
                                             </a>
                                         </td>
+                                        <td>
+                                            <div class="btn-group">
+
+                                                    <a href="{{ route('spares.show',$spare->id)}}" class="btn btn-warning">
+                                                        <i class='fas fa-eye'></i>
+                                                    </a>
+
+                                                    <a href="{{ route('spares.edit', $spare->id)}}"
+                                                       class="btn btn-primary">
+                                                        <i class='fas fa-pencil-alt'></i>
+                                                    </a>
+                                                <a href="#">
+                                                    <form action="{{ route('spares.destroy', $spare->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger"
+                                                                data-toggle="modal" data-target="#deleteModal" >
+                                                            <i class='fas fa-trash-alt'></i>
+                                                        </button>
+                                                    </form>
+                                                </a>
+                                            </div>
+
+                                        </td>
+
                                     </tr>
                                 @endforeach
                             </tbody>
                             <tfoot>
                             <tr>
                                 <th>Codigo</th>
-                                <th>Descripcion</th>
                                 <th>Categoria</th>
                                 <th>Marca</th>
                                 <th>Nacion</th>
@@ -94,6 +121,7 @@
                                 <th>Venta</th>
                                 <th>Compra</th>
                                 <th>Cod. Original</th>
+                                <th >Opciones</th>
                             </tr>
                             </tfoot>
                         </table>
@@ -107,7 +135,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel"></h5>
+                        <strong><h3 class="modal-title" id="modalLabel"> </h3></strong>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class CarLine extends Model
 {
+    public $timestamps = false;
+
     protected $table = 'car_lines';
     protected $fillable = [
         'name'

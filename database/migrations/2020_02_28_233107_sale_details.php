@@ -17,16 +17,11 @@ class SaleDetails extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('spare_id')->nullable();
             $table->unsignedBigInteger('sale_id')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
             $table->float('price')->nullable();
             $table->integer('quantity')->nullable();
             $table->float('discount')->nullable();
-            $table->float('realPrice')->nullable();
+            $table->float('real_price')->nullable();
 
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
 
             $table->foreign('spare_id')
                 ->references('id')

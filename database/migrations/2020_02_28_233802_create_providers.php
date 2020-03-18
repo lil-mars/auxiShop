@@ -17,8 +17,8 @@ class CreateProviders extends Migration
             $table->bigIncrements('id');
             $table->string('company_name',40)->nullable();
             $table->string('name', 40)->nullable();
-            $table->string('lastName', 40)->nullable();
-            $table->string('occupation',30)->nullable();
+            $table->string('last_name', 40)->nullable();
+            $table->string('occupation',60)->nullable();
             $table->string('address')->nullable();
             $table->string('city',20)->nullable();
             $table->string('postal_code', 30)->nullable();

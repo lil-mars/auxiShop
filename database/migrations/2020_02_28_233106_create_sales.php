@@ -17,8 +17,16 @@ class CreateSales extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('client_id')->nullable();
             $table->unsignedBigInteger('store_id')->nullable();
-            $table->float('totalPrice')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+
+            $table->float('total_price')->nullable();
             $table->integer('total_amount')->nullable();
+
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
 
             $table->foreign('store_id')
                 ->references('id')

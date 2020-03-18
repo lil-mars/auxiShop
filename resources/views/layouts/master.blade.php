@@ -79,49 +79,137 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
+
+                    {{--    Home         --}}
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('home')}}" class="nav-link">
                             <i class="nav-icon fas fa-home"></i>
                             <p>
                                 Inicio
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="/products" class="nav-link">
-                            <i class="nav-icon fas fas fa-tools"></i>
-                            <p>
-                                Productos
-                            </p>
-                        </a>
-                    </li>
-
+                    {{--    Spares        --}}
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fas fa-th"></i>
+                            <i class="nav-icon fas fas fa-tools"></i>
                             <p>
-                                Inventario
+                                Repuestos
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('spares.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Lista</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('spares.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Agregar producto</p>
+                                    <p>Agregar repuesto</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-
+                    {{--    Clientes      --}}
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fas fa-user-friends"></i>
+                            <p>
+                                Clientes
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('clients.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Lista</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('clients.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Agregar cliente</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{--    Providers       --}}
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fas fa-user-tie"></i>
+                            <p>
+                                Proveedores
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('providers.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Lista</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('providers.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Agregar proveedor</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{--    Stores      --}}
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fas fa-store"></i>
+                            <p>
+                                Tiendas
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('stores.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Lista</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('stores.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Agregar tienda</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{--    Sales       --}}
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fas fa-money-bill"></i>
+                            <p>
+                                Ventas
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('sales.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Lista</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('sales.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Agregar Venta</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{--    Stats       --}}
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-chart-area"></i>
@@ -130,6 +218,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </p>
                         </a>
                     </li>
+
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

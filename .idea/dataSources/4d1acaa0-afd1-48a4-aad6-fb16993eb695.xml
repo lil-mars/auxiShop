@@ -1770,14 +1770,14 @@
       <DataType>varchar(40)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="422" parent="344" name="lastName">
+    <column id="422" parent="344" name="last_name">
       <Position>4</Position>
       <DataType>varchar(40)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="423" parent="344" name="occupation">
       <Position>5</Position>
-      <DataType>varchar(30)|0s</DataType>
+      <DataType>varchar(60)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="424" parent="344" name="address">
@@ -1971,7 +1971,7 @@
       <DataType>double(8,2 digit)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="461" parent="347" name="realPrice">
+    <column id="461" parent="347" name="real_price">
       <Position>7</Position>
       <DataType>double(8,2 digit)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
@@ -2018,393 +2018,408 @@
       <DataType>bigint(20) unsigned|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="470" parent="348" name="totalPrice">
+    <column id="470" parent="348" name="user_id">
       <Position>4</Position>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="471" parent="348" name="total_price">
+      <Position>5</Position>
       <DataType>double(8,2 digit)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="471" parent="348" name="total_amount">
-      <Position>5</Position>
+    <column id="472" parent="348" name="total_amount">
+      <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="472" parent="348" name="created_at">
-      <Position>6</Position>
-      <DataType>timestamp|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="473" parent="348" name="updated_at">
+    <column id="473" parent="348" name="created_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="474" parent="348" name="sales_client_id_foreign">
+    <column id="474" parent="348" name="updated_at">
+      <Position>8</Position>
+      <DataType>timestamp|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="475" parent="348" name="sales_client_id_foreign">
       <ColNames>client_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="475" parent="348" name="sales_store_id_foreign">
+    <index id="476" parent="348" name="sales_store_id_foreign">
       <ColNames>store_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="476" parent="348" name="PRIMARY">
+    <index id="477" parent="348" name="sales_user_id_foreign">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="478" parent="348" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="477" parent="348" name="sales_client_id_foreign">
+    <foreign-key id="479" parent="348" name="sales_client_id_foreign">
       <ColNames>client_id</ColNames>
       <RefTableName>clients</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="478" parent="348" name="sales_store_id_foreign">
+    <foreign-key id="480" parent="348" name="sales_store_id_foreign">
       <ColNames>store_id</ColNames>
       <RefTableName>stores</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="479" parent="349" name="id">
+    <foreign-key id="481" parent="348" name="sales_user_id_foreign">
+      <ColNames>user_id</ColNames>
+      <RefTableName>users</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="482" parent="349" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="480" parent="349" name="provider_id">
+    <column id="483" parent="349" name="provider_id">
       <Position>2</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="481" parent="349" name="spare_id">
+    <column id="484" parent="349" name="spare_id">
       <Position>3</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="482" parent="349" name="price">
+    <column id="485" parent="349" name="price">
       <Position>4</Position>
       <DataType>double(8,2 digit)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="483" parent="349" name="created_at">
+    <column id="486" parent="349" name="created_at">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="484" parent="349" name="updated_at">
+    <column id="487" parent="349" name="updated_at">
       <Position>6</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="485" parent="349" name="spare_provider_provider_id_foreign">
+    <index id="488" parent="349" name="spare_provider_provider_id_foreign">
       <ColNames>provider_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="486" parent="349" name="spare_provider_spare_id_foreign">
+    <index id="489" parent="349" name="spare_provider_spare_id_foreign">
       <ColNames>spare_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="487" parent="349" name="PRIMARY">
+    <key id="490" parent="349" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="488" parent="349" name="spare_provider_provider_id_foreign">
+    <foreign-key id="491" parent="349" name="spare_provider_provider_id_foreign">
       <ColNames>provider_id</ColNames>
       <RefTableName>providers</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="489" parent="349" name="spare_provider_spare_id_foreign">
+    <foreign-key id="492" parent="349" name="spare_provider_spare_id_foreign">
       <ColNames>spare_id</ColNames>
       <RefTableName>spares</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="490" parent="350" name="id">
+    <column id="493" parent="350" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="491" parent="350" name="code">
+    <column id="494" parent="350" name="code">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="492" parent="350" name="category_id">
+    <column id="495" parent="350" name="category_id">
       <Position>3</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="493" parent="350" name="car_line_id">
+    <column id="496" parent="350" name="car_line_id">
       <Position>4</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="494" parent="350" name="brand_id">
+    <column id="497" parent="350" name="brand_id">
       <Position>5</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="495" parent="350" name="description">
+    <column id="498" parent="350" name="description">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="496" parent="350" name="nationality">
+    <column id="499" parent="350" name="nationality">
       <Position>7</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="497" parent="350" name="measure">
+    <column id="500" parent="350" name="measure">
       <Position>8</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="498" parent="350" name="product_code">
+    <column id="501" parent="350" name="product_code">
       <Position>9</Position>
       <DataType>varchar(30)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="499" parent="350" name="original_code">
+    <column id="502" parent="350" name="original_code">
       <Position>10</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="500" parent="350" name="quantity">
+    <column id="503" parent="350" name="quantity">
       <Position>11</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="501" parent="350" name="price">
+    <column id="504" parent="350" name="price">
       <Position>12</Position>
       <DataType>double(8,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="502" parent="350" name="price_m">
+    <column id="505" parent="350" name="price_m">
       <Position>13</Position>
       <DataType>double(8,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="503" parent="350" name="investment">
+    <column id="506" parent="350" name="investment">
       <Position>14</Position>
       <DataType>double(8,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="504" parent="350" name="image">
+    <column id="507" parent="350" name="image">
       <Position>15</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="505" parent="350" name="created_at">
+    <column id="508" parent="350" name="created_at">
       <Position>16</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="506" parent="350" name="updated_at">
+    <column id="509" parent="350" name="updated_at">
       <Position>17</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="507" parent="350" name="spares_category_id_foreign">
+    <index id="510" parent="350" name="spares_category_id_foreign">
       <ColNames>category_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="508" parent="350" name="spares_car_line_id_foreign">
+    <index id="511" parent="350" name="spares_car_line_id_foreign">
       <ColNames>car_line_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="509" parent="350" name="spares_brand_id_foreign">
+    <index id="512" parent="350" name="spares_brand_id_foreign">
       <ColNames>brand_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="510" parent="350" name="PRIMARY">
+    <key id="513" parent="350" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="511" parent="350" name="spares_category_id_foreign">
+    <foreign-key id="514" parent="350" name="spares_category_id_foreign">
       <ColNames>category_id</ColNames>
       <RefTableName>categories</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="512" parent="350" name="spares_car_line_id_foreign">
+    <foreign-key id="515" parent="350" name="spares_car_line_id_foreign">
       <ColNames>car_line_id</ColNames>
       <RefTableName>car_lines</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="513" parent="350" name="spares_brand_id_foreign">
+    <foreign-key id="516" parent="350" name="spares_brand_id_foreign">
       <ColNames>brand_id</ColNames>
       <RefTableName>brands</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="514" parent="351" name="id">
+    <column id="517" parent="351" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="515" parent="351" name="quantity">
+    <column id="518" parent="351" name="quantity">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="516" parent="351" name="spare_id">
+    <column id="519" parent="351" name="spare_id">
       <Position>3</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="517" parent="351" name="store_id">
+    <column id="520" parent="351" name="store_id">
       <Position>4</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="518" parent="351" name="created_at">
+    <column id="521" parent="351" name="created_at">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="519" parent="351" name="updated_at">
+    <column id="522" parent="351" name="updated_at">
       <Position>6</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="520" parent="351" name="comment">
+    <column id="523" parent="351" name="comment">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="521" parent="351" name="store_spare_spare_id_foreign">
+    <index id="524" parent="351" name="store_spare_spare_id_foreign">
       <ColNames>spare_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="522" parent="351" name="store_spare_store_id_foreign">
+    <index id="525" parent="351" name="store_spare_store_id_foreign">
       <ColNames>store_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="523" parent="351" name="PRIMARY">
+    <key id="526" parent="351" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="524" parent="351" name="store_spare_spare_id_foreign">
+    <foreign-key id="527" parent="351" name="store_spare_spare_id_foreign">
       <ColNames>spare_id</ColNames>
       <RefTableName>spares</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="525" parent="351" name="store_spare_store_id_foreign">
+    <foreign-key id="528" parent="351" name="store_spare_store_id_foreign">
       <ColNames>store_id</ColNames>
       <RefTableName>stores</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="526" parent="352" name="id">
+    <column id="529" parent="352" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="527" parent="352" name="name">
+    <column id="530" parent="352" name="name">
       <Position>2</Position>
       <DataType>varchar(40)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="528" parent="352" name="address">
+    <column id="531" parent="352" name="address">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="529" parent="352" name="phone">
+    <column id="532" parent="352" name="phone">
       <Position>4</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="530" parent="352" name="status">
+    <column id="533" parent="352" name="status">
       <Position>5</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="531" parent="352" name="created_at">
+    <column id="534" parent="352" name="created_at">
       <Position>6</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="532" parent="352" name="updated_at">
+    <column id="535" parent="352" name="updated_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="533" parent="352" name="PRIMARY">
+    <key id="536" parent="352" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="534" parent="353" name="id">
+    <column id="537" parent="353" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="535" parent="353" name="name">
+    <column id="538" parent="353" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="536" parent="353" name="email">
+    <column id="539" parent="353" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="537" parent="353" name="email_verified_at">
+    <column id="540" parent="353" name="email_verified_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="538" parent="353" name="password">
+    <column id="541" parent="353" name="password">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="539" parent="353" name="remember_token">
+    <column id="542" parent="353" name="remember_token">
       <Position>6</Position>
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="540" parent="353" name="created_at">
+    <column id="543" parent="353" name="created_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="541" parent="353" name="updated_at">
+    <column id="544" parent="353" name="updated_at">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="542" parent="353" name="users_email_unique">
+    <index id="545" parent="353" name="users_email_unique">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="543" parent="353" name="PRIMARY">
+    <key id="546" parent="353" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="544" parent="353" name="users_email_unique">
+    <key id="547" parent="353" name="users_email_unique">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>users_email_unique</UnderlyingIndexName>
     </key>
