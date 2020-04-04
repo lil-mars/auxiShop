@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 
@@ -23,13 +23,13 @@
             </div>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="{{ route('categories.category.create') }}" class="btn btn-success" title="Create New Category">
+                <a href="{{ route('categories.create') }}" class="btn btn-success" title="Create New Category">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </a>
             </div>
 
         </div>
-        
+
         @if(count($categories) == 0)
             <div class="panel-body text-center">
                 <h4>No Categories Available.</h4>
@@ -53,15 +53,15 @@
 
                             <td>
 
-                                <form method="POST" action="{!! route('categories.category.destroy', $category->id) !!}" accept-charset="UTF-8">
+                                <form method="POST" action="{!! route('categories.destroy', $category->id) !!}" accept-charset="UTF-8">
                                 <input name="_method" value="DELETE" type="hidden">
                                 {{ csrf_field() }}
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
-                                        <a href="{{ route('categories.category.show', $category->id ) }}" class="btn btn-info" title="Show Category">
+                                        <a href="{{ route('categories.show', $category->id ) }}" class="btn btn-info" title="Show Category">
                                             <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
                                         </a>
-                                        <a href="{{ route('categories.category.edit', $category->id ) }}" class="btn btn-primary" title="Edit Category">
+                                        <a href="{{ route('categories.edit', $category->id ) }}" class="btn btn-primary" title="Edit Category">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </a>
 
@@ -71,7 +71,7 @@
                                     </div>
 
                                 </form>
-                                
+
                             </td>
                         </tr>
                     @endforeach
@@ -84,8 +84,8 @@
         <div class="panel-footer">
             {!! $categories->render() !!}
         </div>
-        
+
         @endif
-    
+
     </div>
 @endsection

@@ -35,10 +35,9 @@
                 <h4>No Brands Available.</h4>
             </div>
         @else
-        <div class="panel-body panel-body-with-table">
-            <div class="table-responsive">
+        <div class="card-body col-12">
 
-                <table class="table table-striped ">
+                <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -78,7 +77,6 @@
                     </tbody>
                 </table>
 
-            </div>
         </div>
 
         <div class="panel-footer">

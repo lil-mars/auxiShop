@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Clients extends Model
 {
-    
+
 
     /**
      * The database table used by the model.
@@ -39,7 +39,8 @@ class Clients extends Model
                   'occupation',
                   'address',
                   'phone',
-                  'fax'
+                  'fax',
+                  'ci'
               ];
 
     /**
@@ -48,14 +49,14 @@ class Clients extends Model
      * @var array
      */
     protected $dates = [];
-    
+
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
     protected $casts = [];
-    
+
     /**
      * Get the sale for this model.
      *
@@ -66,6 +67,12 @@ class Clients extends Model
         return $this->hasOne('App\Models\Sale','client_id','id');
     }
 
+    public function full_name() {
+        return $this->father_last_name
+            . ' ' . $this->mother_last_name
+            . ' ' . $this->second_name
+            . ' ' .$this->name;
+    }
 
     /**
      * Get created_at in array format

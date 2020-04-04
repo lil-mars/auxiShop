@@ -12,6 +12,10 @@ use Exception;
 
 class SparesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the spares.
@@ -20,9 +24,8 @@ class SparesController extends Controller
      */
     public function index()
     {
-        $spares = Spare::with('category','carline','brand')->paginate(25);
-
-        return view('spares.index', compact('spares'));
+        $spares = Spare::all();
+        return view('admin.spares.index',compact('spares'));
     }
 
     /**
@@ -33,10 +36,9 @@ class SparesController extends Controller
     public function create()
     {
         $Categories = Category::pluck('name','id')->all();
-$CarLines = CarLine::pluck('name','id')->all();
-$Brands = Brand::pluck('name','id')->all();
-        
-        return view('spares.create', compact('Categories','CarLines','Brands'));
+        $CarLines = CarLine::pluck('name','id')->all();
+        $Brands = Brand::pluck('name','id')->all();
+        return view('admin.spares.create', compact('Categories','CarLines','Brands'));
     }
 
     /**
@@ -48,18 +50,19 @@ $Brands = Brand::pluck('name','id')->all();
      */
     public function store(Request $request)
     {
+
         try {
-            
-            $data = $this->getData($request);
-            
+
+            $data = $this->validation($request);
+
             Spare::create($data);
 
-            return redirect()->route('spares.spare.index')
-                ->with('success_message', 'Spare was successfully added.');
+            return redirect()->route('spares.index')
+                ->with('success_message', 'Repuesto agregado correctamente !!');
         } catch (Exception $exception) {
-
+            $errors = $exception->errors();
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors($errors);
         }
     }
 
@@ -74,7 +77,7 @@ $Brands = Brand::pluck('name','id')->all();
     {
         $spare = Spare::with('category','carline','brand')->findOrFail($id);
 
-        return view('spares.show', compact('spare'));
+        return view('admin.spares.show', compact('spare'));
     }
 
     /**
@@ -88,10 +91,10 @@ $Brands = Brand::pluck('name','id')->all();
     {
         $spare = Spare::findOrFail($id);
         $Categories = Category::pluck('name','id')->all();
-$CarLines = CarLine::pluck('name','id')->all();
-$Brands = Brand::pluck('name','id')->all();
+        $CarLines = CarLine::pluck('name','id')->all();
+        $Brands = Brand::pluck('name','id')->all();
 
-        return view('spares.edit', compact('spare','Categories','CarLines','Brands'));
+        return view('admin.spares.edit', compact('spare','Categories','CarLines','Brands'));
     }
 
     /**
@@ -105,19 +108,19 @@ $Brands = Brand::pluck('name','id')->all();
     public function update($id, Request $request)
     {
         try {
-            
-            $data = $this->getData($request);
-            
+
+            $data = $this->validation($request,$id);
+
             $spare = Spare::findOrFail($id);
             $spare->update($data);
 
-            return redirect()->route('spares.spare.index')
-                ->with('success_message', 'Spare was successfully updated.');
+            return redirect()->route('spares.index')
+                ->with('success_message', 'Repuesto actualizado !!');
         } catch (Exception $exception) {
-
+            $errors = $exception->errors();
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
-        }        
+                ->withErrors($errors);
+        }
     }
 
     /**
@@ -133,45 +136,62 @@ $Brands = Brand::pluck('name','id')->all();
             $spare = Spare::findOrFail($id);
             $spare->delete();
 
-            return redirect()->route('spares.spare.index')
-                ->with('success_message', 'Spare was successfully deleted.');
+            return redirect()->route('spares.index')
+                ->with('success_message', 'Repuesto eliminado !!');
         } catch (Exception $exception) {
-
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
         }
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Request $request
+     * @param string $id
      * @return array
+     * @throws \Illuminate\Validation\ValidationException
      */
-    protected function getData(Request $request)
+    protected function validation(Request $request, $id = '')
     {
         $rules = [
-                'code' => 'nullable|string|min:0|max:50',
+            'code' => 'nullable|string|min:0|max:50|unique:spares,code,' . $id,
             'category_id' => 'nullable',
             'car_line_id' => 'nullable',
             'brand_id' => 'nullable',
             'description' => 'nullable|string|min:0|max:255',
             'nationality' => 'nullable|string|min:0|max:60',
             'measure' => 'nullable|string|min:0|max:50',
-            'product_code' => 'nullable|string|min:0|max:30',
-            'original_code' => 'nullable|string|min:0|max:50',
+            'product_code' => 'nullable|string|min:0|max:30|unique:spares,product_code,'.$id,
+            'original_code' => 'nullable|string|min:0|max:50|unique:spares,original_code,'.$id,
             'quantity' => 'nullable|numeric|min:-2147483648|max:2147483647',
             'price' => 'required|numeric|min:-999999.99|max:999999.99',
             'price_m' => 'required|numeric|min:-999999.99|max:999999.99',
             'investment' => 'required|numeric|min:-999999.99|max:999999.99',
-            'image' => 'nullable|numeric|string|min:0|max:255', 
+            'image' => 'required|min:0|max:255',
         ];
-        
-        $data = $request->validate($rules);
 
-
+        $data = $this->validate($request, $rules);
         return $data;
+    }
+
+
+    public function filter(Request $request) {
+        $filters = array_filter($request->all(), function ($value) {
+            return !is_null($value);
+        });
+        // Filter products
+        $spares = Spare::all();
+        $spares = $spares->filter(function ($product) use ($filters) {
+            foreach ($filters as $key => $filter ) {
+                if (strripos($product[$key],$filter) === false){
+                    return false;
+                }
+            }
+            return true;
+        });
+        return view('admin.spares.index', compact('spares'));
     }
 
 }

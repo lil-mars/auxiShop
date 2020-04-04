@@ -9,6 +9,10 @@ use Exception;
 
 class CategoriesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the categories.
@@ -19,7 +23,7 @@ class CategoriesController extends Controller
     {
         $categories = Category::paginate(25);
 
-        return view('categories.index', compact('categories'));
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -29,9 +33,9 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        
-        
-        return view('categories.create');
+
+
+        return view('admin.categories.create');
     }
 
     /**
@@ -44,12 +48,12 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         try {
-            
-            $data = $this->getData($request);
-            
+
+            $data = $this->validation($request);
+
             Category::create($data);
 
-            return redirect()->route('categories.category.index')
+            return redirect()->route('categories.index')
                 ->with('success_message', 'Category was successfully added.');
         } catch (Exception $exception) {
 
@@ -69,7 +73,7 @@ class CategoriesController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        return view('categories.show', compact('category'));
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -82,9 +86,9 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        
 
-        return view('categories.edit', compact('category'));
+
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -98,19 +102,19 @@ class CategoriesController extends Controller
     public function update($id, Request $request)
     {
         try {
-            
-            $data = $this->getData($request);
-            
+
+            $data = $this->validation($request);
+
             $category = Category::findOrFail($id);
             $category->update($data);
 
-            return redirect()->route('categories.category.index')
+            return redirect()->route('categories.index')
                 ->with('success_message', 'Category was successfully updated.');
         } catch (Exception $exception) {
 
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
-        }        
+        }
     }
 
     /**
@@ -126,7 +130,7 @@ class CategoriesController extends Controller
             $category = Category::findOrFail($id);
             $category->delete();
 
-            return redirect()->route('categories.category.index')
+            return redirect()->route('categories.index')
                 ->with('success_message', 'Category was successfully deleted.');
         } catch (Exception $exception) {
 
@@ -135,19 +139,19 @@ class CategoriesController extends Controller
         }
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
-    protected function getData(Request $request)
+    protected function validation(Request $request)
     {
         $rules = [
-                'name' => 'nullable|string|min:0|max:50', 
+                'name' => 'nullable|string|min:0|max:50',
         ];
-        
+
         $data = $request->validate($rules);
 
 

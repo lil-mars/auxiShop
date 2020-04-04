@@ -1,17 +1,17 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 
     <div class="panel panel-default">
 
         <div class="panel-heading clearfix">
-            
+
             <span class="pull-left">
                 <h4 class="mt-5 mb-5">Create New Car Line</h4>
             </span>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="{{ route('car_lines.car_line.index') }}" class="btn btn-primary" title="Show All Car Line">
+                <a href="{{ route('car_lines.index') }}" class="btn btn-primary" title="Show All Car Line">
                     <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                 </a>
             </div>
@@ -19,7 +19,7 @@
         </div>
 
         <div class="panel-body">
-        
+
             @if ($errors->any())
                 <ul class="alert alert-danger">
                     @foreach ($errors->all() as $error)
@@ -28,9 +28,9 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('car_lines.car_line.store') }}" accept-charset="UTF-8" id="create_car_line_form" name="create_car_line_form" class="form-horizontal">
+            <form method="POST" action="{{ route('car_lines.store') }}" accept-charset="UTF-8" id="create_car_line_form" name="create_car_line_form" class="form-horizontal">
             {{ csrf_field() }}
-            @include ('car_lines.form', [
+            @include ('admin.car_lines.form', [
                                         'carLine' => null,
                                       ])
 

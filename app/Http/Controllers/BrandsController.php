@@ -9,9 +9,12 @@ use Exception;
 
 class BrandsController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
-     * Display a listing of the brands.
+     * Display a listing of the admin.brands.
      *
      * @return Illuminate\View\View
      */
@@ -19,7 +22,7 @@ class BrandsController extends Controller
     {
         $brands = Brand::paginate(25);
 
-        return view('brands.index', compact('brands'));
+        return view('admin.brands.index', compact('brands'));
     }
 
     /**
@@ -29,9 +32,9 @@ class BrandsController extends Controller
      */
     public function create()
     {
-        
-        
-        return view('brands.create');
+
+
+        return view('admin.brands.create');
     }
 
     /**
@@ -44,12 +47,12 @@ class BrandsController extends Controller
     public function store(Request $request)
     {
         try {
-            
+
             $data = $this->getData($request);
-            
+
             Brand::create($data);
 
-            return redirect()->route('brands.brand.index')
+            return redirect()->route('brands.index')
                 ->with('success_message', 'Brand was successfully added.');
         } catch (Exception $exception) {
 
@@ -69,7 +72,7 @@ class BrandsController extends Controller
     {
         $brand = Brand::findOrFail($id);
 
-        return view('brands.show', compact('brand'));
+        return view('admin.brands.show', compact('brand'));
     }
 
     /**
@@ -82,9 +85,9 @@ class BrandsController extends Controller
     public function edit($id)
     {
         $brand = Brand::findOrFail($id);
-        
 
-        return view('brands.edit', compact('brand'));
+
+        return view('admin.brands.edit', compact('brand'));
     }
 
     /**
@@ -98,19 +101,19 @@ class BrandsController extends Controller
     public function update($id, Request $request)
     {
         try {
-            
+
             $data = $this->getData($request);
-            
+
             $brand = Brand::findOrFail($id);
             $brand->update($data);
 
-            return redirect()->route('brands.brand.index')
+            return redirect()->route('brands.index')
                 ->with('success_message', 'Brand was successfully updated.');
         } catch (Exception $exception) {
-
+            $errors = $exception->errors();
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
-        }        
+                ->withErrors($errors);
+        }
     }
 
     /**
@@ -126,7 +129,7 @@ class BrandsController extends Controller
             $brand = Brand::findOrFail($id);
             $brand->delete();
 
-            return redirect()->route('brands.brand.index')
+            return redirect()->route('brands.index')
                 ->with('success_message', 'Brand was successfully deleted.');
         } catch (Exception $exception) {
 
@@ -135,19 +138,19 @@ class BrandsController extends Controller
         }
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
     {
         $rules = [
-                'name' => 'nullable|string|min:0|max:50', 
+                'name' => 'nullable|string|min:0|max:50',
         ];
-        
+
         $data = $request->validate($rules);
 
 

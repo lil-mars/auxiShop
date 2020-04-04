@@ -15,15 +15,16 @@ class CreateClients extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('company_name', 20)->nullable();
+            $table->string('company_name', 40)->nullable();
             $table->string('father_last_name',20)->nullable();
             $table->string('mother_last_name',20)->nullable();
             $table->string('second_name',20)->nullable();
             $table->string('name',20)->nullable();
             $table->string('occupation',30)->nullable();
-            $table->string('address',20)->nullable();
+            $table->string('address',100)->nullable();
             $table->string('phone',20)->nullable();
             $table->string('fax',20)->nullable();
+            $table->string('ci',30)->unique();
             $table->timestamps();
         });
 

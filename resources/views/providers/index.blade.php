@@ -19,20 +19,20 @@
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">Clients</h4>
+                <h4 class="mt-5 mb-5">Providers</h4>
             </div>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="{{ route('clients.client.create') }}" class="btn btn-success" title="Create New Client">
+                <a href="{{ route('providers.provider.create') }}" class="btn btn-success" title="Create New Provider">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </a>
             </div>
 
         </div>
         
-        @if(count($clients) == 0)
+        @if(count($providers) == 0)
             <div class="panel-body text-center">
-                <h4>No Clients Available.</h4>
+                <h4>No Providers Available.</h4>
             </div>
         @else
         <div class="panel-body panel-body-with-table">
@@ -42,48 +42,48 @@
                     <thead>
                         <tr>
                             <th>Company Name</th>
-                            <th>Father Last Name</th>
-                            <th>Mother Last Name</th>
-                            <th>Second Name</th>
                             <th>Name</th>
+                            <th>Last Name</th>
                             <th>Occupation</th>
                             <th>Address</th>
+                            <th>City</th>
+                            <th>Postal Code</th>
+                            <th>Country</th>
                             <th>Phone</th>
                             <th>Fax</th>
-                            <th>Ci</th>
 
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($clients as $client)
+                    @foreach($providers as $provider)
                         <tr>
-                            <td>{{ $client->company_name }}</td>
-                            <td>{{ $client->father_last_name }}</td>
-                            <td>{{ $client->mother_last_name }}</td>
-                            <td>{{ $client->second_name }}</td>
-                            <td>{{ $client->name }}</td>
-                            <td>{{ $client->occupation }}</td>
-                            <td>{{ $client->address }}</td>
-                            <td>{{ $client->phone }}</td>
-                            <td>{{ $client->fax }}</td>
-                            <td>{{ $client->ci }}</td>
+                            <td>{{ $provider->company_name }}</td>
+                            <td>{{ $provider->name }}</td>
+                            <td>{{ $provider->last_name }}</td>
+                            <td>{{ $provider->occupation }}</td>
+                            <td>{{ $provider->address }}</td>
+                            <td>{{ $provider->city }}</td>
+                            <td>{{ $provider->postal_code }}</td>
+                            <td>{{ $provider->country }}</td>
+                            <td>{{ $provider->phone }}</td>
+                            <td>{{ $provider->fax }}</td>
 
                             <td>
 
-                                <form method="POST" action="{!! route('clients.client.destroy', $client->id) !!}" accept-charset="UTF-8">
+                                <form method="POST" action="{!! route('providers.provider.destroy', $provider->id) !!}" accept-charset="UTF-8">
                                 <input name="_method" value="DELETE" type="hidden">
                                 {{ csrf_field() }}
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
-                                        <a href="{{ route('clients.client.show', $client->id ) }}" class="btn btn-info" title="Show Client">
+                                        <a href="{{ route('providers.provider.show', $provider->id ) }}" class="btn btn-info" title="Show Provider">
                                             <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
                                         </a>
-                                        <a href="{{ route('clients.client.edit', $client->id ) }}" class="btn btn-primary" title="Edit Client">
+                                        <a href="{{ route('providers.provider.edit', $provider->id ) }}" class="btn btn-primary" title="Edit Provider">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </a>
 
-                                        <button type="submit" class="btn btn-danger" title="Delete Client" onclick="return confirm(&quot;Click Ok to delete Client.&quot;)">
+                                        <button type="submit" class="btn btn-danger" title="Delete Provider" onclick="return confirm(&quot;Click Ok to delete Provider.&quot;)">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </button>
                                     </div>
@@ -100,7 +100,7 @@
         </div>
 
         <div class="panel-footer">
-            {!! $clients->render() !!}
+            {!! $providers->render() !!}
         </div>
         
         @endif

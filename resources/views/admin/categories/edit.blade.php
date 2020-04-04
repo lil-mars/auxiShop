@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 
     <div class="panel panel-default">
-  
+
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
@@ -11,11 +11,11 @@
             </div>
             <div class="btn-group btn-group-sm pull-right" role="group">
 
-                <a href="{{ route('categories.category.index') }}" class="btn btn-primary" title="Show All Category">
+                <a href="{{ route('categories.index') }}" class="btn btn-primary" title="Show All Category">
                     <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                 </a>
 
-                <a href="{{ route('categories.category.create') }}" class="btn btn-success" title="Create New Category">
+                <a href="{{ route('categories.create') }}" class="btn btn-success" title="Create New Category">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </a>
 
@@ -32,10 +32,10 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('categories.category.update', $category->id) }}" id="edit_category_form" name="edit_category_form" accept-charset="UTF-8" class="form-horizontal">
+            <form method="POST" action="{{ route('categories.update', $category->id) }}" id="edit_category_form" name="edit_category_form" accept-charset="UTF-8" class="form-horizontal">
             {{ csrf_field() }}
             <input name="_method" type="hidden" value="PUT">
-            @include ('categories.form', [
+            @include ('admin.categories.form', [
                                         'category' => $category,
                                       ])
 

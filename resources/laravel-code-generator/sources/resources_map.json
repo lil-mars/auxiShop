@@ -1,1 +1,37 @@
-[]
+[
+    {
+        "model-name": "Spare",
+        "resource-file": "spares.json",
+        "table-name": "spares"
+    },
+    {
+        "model-name": "Brand",
+        "resource-file": "brands.json",
+        "table-name": "brands"
+    },
+    {
+        "model-name": "categories",
+        "resource-file": "categories.json",
+        "table-name": "categories"
+    },
+    {
+        "model-name": "car_lines",
+        "resource-file": "car_lines.json",
+        "table-name": "car_lines"
+    },
+    {
+        "model-name": "clients",
+        "resource-file": "clients.json",
+        "table-name": "clients"
+    },
+    {
+        "model-name": "providers",
+        "resource-file": "providers.json",
+        "table-name": "providers"
+    },
+    {
+        "model-name": "stores",
+        "resource-file": "stores.json",
+        "table-name": "stores"
+    }
+]

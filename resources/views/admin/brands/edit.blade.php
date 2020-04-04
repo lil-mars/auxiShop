@@ -35,7 +35,7 @@
             <form method="POST" action="{{ route('brands.update', $brand->id) }}" id="edit_brand_form" name="edit_brand_form" accept-charset="UTF-8" class="form-horizontal">
             {{ csrf_field() }}
             <input name="_method" type="hidden" value="PUT">
-            @include ('brands.form', [
+            @include ('admin.brands.form', [
                                         'brand' => $brand,
                                       ])
 

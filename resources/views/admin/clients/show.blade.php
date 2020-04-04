@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 
@@ -22,7 +22,7 @@
                     <a href="{{ route('clients.client.create') }}" class="btn btn-success" title="Create New Client">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </a>
-                    
+
                     <a href="{{ route('clients.client.edit', $client->id ) }}" class="btn btn-primary" title="Edit Client">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </a>

@@ -124,13 +124,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('clients.index')}}" class="nav-link">
+                                <a href="{{route('clients.client.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Lista</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('clients.create')}}" class="nav-link">
+                                <a href="{{route('clients.client.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Agregar cliente</p>
                                 </a>
@@ -148,13 +148,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('providers.index')}}" class="nav-link">
+                                <a href="{{route('providers.provider.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Lista</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('providers.create')}}" class="nav-link">
+                                <a href="{{route('providers.provider.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Agregar proveedor</p>
                                 </a>

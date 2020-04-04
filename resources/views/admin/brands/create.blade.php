@@ -30,7 +30,7 @@
 
             <form method="POST" action="{{ route('brands.store') }}" accept-charset="UTF-8" id="create_brand_form" name="create_brand_form" class="form-horizontal">
             {{ csrf_field() }}
-            @include ('brands.form', [
+            @include ('admin.brands.form', [
                                         'brand' => null,
                                       ])
 
