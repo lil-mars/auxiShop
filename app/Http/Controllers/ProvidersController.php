@@ -19,7 +19,7 @@ class ProvidersController extends Controller
     {
         $providers = Provider::paginate(25);
 
-        return view('providers.index', compact('providers'));
+        return view('admin.providers.index', compact('providers'));
     }
 
     /**
@@ -29,9 +29,9 @@ class ProvidersController extends Controller
      */
     public function create()
     {
-        
-        
-        return view('providers.create');
+
+
+        return view('admin.providers.create');
     }
 
     /**
@@ -44,9 +44,9 @@ class ProvidersController extends Controller
     public function store(Request $request)
     {
         try {
-            
+
             $data = $this->getData($request);
-            
+
             Provider::create($data);
 
             return redirect()->route('providers.provider.index')
@@ -69,7 +69,7 @@ class ProvidersController extends Controller
     {
         $provider = Provider::findOrFail($id);
 
-        return view('providers.show', compact('provider'));
+        return view('admin.providers.show', compact('provider'));
     }
 
     /**
@@ -82,9 +82,9 @@ class ProvidersController extends Controller
     public function edit($id)
     {
         $provider = Provider::findOrFail($id);
-        
 
-        return view('providers.edit', compact('provider'));
+
+        return view('admin.providers.edit', compact('provider'));
     }
 
     /**
@@ -98,9 +98,9 @@ class ProvidersController extends Controller
     public function update($id, Request $request)
     {
         try {
-            
+
             $data = $this->getData($request);
-            
+
             $provider = Provider::findOrFail($id);
             $provider->update($data);
 
@@ -110,7 +110,7 @@ class ProvidersController extends Controller
 
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
-        }        
+        }
     }
 
     /**
@@ -135,28 +135,28 @@ class ProvidersController extends Controller
         }
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
     {
         $rules = [
-                'company_name' => 'nullable|string|min:0|max:40',
+            'company_name' => 'nullable|string|min:0|max:40',
             'name' => 'nullable|string|min:0|max:40',
             'last_name' => 'nullable|string|min:0|max:40',
             'occupation' => 'nullable|string|min:0|max:60',
             'address' => 'nullable|string|min:0|max:255',
             'city' => 'nullable|string|min:0|max:20',
             'postal_code' => 'nullable|string|min:0|max:30',
-            'country' => 'nullable|numeric|string|min:0|max:40',
+            'country' => 'nullable|string|min:0|max:40',
             'phone' => 'nullable|string|min:0|max:20',
-            'fax' => 'nullable|string|min:0|max:20', 
+            'fax' => 'nullable|string|min:0|max:20',
         ];
-        
+
         $data = $request->validate($rules);
 
 

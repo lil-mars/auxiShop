@@ -24,7 +24,7 @@
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('car_lines.create') }}" class="btn btn-success" title="Create New Car Line">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    <span class="fa fa-plus" aria-hidden="true"></span>
                 </a>
             </div>
 
@@ -59,14 +59,14 @@
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
                                         <a href="{{ route('car_lines.show', $carLine->id ) }}" class="btn btn-info" title="Show Car Line">
-                                            <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                                            <span class="fa fa-eye" aria-hidden="true"></span>
                                         </a>
                                         <a href="{{ route('car_lines.edit', $carLine->id ) }}" class="btn btn-primary" title="Edit Car Line">
-                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            <span class="fa fa-pen" aria-hidden="true"></span>
                                         </a>
 
                                         <button type="submit" class="btn btn-danger" title="Delete Car Line" onclick="return confirm(&quot;Click Ok to delete Car Line.&quot;)">
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            <span class="fa fa-trash" aria-hidden="true"></span>
                                         </button>
                                     </div>
 

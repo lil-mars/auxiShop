@@ -33,5 +33,40 @@
         "model-name": "stores",
         "resource-file": "stores.json",
         "table-name": "stores"
+    },
+    {
+        "model-name": "Bill",
+        "resource-file": "bills.json",
+        "table-name": "bills"
+    },
+    {
+        "model-name": "Purchase",
+        "resource-file": "purchases.json",
+        "table-name": "purchases"
+    },
+    {
+        "model-name": "Sale",
+        "resource-file": "sales.json",
+        "table-name": "sales"
+    },
+    {
+        "model-name": "Purchasespare",
+        "resource-file": "purchasespares.json",
+        "table-name": "purchasespares"
+    },
+    {
+        "model-name": "purchase_spare",
+        "resource-file": "purchase_spares.json",
+        "table-name": "purchase_spares"
+    },
+    {
+        "model-name": "PurchaseSpare",
+        "resource-file": "purchase_spares.json",
+        "table-name": "purchase_spare"
+    },
+    {
+        "model-name": "sale_details",
+        "resource-file": "sale_details.json",
+        "table-name": "sale_details"
     }
 ]

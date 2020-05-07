@@ -1,21 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 
     <div class="panel panel-default">
-  
+
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">{{ !empty($provider->name) ? $provider->name : 'Provider' }}</h4>
+                <h4 class="mt-5 mb-5">{{ !empty($title) ? $title : 'Purchase Spare' }}</h4>
             </div>
             <div class="btn-group btn-group-sm pull-right" role="group">
 
-                <a href="{{ route('providers.provider.index') }}" class="btn btn-primary" title="Show All Provider">
+                <a href="{{ route('purchases.spare.index',1) }}" class="btn btn-primary" title="Show All Purchase Spare">
                     <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                 </a>
 
-                <a href="{{ route('providers.provider.create') }}" class="btn btn-success" title="Create New Provider">
+                <a href="{{ route('purchases.spare.create',3) }}" class="btn btn-success" title="Create New Purchase Spare">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </a>
 
@@ -32,11 +32,11 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('providers.provider.update', $provider->id) }}" id="edit_provider_form" name="edit_provider_form" accept-charset="UTF-8" class="form-horizontal">
+            <form method="POST" action="{{ route('purchases.spare.update', [$purchaseSpare->id, 3]) }}" id="edit_purchase_spare_form" name="edit_purchase_spare_form" accept-charset="UTF-8" class="form-horizontal">
             {{ csrf_field() }}
             <input name="_method" type="hidden" value="PUT">
-            @include ('providers.form', [
-                                        'provider' => $provider,
+            @include ('purchase_spares.form', [
+                                        'purchaseSpare' => $purchaseSpare,
                                       ])
 
                 <div class="form-group">

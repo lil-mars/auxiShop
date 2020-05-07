@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SaleDetail extends Model
 {
+    public $timestamps = false;
     protected $table = 'sale_details';
     protected $fillable = [
         'id', 'sale_id', 'spare_id' ,'price', 'quantity', 'discount', 'real_price'

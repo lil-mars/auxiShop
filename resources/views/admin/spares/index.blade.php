@@ -101,7 +101,7 @@
                                 @foreach($spares as $spare)
                                     <tr>
                                         <td>{{ $spare->id }}</td>
-                                        <td> {{ optional($spare->category)->name }}</td>
+                                        <td>{{ optional($spare->category)->name }}</td>
                                         <td>{{ optional($spare->brand)->name }}</td>
                                         <td>{{ $spare->nationality }}</td>
                                         <td>{{ $spare->measure }}</td>
@@ -193,8 +193,8 @@
     </div>
 @endsection
 @section('scripts')
-    <script src="{{ asset('js/product/datatables.min.js') }}">    </script>
-    <script src="{{ asset('js/product/datatableconfig.js') }}">    </script>
-    <script src="{{ asset('js/product/modalconfig.js') }}">    </script>
+    <script src="{{ asset('js/spare/datatables.min.js') }}">    </script>
+    <script src="{{ asset('js/spare/datatableconfig.js') }}">    </script>
+    <script src="{{ asset('js/spare/modalconfig.js') }}">    </script>
 @endsection
 

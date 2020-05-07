@@ -26,7 +26,7 @@
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('clients.client.create') }}" class="btn btn-success" title="Create New Clients">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    <span class="fa fa-plus" aria-hidden="true"></span>
                 </a>
             </div>
 
@@ -71,14 +71,14 @@
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
                                         <a href="{{ route('clients.client.show', $clients->id ) }}" class="btn btn-info" title="Show Clients">
-                                            <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                                            <span class="fa fa-eye" aria-hidden="true"></span>
                                         </a>
                                         <a href="{{ route('clients.client.edit', $clients->id ) }}" class="btn btn-primary" title="Edit Clients">
-                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            <span class="fa fa-pen" aria-hidden="true"></span>
                                         </a>
 
                                         <button type="submit" class="btn btn-danger" title="Delete Clients" onclick="return confirm(&quot;Click Ok to delete Clients.&quot;)">
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            <span class="fa fa-trash" aria-hidden="true"></span>
                                         </button>
                                     </div>
 

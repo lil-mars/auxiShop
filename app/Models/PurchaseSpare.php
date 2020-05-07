@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PurchaseSpare extends Model
 {
+    protected $table = 'purchase_spare';
     protected $fillable = [
         'purchase_id', 'spare_id', 'unit_price', 'price',
         'quantity'

@@ -29,10 +29,6 @@ Route::get('filter-products', 'SparesController@filter')->name('filter-products'
 // Not using
 
 
-Route::resource('sales', 'SaleController');
-Route::resource('purchases', 'PurchaseController');
-
-
 Route::group([
     'prefix' => 'clients',
 ], function () {
@@ -56,19 +52,19 @@ Route::group([
     'prefix' => 'providers',
 ], function () {
     Route::get('/', 'ProvidersController@index')
-         ->name('providers.providers.index');
+         ->name('providers.provider.index');
     Route::get('/create','ProvidersController@create')
-         ->name('providers.providers.create');
-    Route::get('/show/{providers}','ProvidersController@show')
-         ->name('providers.providers.show');
-    Route::get('/{providers}/edit','ProvidersController@edit')
-         ->name('providers.providers.edit');
+         ->name('providers.provider.create');
+    Route::get('/show/{provider}','ProvidersController@show')
+         ->name('providers.provider.show');
+    Route::get('/{provider}/edit','ProvidersController@edit')
+         ->name('providers.provider.edit');
     Route::post('/', 'ProvidersController@store')
-         ->name('providers.providers.store');
-    Route::put('providers/{providers}', 'ProvidersController@update')
-         ->name('providers.providers.update');
-    Route::delete('/providers/{providers}','ProvidersController@destroy')
-         ->name('providers.providers.destroy');
+         ->name('providers.provider.store');
+    Route::put('provider/{provider}', 'ProvidersController@update')
+         ->name('providers.provider.update');
+    Route::delete('/provider/{provider}','ProvidersController@destroy')
+         ->name('providers.provider.destroy');
 });
 
 Route::group([
@@ -108,3 +104,44 @@ Route::group([
     Route::delete('/store/{store}','StoresController@destroy')
          ->name('stores.store.destroy');
 });
+Route::group([
+    'prefix' => 'sales',
+], function () {
+    Route::get('/', 'SalesController@index')
+         ->name('sales.sale.index');
+    Route::get('/create','SalesController@create')
+         ->name('sales.sale.create');
+    Route::get('/show/{sale}','SalesController@show')
+         ->name('sales.sale.show');
+    Route::get('/{sale}/edit','SalesController@edit')
+         ->name('sales.sale.edit');
+    Route::post('/', 'SalesController@store')
+         ->name('sales.sale.store');
+    Route::put('sale/{sale}', 'SalesController@update')
+         ->name('sales.sale.update');
+    Route::delete('/sale/{sale}','SalesController@destroy')
+         ->name('sales.sale.destroy');
+});
+
+Route::group([
+    'prefix' => 'purchases',
+], function () {
+    Route::get('/', 'PurchasesController@index')
+         ->name('purchases.purchase.index');
+    Route::get('/create','PurchasesController@create')
+         ->name('purchases.purchase.create');
+    Route::get('/show/{purchase}','PurchasesController@show')
+         ->name('purchases.purchase.show');
+    Route::get('/{purchase}/edit','PurchasesController@edit')
+         ->name('purchases.purchase.edit');
+    Route::post('/', 'PurchasesController@store')
+         ->name('purchases.purchase.store');
+    Route::put('purchase/{purchase}', 'PurchasesController@update')
+         ->name('purchases.purchase.update');
+    Route::delete('/purchase/{purchase}','PurchasesController@destroy')
+         ->name('purchases.purchase.destroy');
+});
+
+Route::resource('purchases.spare', 'PurchaseSparesController');
+Route::resource('sales.spare', 'SaleDetailsController');
+

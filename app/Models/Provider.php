@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Provider extends Model
 {
-    
+    public function full_name() {
+        return $this->last_name
+            . ' ' .$this->name;
+    }
+
 
     /**
      * The database table used by the model.
@@ -49,14 +53,14 @@ class Provider extends Model
      * @var array
      */
     protected $dates = [];
-    
+
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
     protected $casts = [];
-    
+
     /**
      * Get the purchase for this model.
      *

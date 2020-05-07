@@ -161,6 +161,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </li>
                         </ul>
                     </li>
+                    {{--    Purchases       --}}
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fas fa-shopping-bag"></i>
+                            <p>
+                                Compras
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('purchases.purchase.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Lista</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('purchases.purchase.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Agregar compra</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     {{--    Stores      --}}
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
@@ -172,13 +196,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('stores.index')}}" class="nav-link">
+                                <a href="{{route('stores.store.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Lista</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('stores.create')}}" class="nav-link">
+                                <a href="{{route('stores.store.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Agregar tienda</p>
                                 </a>
@@ -196,13 +220,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('sales.index')}}" class="nav-link">
+                                <a href="{{route('sales.sale.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Lista</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('sales.create')}}" class="nav-link">
+                                <a href="{{route('sales.sale.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Agregar Venta</p>
                                 </a>

@@ -1,25 +1,25 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 
     <div class="panel panel-default">
 
         <div class="panel-heading clearfix">
-            
+
             <span class="pull-left">
-                <h4 class="mt-5 mb-5">Create New Provider</h4>
+                <h4 class="mt-5 mb-5">Create New Sale</h4>
             </span>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="{{ route('providers.provider.index') }}" class="btn btn-primary" title="Show All Provider">
-                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                <a href="{{ route('sales.sale.index') }}" class="btn btn-primary" title="Show All Sale">
+                    <span class="fa fa-list" aria-hidden="true"></span>
                 </a>
             </div>
 
         </div>
 
         <div class="panel-body">
-        
+
             @if ($errors->any())
                 <ul class="alert alert-danger">
                     @foreach ($errors->all() as $error)
@@ -28,10 +28,10 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('providers.provider.store') }}" accept-charset="UTF-8" id="create_provider_form" name="create_provider_form" class="form-horizontal">
+            <form method="POST" action="{{ route('sales.sale.store') }}" accept-charset="UTF-8" id="create_sale_form" name="create_sale_form" class="form-horizontal">
             {{ csrf_field() }}
-            @include ('providers.form', [
-                                        'provider' => null,
+            @include ('admin.sales.form', [
+                                        'sale' => null,
                                       ])
 
                 <div class="form-group">

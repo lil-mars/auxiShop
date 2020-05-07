@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 
@@ -16,19 +16,19 @@
             {{ csrf_field() }}
                 <div class="btn-group btn-group-sm" role="group">
                     <a href="{{ route('stores.store.index') }}" class="btn btn-primary" title="Show All Store">
-                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                        <span class="fa fa-list" aria-hidden="true"></span>
                     </a>
 
                     <a href="{{ route('stores.store.create') }}" class="btn btn-success" title="Create New Store">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span class="fa fa-plus" aria-hidden="true"></span>
                     </a>
-                    
+
                     <a href="{{ route('stores.store.edit', $store->id ) }}" class="btn btn-primary" title="Edit Store">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        <span class="fa fa-pen" aria-hidden="true"></span>
                     </a>
 
                     <button type="submit" class="btn btn-danger" title="Delete Store" onclick="return confirm(&quot;Click Ok to delete Store.?&quot;)">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        <span class="fa fa-trash" aria-hidden="true"></span>
                     </button>
                 </div>
             </form>

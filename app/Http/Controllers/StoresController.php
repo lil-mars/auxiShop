@@ -19,7 +19,7 @@ class StoresController extends Controller
     {
         $stores = Store::paginate(25);
 
-        return view('stores.index', compact('stores'));
+        return view('admin.stores.index', compact('stores'));
     }
 
     /**
@@ -29,9 +29,9 @@ class StoresController extends Controller
      */
     public function create()
     {
-        
-        
-        return view('stores.create');
+
+
+        return view('admin.stores.create');
     }
 
     /**
@@ -44,9 +44,9 @@ class StoresController extends Controller
     public function store(Request $request)
     {
         try {
-            
+
             $data = $this->getData($request);
-            
+
             Store::create($data);
 
             return redirect()->route('stores.store.index')
@@ -69,7 +69,7 @@ class StoresController extends Controller
     {
         $store = Store::findOrFail($id);
 
-        return view('stores.show', compact('store'));
+        return view('admin.stores.show', compact('store'));
     }
 
     /**
@@ -82,9 +82,9 @@ class StoresController extends Controller
     public function edit($id)
     {
         $store = Store::findOrFail($id);
-        
 
-        return view('stores.edit', compact('store'));
+
+        return view('admin.stores.edit', compact('store'));
     }
 
     /**
@@ -98,9 +98,9 @@ class StoresController extends Controller
     public function update($id, Request $request)
     {
         try {
-            
+
             $data = $this->getData($request);
-            
+
             $store = Store::findOrFail($id);
             $store->update($data);
 
@@ -110,7 +110,7 @@ class StoresController extends Controller
 
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
-        }        
+        }
     }
 
     /**
@@ -135,11 +135,11 @@ class StoresController extends Controller
         }
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
@@ -148,9 +148,9 @@ class StoresController extends Controller
                 'name' => 'nullable|string|min:0|max:40',
             'address' => 'nullable|string|min:0|max:255',
             'phone' => 'nullable|string|min:0|max:20',
-            'status' => 'nullable|string|min:0|max:20', 
+            'status' => 'nullable|string|min:0|max:20',
         ];
-        
+
         $data = $request->validate($rules);
 
 

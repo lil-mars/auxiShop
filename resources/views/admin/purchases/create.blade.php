@@ -1,25 +1,25 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 
     <div class="panel panel-default">
 
         <div class="panel-heading clearfix">
-            
+
             <span class="pull-left">
-                <h4 class="mt-5 mb-5">Create New Store</h4>
+                <h4 class="mt-5 mb-5">Create New Purchase</h4>
             </span>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="{{ route('stores.store.index') }}" class="btn btn-primary" title="Show All Store">
-                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                <a href="{{ route('purchases.purchase.index') }}" class="btn btn-primary" title="Show All Purchase">
+                    <span class="fa fa-list" aria-hidden="true"></span>
                 </a>
             </div>
 
         </div>
 
         <div class="panel-body">
-        
+
             @if ($errors->any())
                 <ul class="alert alert-danger">
                     @foreach ($errors->all() as $error)
@@ -28,10 +28,10 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('stores.store.store') }}" accept-charset="UTF-8" id="create_store_form" name="create_store_form" class="form-horizontal">
+            <form method="POST" action="{{ route('purchases.purchase.store') }}" accept-charset="UTF-8" id="create_purchase_form" name="create_purchase_form" class="form-horizontal">
             {{ csrf_field() }}
-            @include ('stores.form', [
-                                        'store' => null,
+            @include ('admin.purchases.form', [
+                                        'purchase' => null,
                                       ])
 
                 <div class="form-group">

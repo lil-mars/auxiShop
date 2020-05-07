@@ -39,4 +39,7 @@ class User extends Authenticatable
     public function sales() {
         return $this->hasMany('App\Models\Sale', 'user_id', 'id');
     }
+    public function get_full_name() {
+        return $this->last_name . ' '.$this->name;
+    }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 
@@ -19,20 +19,20 @@
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">Providers</h4>
+                <h4 class="mt-5 mb-5">Purchase Spares</h4>
             </div>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="{{ route('providers.provider.create') }}" class="btn btn-success" title="Create New Provider">
+                <a href="{{ route('purchases.spare.create' ,'9') }}" class="btn btn-success" title="Create New Purchase Spare">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </a>
             </div>
 
         </div>
-        
-        @if(count($providers) == 0)
+
+        @if(count($purchaseSpares) == 0)
             <div class="panel-body text-center">
-                <h4>No Providers Available.</h4>
+                <h4>No Purchase Spares Available.</h4>
             </div>
         @else
         <div class="panel-body panel-body-with-table">
@@ -41,55 +41,45 @@
                 <table class="table table-striped ">
                     <thead>
                         <tr>
-                            <th>Company Name</th>
-                            <th>Name</th>
-                            <th>Last Name</th>
-                            <th>Occupation</th>
-                            <th>Address</th>
-                            <th>City</th>
-                            <th>Postal Code</th>
-                            <th>Country</th>
-                            <th>Phone</th>
-                            <th>Fax</th>
+                            <th>Purchase</th>
+                            <th>Spare</th>
+                            <th>Unit Price</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
 
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($providers as $provider)
+                    @foreach($purchaseSpares as $purchaseSpare)
                         <tr>
-                            <td>{{ $provider->company_name }}</td>
-                            <td>{{ $provider->name }}</td>
-                            <td>{{ $provider->last_name }}</td>
-                            <td>{{ $provider->occupation }}</td>
-                            <td>{{ $provider->address }}</td>
-                            <td>{{ $provider->city }}</td>
-                            <td>{{ $provider->postal_code }}</td>
-                            <td>{{ $provider->country }}</td>
-                            <td>{{ $provider->phone }}</td>
-                            <td>{{ $provider->fax }}</td>
+                            <td>{{ optional($purchaseSpare->Purchase)->contact }}</td>
+                            <td>{{ optional($purchaseSpare->Spare)->code }}</td>
+                            <td>{{ $purchaseSpare->unit_price }}</td>
+                            <td>{{ $purchaseSpare->price }}</td>
+                            <td>{{ $purchaseSpare->quantity }}</td>
 
                             <td>
 
-                                <form method="POST" action="{!! route('providers.provider.destroy', $provider->id) !!}" accept-charset="UTF-8">
+                                <form method="POST" action="{!! route('purchases.spare.destroy', [$purchaseSpare->id, 9]) !!}" accept-charset="UTF-8">
                                 <input name="_method" value="DELETE" type="hidden">
                                 {{ csrf_field() }}
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
-                                        <a href="{{ route('providers.provider.show', $provider->id ) }}" class="btn btn-info" title="Show Provider">
+                                        <a href="{{ route('purchases.spare.show', [$purchaseSpare->id, 9] ) }}" class="btn btn-info" title="Show Purchase Spare">
                                             <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
                                         </a>
-                                        <a href="{{ route('providers.provider.edit', $provider->id ) }}" class="btn btn-primary" title="Edit Provider">
+                                        <a href="{{ route('purchases.spare.edit', [$purchaseSpare->id, 9] ) }}" class="btn btn-primary" title="Edit Purchase Spare">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </a>
 
-                                        <button type="submit" class="btn btn-danger" title="Delete Provider" onclick="return confirm(&quot;Click Ok to delete Provider.&quot;)">
+                                        <button type="submit" class="btn btn-danger" title="Delete Purchase Spare" onclick="return confirm(&quot;Click Ok to delete Purchase Spare.&quot;)">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </button>
                                     </div>
 
                                 </form>
-                                
+
                             </td>
                         </tr>
                     @endforeach
@@ -100,10 +90,9 @@
         </div>
 
         <div class="panel-footer">
-            {!! $providers->render() !!}
         </div>
-        
+
         @endif
-    
+
     </div>
 @endsection
