@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
 
@@ -19,20 +19,20 @@
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">Purchase Spares</h4>
+                <h4 class="mt-5 mb-5">Users</h4>
             </div>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="{{ route('purchases.spare.create' ,'9') }}" class="btn btn-success" title="Create New Purchase Spare">
+                <a href="{{ route('users.user.create') }}" class="btn btn-success" title="Create New User">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </a>
             </div>
 
         </div>
-
-        @if(count($purchaseSpares) == 0)
+        
+        @if(count($users) == 0)
             <div class="panel-body text-center">
-                <h4>No Purchase Spares Available.</h4>
+                <h4>No Users Available.</h4>
             </div>
         @else
         <div class="panel-body panel-body-with-table">
@@ -41,45 +41,49 @@
                 <table class="table table-striped ">
                     <thead>
                         <tr>
-                            <th>Purchase</th>
-                            <th>Spare</th>
-                            <th>Unit Price</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
+                            <th>Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Email Verified At</th>
+                            <th>Password</th>
+                            <th>Remember Token</th>
+                            <th>Role</th>
 
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($purchaseSpares as $purchaseSpare)
+                    @foreach($users as $user)
                         <tr>
-                            <td>{{ optional($purchaseSpare->Purchase)->contact }}</td>
-                            <td>{{ optional($purchaseSpare->Spare)->code }}</td>
-                            <td>{{ $purchaseSpare->unit_price }}</td>
-                            <td>{{ $purchaseSpare->price }}</td>
-                            <td>{{ $purchaseSpare->quantity }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->last_name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->email_verified_at }}</td>
+                            <td>{{ $user->password }}</td>
+                            <td>{{ $user->remember_token }}</td>
+                            <td>{{ optional($user->Role)->name }}</td>
 
                             <td>
 
-                                <form method="POST" action="{!! route('purchases.spare.destroy', [$purchaseSpare->id, 9]) !!}" accept-charset="UTF-8">
+                                <form method="POST" action="{!! route('users.user.destroy', $user->id) !!}" accept-charset="UTF-8">
                                 <input name="_method" value="DELETE" type="hidden">
                                 {{ csrf_field() }}
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
-                                        <a href="{{ route('purchases.spare.show', [$purchaseSpare->id, 9] ) }}" class="btn btn-info" title="Show Purchase Spare">
+                                        <a href="{{ route('users.user.show', $user->id ) }}" class="btn btn-info" title="Show User">
                                             <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
                                         </a>
-                                        <a href="{{ route('purchases.spare.edit', [$purchaseSpare->id, 9] ) }}" class="btn btn-primary" title="Edit Purchase Spare">
+                                        <a href="{{ route('users.user.edit', $user->id ) }}" class="btn btn-primary" title="Edit User">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </a>
 
-                                        <button type="submit" class="btn btn-danger" title="Delete Purchase Spare" onclick="return confirm(&quot;Click Ok to delete Purchase Spare.&quot;)">
+                                        <button type="submit" class="btn btn-danger" title="Delete User" onclick="return confirm(&quot;Click Ok to delete User.&quot;)">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </button>
                                     </div>
 
                                 </form>
-
+                                
                             </td>
                         </tr>
                     @endforeach
@@ -90,9 +94,10 @@
         </div>
 
         <div class="panel-footer">
+            {!! $users->render() !!}
         </div>
-
+        
         @endif
-
+    
     </div>
 @endsection
