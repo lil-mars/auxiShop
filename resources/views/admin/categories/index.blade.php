@@ -19,7 +19,7 @@
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">Categories</h4>
+                <h4 class="mt-5 mb-5">Categorias</h4>
             </div>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
@@ -32,7 +32,7 @@
 
         @if(count($categories) == 0)
             <div class="panel-body text-center">
-                <h4>No Categories Available.</h4>
+                <h4>No hay registros disponibles.</h4>
             </div>
         @else
         <div class="panel-body panel-body-with-table">
@@ -41,9 +41,9 @@
                 <table class="table table-striped ">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Nombre</th>
 
-                            <th></th>
+                            <th>Opciones</th>
                         </tr>
                     </thead>
                     <tbody>

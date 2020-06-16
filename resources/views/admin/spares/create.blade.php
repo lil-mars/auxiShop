@@ -27,8 +27,10 @@
                         @endif
                         <form method="POST" action="{{ route('spares.store') }}" accept-charset="UTF-8"
                               id="create_spare_form" name="create_spare_form" class="form-horizontal">
+
                             {{ csrf_field() }}
                             @include ('admin.spares.form', ['spare' => null, 'errors' => $errors])
+
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
                                     <input class="btn btn-primary" type="submit" value="Registrar">
@@ -38,11 +40,18 @@
                         </form>
                     </div>
                 </div>
+
             </div>
         </div>
 
     </div>
 
 @endsection
+@section('scripts')
+
+    <script src="{{asset('js/spare/showImage.js')}}">
+    </script>
+@endsection
+
 
 

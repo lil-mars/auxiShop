@@ -68,5 +68,15 @@
         "model-name": "sale_details",
         "resource-file": "sale_details.json",
         "table-name": "sale_details"
+    },
+    {
+        "model-name": "roles",
+        "resource-file": "roles.json",
+        "table-name": "roles"
+    },
+    {
+        "model-name": "users",
+        "resource-file": "users.json",
+        "table-name": "users"
     }
 ]

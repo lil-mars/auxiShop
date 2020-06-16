@@ -42,4 +42,8 @@ class User extends Authenticatable
     public function get_full_name() {
         return $this->last_name . ' '.$this->name;
     }
+    public function Role()
+    {
+        return $this->belongsTo('App\Models\Role','role_id','id');
+    }
 }

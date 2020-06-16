@@ -70,7 +70,7 @@ class ClientsController extends Controller
     {
         $client = Client::findOrFail($id);
 
-        return view('clients.show', compact('client'));
+        return view('admin.clients.show', compact('client'));
     }
 
     /**

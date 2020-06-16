@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    
+
 
     /**
      * The database table used by the model.
@@ -34,9 +34,9 @@ class User extends Model
                   'name',
                   'last_name',
                   'email',
-                  'email_verified_at',
                   'password',
-                  'remember_token'
+                  'remember_token',
+                  'role_id'
               ];
 
     /**
@@ -45,14 +45,23 @@ class User extends Model
      * @var array
      */
     protected $dates = [];
-    
+
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
-    protected $casts = [];
-    
+
+    /**
+     * Get the Role for this model.
+     *
+     * @return App\Models\Role
+     */
+    public function Role()
+    {
+        return $this->belongsTo('App\Models\Role','role_id','id');
+    }
+
     /**
      * Get the sale for this model.
      *
@@ -62,7 +71,9 @@ class User extends Model
     {
         return $this->hasOne('App\Models\Sale','user_id','id');
     }
-
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
     /**
      * Set the email_verified_at.
      *
@@ -80,10 +91,6 @@ class User extends Model
      * @param  string  $value
      * @return array
      */
-    public function getEmailVerifiedAtAttribute($value)
-    {
-        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
-    }
 
     /**
      * Get created_at in array format

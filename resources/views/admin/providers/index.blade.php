@@ -19,7 +19,7 @@
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">Providers</h4>
+                <h4 class="mt-5 mb-5">Proveedores</h4>
             </div>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
@@ -41,16 +41,12 @@
                 <table class="table table-striped ">
                     <thead>
                         <tr>
-                            <th>Company Name</th>
+                            <th>Compañía</th>
                             <th>Nombre completo</th>
-                            <th>Occupation</th>
-                            <th>Address</th>
-                            <th>City</th>
-                            <th>Postal Code</th>
-                            <th>Country</th>
-                            <th>Phone</th>
+                            <th>Ocupacion</th>
+                            <th>Codigo postal</th>
+                            <th>Telefono</th>
                             <th>Fax</th>
-
                             <th></th>
                         </tr>
                     </thead>
@@ -58,15 +54,11 @@
                     @foreach($providers as $provider)
                         <tr>
                             <td>{{ $provider->company_name }}</td>
-                            <td>{{ $provider->full_name() }}</td>
+                            <td>{{ $provider->get_full_name() }}</td>
                             <td>{{ $provider->occupation }}</td>
-                            <td>{{ $provider->address }}</td>
-                            <td>{{ $provider->city }}</td>
                             <td>{{ $provider->postal_code }}</td>
-                            <td>{{ $provider->country }}</td>
                             <td>{{ $provider->phone }}</td>
                             <td>{{ $provider->fax }}</td>
-
                             <td>
 
                                 <form method="POST" action="{!! route('providers.provider.destroy', $provider->id) !!}" accept-charset="UTF-8">

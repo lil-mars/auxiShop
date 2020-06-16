@@ -11,6 +11,14 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $role = new \App\Models\Role();
+        $role->name = 'admin';
+        $role->description = 'Administrador';
+        $role->save();
+
+        $role = new \App\Models\Role();
+        $role->name = 'admin';
+        $role->description = 'Administrador';
+        $role->save();
     }
 }

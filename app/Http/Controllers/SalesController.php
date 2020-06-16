@@ -91,7 +91,7 @@ class SalesController extends Controller
         $Clients = Client::all()->keyBy('id');
         $Stores = Store::pluck('name','id')->all();
 
-        return view('admin.sales.edit', compact('sale','Clients','Stores','Users'));
+        return view('admin.sales.edit', compact('sale','Clients','Stores'));
     }
 
     /**

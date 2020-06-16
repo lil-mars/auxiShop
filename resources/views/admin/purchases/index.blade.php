@@ -19,7 +19,7 @@
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">Purchases</h4>
+                <h4 class="mt-5 mb-5">Compras</h4>
             </div>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
@@ -32,7 +32,7 @@
 
         @if(count($purchases) == 0)
             <div class="panel-body text-center">
-                <h4>No Purchases Available.</h4>
+                <h4>No hay compras disponibles.</h4>
             </div>
         @else
         <div class="panel-body panel-body-with-table">
@@ -42,10 +42,9 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Provider</th>
-                            <th>Contact</th>
-                            <th>Total Price</th>
-
+                            <th>Proveedor</th>
+                            <th>Contacto</th>
+                            <th>Precio total</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -53,12 +52,10 @@
                     @foreach($purchases as $purchase)
                         <tr>
                             <td>{{ $purchase->id}}</td>
-                            <td>{{ optional($purchase->Provider)->full_name() }}</td>
+                            <td>{{ optional($purchase->Provider)->get_full_name() }}</td>
                             <td>{{ $purchase->contact }}</td>
-                            <td>{{ $purchase->total_price }}</td>
-
+                            <td>{{ $purchase->total_price }} BS</td>
                             <td>
-
                                 <form method="POST" action="{!! route('purchases.purchase.destroy', $purchase->id) !!}" accept-charset="UTF-8">
                                 <input name="_method" value="DELETE" type="hidden">
                                 {{ csrf_field() }}

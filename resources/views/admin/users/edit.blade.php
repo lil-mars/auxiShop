@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 
     <div class="panel panel-default">
-  
+
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
@@ -12,11 +12,11 @@
             <div class="btn-group btn-group-sm pull-right" role="group">
 
                 <a href="{{ route('users.user.index') }}" class="btn btn-primary" title="Show All User">
-                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    <span class="fa fa-list" aria-hidden="true"></span>
                 </a>
 
                 <a href="{{ route('users.user.create') }}" class="btn btn-success" title="Create New User">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    <span class="fa fa-plus" aria-hidden="true"></span>
                 </a>
 
             </div>
@@ -35,7 +35,7 @@
             <form method="POST" action="{{ route('users.user.update', $user->id) }}" id="edit_user_form" name="edit_user_form" accept-charset="UTF-8" class="form-horizontal">
             {{ csrf_field() }}
             <input name="_method" type="hidden" value="PUT">
-            @include ('users.form', [
+            @include ('admin.users.form', [
                                         'user' => $user,
                                       ])
 
@@ -49,4 +49,17 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+        function showPassword() {
+            let password = $('#password').get(0);
+            if (password.type === 'password'){
+                password.type = 'text';
+            } else {
+                password.type = 'password ';
+            }
+        }
+    </script>
 @endsection

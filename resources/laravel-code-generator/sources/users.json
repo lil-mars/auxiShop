@@ -342,6 +342,60 @@
             "api-key": "updated_at",
             "is-api-visible": false,
             "api-description": "The updated at of the model."
+        },
+        {
+            "name": "role_id",
+            "labels": "Role",
+            "html-type": "select",
+            "css-class": "",
+            "options": {},
+            "html-value": null,
+            "validation": "nullable",
+            "is-on-index": true,
+            "is-on-show": true,
+            "is-on-form": true,
+            "data-type": "string",
+            "data-type-params": [],
+            "data-value": "NULL",
+            "is-index": true,
+            "is-unique": false,
+            "is-primary": false,
+            "comment": null,
+            "is-nullable": true,
+            "is-header": false,
+            "is-unsigned": true,
+            "is-auto-increment": false,
+            "is-inline-options": false,
+            "is-date": false,
+            "date-format": "",
+            "cast-as": "",
+            "placeholder": "Select role",
+            "delimiter": "; ",
+            "range": [],
+            "foreign-relation": {
+                "name": "Role",
+                "type": "belongsTo",
+                "params": [
+                    "App\\Models\\Role",
+                    "role_id",
+                    "id"
+                ],
+                "field": "name"
+            },
+            "foreign-constraint": {
+                "field": "role_id",
+                "references": "roles",
+                "on": "id",
+                "on-delete": "cascade",
+                "on-update": "restrict",
+                "references-model": "App\\Models\\Role",
+                "is-self-reference": false
+            },
+            "on-store": null,
+            "on-update": null,
+            "api-key": "role_id",
+            "is-api-visible": true,
+            "api-description": "The role of the model."
         }
     ],
     "relations": [

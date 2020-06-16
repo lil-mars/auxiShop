@@ -1,6 +1,6 @@
 
 <div class="form-group {{ $errors->has('client_id') ? 'has-error' : '' }}">
-    <label for="client_id" class="col-md-2 control-label">Client</label>
+    <label for="client_id" class="col-md-2 control-label">Cliente</label>
     <div class="col-md-10">
         <select class="form-control" id="client_id" name="client_id">
         	    <option value="" style="display: none;" {{ old('client_id', optional($sale)->client_id ?: '') == '' ? 'selected' : '' }} disabled selected>Select client</option>

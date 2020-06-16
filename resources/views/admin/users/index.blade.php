@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 
@@ -24,12 +24,12 @@
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('users.user.create') }}" class="btn btn-success" title="Create New User">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    <span class="fa fa-plus" aria-hidden="true"></span>
                 </a>
             </div>
 
         </div>
-        
+
         @if(count($users) == 0)
             <div class="panel-body text-center">
                 <h4>No Users Available.</h4>
@@ -41,13 +41,10 @@
                 <table class="table table-striped ">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Last Name</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
                             <th>Email</th>
-                            <th>Email Verified At</th>
-                            <th>Password</th>
-                            <th>Remember Token</th>
-                            <th>Role</th>
+                            <th>Rol</th>
 
                             <th></th>
                         </tr>
@@ -58,9 +55,6 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->last_name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->email_verified_at }}</td>
-                            <td>{{ $user->password }}</td>
-                            <td>{{ $user->remember_token }}</td>
                             <td>{{ optional($user->Role)->name }}</td>
 
                             <td>
@@ -71,19 +65,19 @@
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
                                         <a href="{{ route('users.user.show', $user->id ) }}" class="btn btn-info" title="Show User">
-                                            <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                                            <span class="fa fa-eye" aria-hidden="true"></span>
                                         </a>
                                         <a href="{{ route('users.user.edit', $user->id ) }}" class="btn btn-primary" title="Edit User">
-                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            <span class="fa fa-pen" aria-hidden="true"></span>
                                         </a>
 
                                         <button type="submit" class="btn btn-danger" title="Delete User" onclick="return confirm(&quot;Click Ok to delete User.&quot;)">
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            <span class="fa fa-trash" aria-hidden="true"></span>
                                         </button>
                                     </div>
 
                                 </form>
-                                
+
                             </td>
                         </tr>
                     @endforeach
@@ -96,8 +90,9 @@
         <div class="panel-footer">
             {!! $users->render() !!}
         </div>
-        
+
         @endif
-    
+
     </div>
 @endsection
+

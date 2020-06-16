@@ -16,13 +16,13 @@ Route::get('/layout', function () {
     return view('layout');
 });
 
-Route::resource('spares', 'SparesController');
-Route::resource('brands', 'BrandsController');
-Route::resource('categories', 'CategoriesController');
-Route::resource('car_lines', 'CarLinesController');
+Route::resource('spares', 'SparesController')->middleware(['auth']);
+Route::resource('brands', 'BrandsController')->middleware(['auth']);
+Route::resource('categories', 'CategoriesController')->middleware(['auth']);
+Route::resource('car_lines', 'CarLinesController')->middleware(['auth']);
 
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes(['register' => false, 'reset'=>false]);
+Route::get('/home', 'HomeController@index')->name('home')->middleware(['auth']);
 Route::get('filter-products', 'SparesController@filter')->name('filter-products');
 
 
@@ -145,3 +145,24 @@ Route::group([
 Route::resource('purchases.spare', 'PurchaseSparesController');
 Route::resource('sales.spare', 'SaleDetailsController');
 
+
+
+Route::group([
+    'middleware' => ['auth', 'role:admin'],
+    'prefix' => 'users',
+], function () {
+    Route::get('/', 'UsersController@index')
+         ->name('users.user.index');
+    Route::get('/create','UsersController@create')
+         ->name('users.user.create');
+    Route::get('/show/{user}','UsersController@show')
+         ->name('users.user.show');
+    Route::get('/{user}/edit','UsersController@edit')
+         ->name('users.user.edit');
+    Route::post('/', 'UsersController@store')
+         ->name('users.user.store');
+    Route::put('user/{user}', 'UsersController@update')
+         ->name('users.user.update');
+    Route::delete('/user/{user}','UsersController@destroy')
+         ->name('users.user.destroy');
+});

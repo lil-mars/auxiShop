@@ -43,26 +43,24 @@
                 <table class="table table-striped " id="table">
                     <thead>
                     <tr>
-                        <th>Company Name</th>
+                        <th>id</th>
+                        <th>Compañía</th>
                         <th>Nombre (Apellidos y nombres)</th>
                         <th>Occupation</th>
                         <th>Phone</th>
-                        <th>Fax</th>
                         <th>Ci</th>
-
-                        <th></th>
+                        <th>Opciones</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($clientsObjects as $clients)
                         <tr>
+                            <td>{{ $clients->id }}</td>
                             <td>{{ $clients->company_name }}</td>
                             <td>{{ $clients->get_full_name() }}</td>
                             <td>{{ $clients->occupation }}</td>
                             <td>{{ $clients->phone }}</td>
-                            <td>{{ $clients->fax }}</td>
                             <td>{{ $clients->ci }}</td>
-
                             <td>
 
                                 <form method="POST" action="{!! route('clients.client.destroy', $clients->id) !!}" accept-charset="UTF-8">
@@ -99,6 +97,6 @@
     </div>
 @endsection
 @section('scripts')
-    <script src="{{ asset('js/product/datatables.min.js') }}">    </script>
-    <script src="{{ asset('js/product/datatableconfig.js') }}">    </script>
+    <script src="{{ asset('js/spare/datatables.min.js') }}">    </script>
+    <script src="{{ asset('js/spare/datatableconfig.js') }}">    </script>
 @endsection

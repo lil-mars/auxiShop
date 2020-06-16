@@ -164,12 +164,13 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body p-0">
+                    <br>
                     @if(count($sale->saleDetail) == 0)
                         <div class="panel-body text-center">
                             Agrega productos a la venta
                         </div>
                     @else
-                        <table class="table table-bordered table-hover">
+                        <table class="table table-responsive  table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th>Marca</th>
@@ -208,6 +209,7 @@
                             <tr>
                                 <th colspan="6">Precio total</th>
                                 <td colspan="1">{{ $sale->total_price }}</td>
+                                <td colspan="1"></td>
                             </tr>
                             </tfoot>
                         </table>
@@ -224,19 +226,19 @@
                 </div>
             </div>
             <div class="card-body">
-                <dt>Client</dt>
+                <dt>Cliente</dt>
                 <dd>{{ optional($sale->Client)->get_full_name() }}</dd>
-                <dt>Store</dt>
+                <dt>Tienda</dt>
                 <dd>{{ optional($sale->Store)->name }}</dd>
-                <dt>User</dt>
+                <dt>Usuario</dt>
                 <dd>{{ optional($sale->User)->get_full_name() }}</dd>
-                <dt>Total Price</dt>
+                <dt>Precio Total</dt>
                 <dd>{{ $sale->total_price }}</dd>
-                <dt>Total Amount</dt>
+                <dt>Cantidad</dt>
                 <dd>{{ $sale->total_amount }}</dd>
-                <dt>Created At</dt>
+                <dt>Creacion</dt>
                 <dd>{{ $sale->created_at }}</dd>
-                <dt>Updated At</dt>
+                <dt>Actualizacion</dt>
                 <dd>{{ $sale->updated_at }}</dd>
 
             </div>

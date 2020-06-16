@@ -47,11 +47,11 @@
                 <table class="table table-striped ">
                     <thead>
                         <tr>
-                            <th>Client</th>
-                            <th>Store</th>
-                            <th>User</th>
-                            <th>Total Price</th>
-                            <th>Total Amount</th>
+                            <th>Cliente</th>
+                            <th>Tienda</th>
+                            <th>Usuario</th>
+                            <th>Precio total</th>
+                            <th>Cantidad</th>
 
                             <th></th>
                         </tr>
@@ -64,9 +64,7 @@
                             <td>{{ optional($sale->User)->get_full_name() }}</td>
                             <td>{{ $sale->total_price }}</td>
                             <td>{{ $sale->total_amount }}</td>
-
                             <td>
-
                                 <form method="POST" action="{!! route('sales.sale.destroy', $sale->id) !!}" accept-charset="UTF-8">
                                 <input name="_method" value="DELETE" type="hidden">
                                 {{ csrf_field() }}
@@ -83,9 +81,7 @@
                                             <span class="fa fa-trash" aria-hidden="true"></span>
                                         </button>
                                     </div>
-
                                 </form>
-
                             </td>
                         </tr>
                     @endforeach

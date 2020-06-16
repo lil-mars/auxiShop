@@ -19,7 +19,7 @@
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">Brands</h4>
+                <h4 class="mt-5 mb-5">Marcas</h4>
             </div>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
@@ -32,7 +32,7 @@
 
         @if(count($brands) == 0)
             <div class="panel-body text-center">
-                <h4>No Brands Available.</h4>
+                <h4>No hay marcas disponibles.</h4>
             </div>
         @else
         <div class="card-body col-12">
@@ -40,7 +40,7 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Nombre</th>
 
                             <th>Opciones</th>
                         </tr>

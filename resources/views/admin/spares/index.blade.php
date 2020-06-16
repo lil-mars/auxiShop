@@ -56,11 +56,11 @@
                                            class="form-control" placeholder="Codigo">
                                 </div>
                                 <div class="form-group col-lg-4 col-6">
-                                    <input value="{{ old('description') }}"type="text" name="description"
+                                    <input value="{{ old('description') }}" type="text" name="description"
                                            class="form-control" placeholder="Description">
                                 </div>
                                 <div class="form-group col-lg-4 col-6">
-                                    <input value="{{ old('category') }}"type="text" name="category"
+                                    <input value="{{ old('category') }}" type="text" name="category"
                                            class="form-control" placeholder="Categoria">
                                 </div>
                                 <div class="form-group col-lg-4 col-6">
@@ -68,83 +68,87 @@
                                            class="form-control" placeholder="Marca">
                                 </div>
                                 <div class="form-group col-lg-4 col-6">
-                                    <input value="{{ old('originalCode') }}"type="text" name="original_code"
+                                    <input value="{{ old('originalCode') }}" type="text" name="original_code"
                                            class="form-control" placeholder="Codigo original">
                                 </div>
                                 <div class="form-group col-lg-4 col-6">
-                                    <input value="{{ old('measure') }}"type="text" name="measure"
+                                    <input value="{{ old('measure') }}" type="text" name="measure"
                                            class="form-control" placeholder="Medida">
                                 </div>
 
                             </div>
-                            <input  type="submit" class="btn btn-outline-primary" value="Filtrar">
+                            <input type="submit" class="btn btn-outline-primary" value="Filtrar">
                         </form>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body col-12">
-                        <table  id="table" class="table table-bordered table-responsive-md">
+                        <table id="table" class="table table-bordered table-responsive-md">
                             <thead class="bg-secondary">
-                                <tr>
-                                    <th>Codigo</th>
-                                    <th>Categoria</th>
-                                    <th>Marca</th>
-                                    <th>Nacion</th>
-                                    <th>Medida</th>
-                                    <th>Codigo respuesto</th>
-                                    <th>Venta</th>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Categoria</th>
+                                <th>Marca</th>
+                                <th>Nacion</th>
+                                <th>Medida</th>
+                                <th>Codigo respuesto</th>
+                                <th>Venta</th>
+                                @if(auth()->user()->Role->name == 'admin')
                                     <th>Compra</th>
-                                    <th>Cod. Original</th>
-                                    <th >Opciones</th>
-                                </tr>
+                                @endif
+                                <th>Cod. Original</th>
+                                <th>Opciones</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                @foreach($spares as $spare)
-                                    <tr>
-                                        <td>{{ $spare->id }}</td>
-                                        <td>{{ optional($spare->category)->name }}</td>
-                                        <td>{{ optional($spare->brand)->name }}</td>
-                                        <td>{{ $spare->nationality }}</td>
-                                        <td>{{ $spare->measure }}</td>
-                                        <td>{{ $spare->product_code }}</td>
-                                        <td>{{ $spare->price }}</td>
-                                        <td>{{ $spare->investment }}</td>
-                                        <td>
-                                            <a class="text-primary show-image"
-                                               style="cursor: pointer"
-                                               data-productImg="{{$spare->image}}"
-                                               data-productDesc="{{$spare->description}}"
-                                               data-productCode="{{$spare->code}}"
-                                            >
-                                                {{ $spare->original_code }}
+                            @foreach($spares as $spare)
+                                <tr>
+                                    <td>{{ $spare->id }}</td>
+                                    <td>{{ optional($spare->category)->name }}</td>
+                                    <td>{{ optional($spare->brand)->name }}</td>
+                                    <td>{{ $spare->nationality }}</td>
+                                    <td>{{ $spare->measure }}</td>
+                                    <td>{{ $spare->product_code }}</td>
+                                    <td>{{ $spare->price }}</td>
+                                    @if(auth()->user()->Role->name == 'admin')
+                                    <td>{{ $spare->investment }}</td>
+                                    @endif
+                                    <td>
+                                        <a class="text-primary show-image"
+                                           style="cursor: pointer"
+                                           data-productImg="{{$spare->image}}"
+                                           data-productDesc="{{$spare->description}}"
+                                           data-productCode="{{$spare->code}}"
+                                        >
+                                            {{ $spare->original_code }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+
+                                            <a href="{{ route('spares.show',$spare->id)}}" class="btn btn-warning">
+                                                <i class='fas fa-eye'></i>
                                             </a>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
 
-                                                    <a href="{{ route('spares.show',$spare->id)}}" class="btn btn-warning">
-                                                        <i class='fas fa-eye'></i>
-                                                    </a>
+                                            <a href="{{ route('spares.edit', $spare->id)}}"
+                                               class="btn btn-primary">
+                                                <i class='fas fa-pencil-alt'></i>
+                                            </a>
+                                            <a href="#">
+                                                <form action="{{ route('spares.destroy', $spare->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger"
+                                                            data-toggle="modal" data-target="#deleteModal">
+                                                        <i class='fas fa-trash-alt'></i>
+                                                    </button>
+                                                </form>
+                                            </a>
+                                        </div>
 
-                                                    <a href="{{ route('spares.edit', $spare->id)}}"
-                                                       class="btn btn-primary">
-                                                        <i class='fas fa-pencil-alt'></i>
-                                                    </a>
-                                                <a href="#">
-                                                    <form action="{{ route('spares.destroy', $spare->id) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger"
-                                                                data-toggle="modal" data-target="#deleteModal" >
-                                                            <i class='fas fa-trash-alt'></i>
-                                                        </button>
-                                                    </form>
-                                                </a>
-                                            </div>
+                                    </td>
 
-                                        </td>
-
-                                    </tr>
-                                @endforeach
+                                </tr>
+                            @endforeach
                             </tbody>
                             <tfoot>
                             <tr>
@@ -155,9 +159,11 @@
                                 <th>Medida</th>
                                 <th>Codigo respuesto</th>
                                 <th>Venta</th>
-                                <th>Compra</th>
+                                @if(auth()->user()->Role->name == 'admin')
+                                    <th>Compra</th>
+                                @endif
                                 <th>Cod. Original</th>
-                                <th >Opciones</th>
+                                <th>Opciones</th>
                             </tr>
                             </tfoot>
                         </table>
@@ -171,7 +177,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <strong><h3 class="modal-title" id="modalLabel"> </h3></strong>
+                        <strong><h3 class="modal-title" id="modalLabel"></h3></strong>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -193,8 +199,9 @@
     </div>
 @endsection
 @section('scripts')
-    <script src="{{ asset('js/spare/datatables.min.js') }}">    </script>
-    <script src="{{ asset('js/spare/datatableconfig.js') }}">    </script>
-    <script src="{{ asset('js/spare/modalconfig.js') }}">    </script>
+    <script src="{{ asset('js/spare/datatables.min.js') }}"></script>
+    <script src="{{ asset('js/spare/datatableconfig.js') }}"></script>
+    <script src="{{ asset('js/spare/modalconfig.js') }}"></script>
+
 @endsection
 

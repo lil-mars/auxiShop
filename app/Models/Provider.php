@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Provider extends Model
 {
-    public function full_name() {
+    public function get_full_name() {
         return $this->last_name
             . ' ' .$this->name;
     }

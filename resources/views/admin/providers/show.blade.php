@@ -6,7 +6,7 @@
     <div class="panel-heading clearfix">
 
         <span class="pull-left">
-            <h4 class="mt-5 mb-5">{{ isset($provider->name) ? $provider->name : 'Provider' }}</h4>
+            <h4 class="mt-5 mb-5">{{ isset($provider->name) ? $provider->get_full_name() : 'Provider' }}</h4>
         </span>
 
         <div class="pull-right">

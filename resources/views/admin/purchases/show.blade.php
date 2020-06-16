@@ -139,7 +139,7 @@
                         Agrega productos para la compra
                     </div>
                 @else
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-sm table-bordered table-hover">
                         <thead>
                         <tr>
                             <th>Categoria</th>
@@ -193,15 +193,15 @@
             <dl class="card-body">
                 <dt>ID</dt>
                 <dd>{{ $purchase->id }}</dd>
-                <dt>Provider</dt>
-                <dd>{{ optional($purchase->Provider)->full_name() }}</dd>
+                <dt>Proveedor</dt>
+                <dd>{{ optional($purchase->Provider)->get_full_name() }}</dd>
                 <dt>Precio total</dt>
                 <dd>{{ $purchase->total_price }} BS</dd>
-                <dt>Contact</dt>
+                <dt>Contacto</dt>
                 <dd>{{ $purchase->contact }}</dd>
-                <dt>Created At</dt>
+                <dt>Fecha creacion</dt>
                 <dd>{{ $purchase->created_at }}</dd>
-                <dt>Updated At</dt>
+                <dt>Fecha actualizacion</dt>
                 <dd>{{ $purchase->updated_at }}</dd>
 
             </dl>

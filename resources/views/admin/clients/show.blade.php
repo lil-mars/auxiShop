@@ -6,7 +6,7 @@
     <div class="panel-heading clearfix">
 
         <span class="pull-left">
-            <h4 class="mt-5 mb-5">{{ isset($client->name) ? $client->name : 'Client' }}</h4>
+            <h4 class="mt-5 mb-5">{{ isset($client->name) ? $client->get_full_name() : 'Cliente' }}</h4>
         </span>
 
         <div class="pull-right">
@@ -39,25 +39,25 @@
 
     <div class="panel-body">
         <dl class="dl-horizontal">
-            <dt>Company Name</dt>
+            <dt>Nombre de compañía</dt>
             <dd>{{ $client->company_name }}</dd>
-            <dt>Father Last Name</dt>
+            <dt>Apellido paterno</dt>
             <dd>{{ $client->father_last_name }}</dd>
-            <dt>Mother Last Name</dt>
+            <dt>Apellido materno</dt>
             <dd>{{ $client->mother_last_name }}</dd>
-            <dt>Second Name</dt>
+            <dt>Segundo nombre</dt>
             <dd>{{ $client->second_name }}</dd>
-            <dt>Name</dt>
+            <dt>Nombre</dt>
             <dd>{{ $client->name }}</dd>
-            <dt>Occupation</dt>
+            <dt>Ocupacion</dt>
             <dd>{{ $client->occupation }}</dd>
-            <dt>Address</dt>
+            <dt>Direccion</dt>
             <dd>{{ $client->address }}</dd>
-            <dt>Phone</dt>
+            <dt>Telefono</dt>
             <dd>{{ $client->phone }}</dd>
             <dt>Fax</dt>
             <dd>{{ $client->fax }}</dd>
-            <dt>Ci</dt>
+            <dt>CI</dt>
             <dd>{{ $client->ci }}</dd>
             <dt>Created At</dt>
             <dd>{{ $client->created_at }}</dd>

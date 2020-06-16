@@ -39,37 +39,37 @@
 
     <div class="panel-body">
         <dl class="dl-horizontal">
-            <dt>Code</dt>
+            <dt>Codigo</dt>
             <dd>{{ $spare->code }}</dd>
-            <dt>Category</dt>
+            <dt>Categoria</dt>
             <dd>{{ optional($spare->Category)->name }}</dd>
-            <dt>Car Line</dt>
+            <dt>Linea de carro</dt>
             <dd>{{ optional($spare->CarLine)->name }}</dd>
-            <dt>Brand</dt>
+            <dt>Marca</dt>
             <dd>{{ optional($spare->Brand)->name }}</dd>
-            <dt>Description</dt>
+            <dt>Descripcion</dt>
             <dd>{{ $spare->description }}</dd>
-            <dt>Nationality</dt>
+            <dt>Nacionalidad</dt>
             <dd>{{ $spare->nationality }}</dd>
-            <dt>Measure</dt>
+            <dt>Medidas</dt>
             <dd>{{ $spare->measure }}</dd>
-            <dt>Product Code</dt>
+            <dt>Codigo producto</dt>
             <dd>{{ $spare->product_code }}</dd>
-            <dt>Original Code</dt>
+            <dt>Codigo original</dt>
             <dd>{{ $spare->original_code }}</dd>
-            <dt>Quantity</dt>
+            <dt>Cantidad</dt>
             <dd>{{ $spare->quantity }}</dd>
-            <dt>Price</dt>
+            <dt>Precio</dt>
             <dd>{{ $spare->price }}</dd>
-            <dt>Price M</dt>
+            <dt>Precio M</dt>
             <dd>{{ $spare->price_m }}</dd>
-            <dt>Investment</dt>
+            <dt>Precio compra</dt>
             <dd>{{ $spare->investment }}</dd>
-            <dt>Image</dt>
+            <dt>Imagen</dt>
             <dd>{{ $spare->image }}</dd>
-            <dt>Created At</dt>
+            <dt>Creacion</dt>
             <dd>{{ $spare->created_at }}</dd>
-            <dt>Updated At</dt>
+            <dt>Actualizacion</dt>
             <dd>{{ $spare->updated_at }}</dd>
 
         </dl>
