@@ -16,10 +16,12 @@
 </div>
 
 <div class="form-group {{ $errors->has('store_id') ? 'has-error' : '' }}">
-    <label for="store_id" class="col-md-2 control-label">Store</label>
+    <label for="store_id" class="col-md-2 control-label">Tienda</label>
     <div class="col-md-10">
         <select class="form-control" id="store_id" name="store_id">
-        	    <option value="" style="display: none;" {{ old('store_id', optional($sale)->store_id ?: '') == '' ? 'selected' : '' }} disabled selected>Select store</option>
+        	    <option value="" style="display: none;"
+                        {{ old('store_id', optional($sale)->store_id ?: '') == '' ? 'selected' : '' }} disabled selected
+                >Select store</option>
         	@foreach ($Stores as $key => $Store)
 			    <option value="{{ $key }}" {{ old('store_id', optional($sale)->store_id) == $key ? 'selected' : '' }}>
 			    	{{ $Store }}

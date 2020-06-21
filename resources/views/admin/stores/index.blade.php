@@ -19,7 +19,7 @@
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">Stores</h4>
+                <h4 class="mt-5 mb-5">Tiendas</h4>
             </div>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
@@ -41,10 +41,10 @@
                 <table class="table table-striped ">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                            <th>Status</th>
+                            <th>Nombre</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
+                            <th>Estado</th>
 
                             <th></th>
                         </tr>

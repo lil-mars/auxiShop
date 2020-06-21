@@ -56,10 +56,6 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-primary" href="{{route('spares.create')}}">
-                        <span class="fa fa-plus"></span>
-                        Nuevo producto
-                    </a>
                     <form action="{{route('sales.spare.store', $sale->id)}}" method="post">
                         @csrf
                         <input type="hidden" name="sale_id" value="{{ $sale->id }}">
@@ -67,11 +63,13 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="select2">Producto</label>
+
                                     <select class="form-control" id="select2"
                                             tabindex="-1" aria-hidden="true" name="spare_id">
                                         <option value="" selected>--- Selecciona el producto ---</option>
                                         @foreach($spares as $spare)
-                                            <option value="{{ $spare->id }}">
+                                            <option value="{{ $spare->id }}" >
+                                                <img src="https://as.com/tikitakas/imagenes/2018/09/04/portada/1536049975_673302_1536050849_noticia_normal.jpg" class="img-flag">
                                                 {{ $spare->code . ' ' . $spare->description . $spare->brand->name . ' Precio:' . $spare->price . 'Bs'  }}
                                             </option>
                                         @endforeach
@@ -170,7 +168,7 @@
                             Agrega productos a la venta
                         </div>
                     @else
-                        <table class="table table-responsive  table-bordered table-hover">
+                        <table class="table  table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th>Marca</th>

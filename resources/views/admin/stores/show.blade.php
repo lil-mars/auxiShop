@@ -39,17 +39,17 @@
 
     <div class="panel-body">
         <dl class="dl-horizontal">
-            <dt>Name</dt>
+            <dt>Nombre</dt>
             <dd>{{ $store->name }}</dd>
-            <dt>Address</dt>
+            <dt>Direccion</dt>
             <dd>{{ $store->address }}</dd>
-            <dt>Phone</dt>
+            <dt>Telefono</dt>
             <dd>{{ $store->phone }}</dd>
-            <dt>Status</dt>
+            <dt>Estado</dt>
             <dd>{{ $store->status }}</dd>
-            <dt>Created At</dt>
+            <dt>Fecha creacion</dt>
             <dd>{{ $store->created_at }}</dd>
-            <dt>Updated At</dt>
+            <dt>Fecha actualizacion</dt>
             <dd>{{ $store->updated_at }}</dd>
 
         </dl>

@@ -6,7 +6,7 @@
     <div class="panel-heading clearfix">
 
         <span class="pull-left">
-            <h4 class="mt-5 mb-5">{{ isset($user->name) ? $user->name : 'User' }}</h4>
+            <h4 class="mt-5 mb-5">{{ isset($user->name) ? $user->get_full_name(): 'User' }}</h4>
         </span>
 
         <div class="pull-right">
@@ -39,23 +39,17 @@
 
     <div class="panel-body">
         <dl class="dl-horizontal">
-            <dt>Name</dt>
+            <dt>Nombres</dt>
             <dd>{{ $user->name }}</dd>
-            <dt>Last Name</dt>
+            <dt>Apellidos</dt>
             <dd>{{ $user->last_name }}</dd>
             <dt>Email</dt>
             <dd>{{ $user->email }}</dd>
-            <dt>Email Verified At</dt>
-            <dd>{{ $user->email_verified_at }}</dd>
-            <dt>Password</dt>
-            <dd>{{ $user->password }}</dd>
-            <dt>Remember Token</dt>
-            <dd>{{ $user->remember_token }}</dd>
-            <dt>Created At</dt>
+            <dt>Fecha de creacion</dt>
             <dd>{{ $user->created_at }}</dd>
-            <dt>Updated At</dt>
+            <dt>Fecha de actualizacion</dt>
             <dd>{{ $user->updated_at }}</dd>
-            <dt>Role</dt>
+            <dt>Rol</dt>
             <dd>{{ optional($user->Role)->name }}</dd>
 
         </dl>

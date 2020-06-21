@@ -25,7 +25,7 @@
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">Sales</h4>
+                <h4 class="mt-5 mb-5">Ventas</h4>
             </div>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
@@ -38,7 +38,7 @@
 
         @if(count($sales) == 0)
             <div class="panel-body text-center">
-                <h4>No Sales Available.</h4>
+                <h4>No hay ventas disponibles.</h4>
             </div>
         @else
         <div class="panel-body panel-body-with-table">
@@ -70,8 +70,8 @@
                                 {{ csrf_field() }}
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
-                                        <a href="{{ route('sales.sale.show', $sale->id ) }}" class="btn btn-info" title="Show Sale">
-                                            <span class="fa fa-eye" aria-hidden="true"></span>
+                                        <a href="{{ route('sales.sale.show', $sale->id ) }}" class="btn btn-secondary" title="Show Sale">
+                                            <span class="fa fa-shopping-basket" aria-hidden="true"></span>
                                         </a>
                                         <a href="{{ route('sales.sale.edit', $sale->id ) }}" class="btn btn-primary" title="Edit Sale">
                                             <span class="fa fa-pen" aria-hidden="true"></span>

@@ -86,9 +86,9 @@
                             <thead class="bg-secondary">
                             <tr>
                                 <th>Codigo</th>
+                                <th>Imagen</th>
                                 <th>Categoria</th>
                                 <th>Marca</th>
-                                <th>Nacion</th>
                                 <th>Medida</th>
                                 <th>Codigo respuesto</th>
                                 <th>Venta</th>
@@ -103,14 +103,15 @@
                             @foreach($spares as $spare)
                                 <tr>
                                     <td>{{ $spare->id }}</td>
+                                    <td><img src="{{ $spare->image }}" class="img-fluid"
+                                             style="min-height:5vh; max-height: 9vh"></td>
                                     <td>{{ optional($spare->category)->name }}</td>
                                     <td>{{ optional($spare->brand)->name }}</td>
-                                    <td>{{ $spare->nationality }}</td>
                                     <td>{{ $spare->measure }}</td>
                                     <td>{{ $spare->product_code }}</td>
                                     <td>{{ $spare->price }}</td>
                                     @if(auth()->user()->Role->name == 'admin')
-                                    <td>{{ $spare->investment }}</td>
+                                        <td>{{ $spare->investment }}</td>
                                     @endif
                                     <td>
                                         <a class="text-primary show-image"
@@ -133,16 +134,16 @@
                                                class="btn btn-primary">
                                                 <i class='fas fa-pencil-alt'></i>
                                             </a>
-                                            <a href="#">
-                                                <form action="{{ route('spares.destroy', $spare->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger"
-                                                            data-toggle="modal" data-target="#deleteModal">
-                                                        <i class='fas fa-trash-alt'></i>
-                                                    </button>
-                                                </form>
-                                            </a>
+
+                                            <form action="{{ route('spares.destroy', $spare->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"
+                                                        data-toggle="modal" data-target="#deleteModal">
+                                                    <i class='fas fa-trash-alt'></i>
+                                                </button>
+                                            </form>
+
                                         </div>
 
                                     </td>
@@ -153,9 +154,9 @@
                             <tfoot>
                             <tr>
                                 <th>Codigo</th>
+                                <th>Imagen</th>
                                 <th>Categoria</th>
                                 <th>Marca</th>
-                                <th>Nacion</th>
                                 <th>Medida</th>
                                 <th>Codigo respuesto</th>
                                 <th>Venta</th>

@@ -19,7 +19,7 @@
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">Users</h4>
+                <h4 class="mt-5 mb-5">Usuarios</h4>
             </div>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
@@ -32,7 +32,7 @@
 
         @if(count($users) == 0)
             <div class="panel-body text-center">
-                <h4>No Users Available.</h4>
+                <h4>No hay usuarios disponibles.</h4>
             </div>
         @else
         <div class="panel-body panel-body-with-table">
@@ -45,7 +45,6 @@
                             <th>Apellido</th>
                             <th>Email</th>
                             <th>Rol</th>
-
                             <th></th>
                         </tr>
                     </thead>
@@ -69,6 +68,9 @@
                                         </a>
                                         <a href="{{ route('users.user.edit', $user->id ) }}" class="btn btn-primary" title="Edit User">
                                             <span class="fa fa-pen" aria-hidden="true"></span>
+                                        </a>
+                                        <a href="{{ route('users.user.password', $user->id ) }}" class="btn btn-dark" title="Edit User">
+                                            <span class="fa fa-key" aria-hidden="true"></span>
                                         </a>
 
                                         <button type="submit" class="btn btn-danger" title="Delete User" onclick="return confirm(&quot;Click Ok to delete User.&quot;)">

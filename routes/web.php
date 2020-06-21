@@ -159,10 +159,14 @@ Route::group([
          ->name('users.user.show');
     Route::get('/{user}/edit','UsersController@edit')
          ->name('users.user.edit');
+    Route::get('/{user}/password','UsersController@editPassword')
+         ->name('users.user.password');
     Route::post('/', 'UsersController@store')
          ->name('users.user.store');
     Route::put('user/{user}', 'UsersController@update')
          ->name('users.user.update');
+    Route::put('password/{user}', 'UsersController@updatePassword')
+         ->name('users.user.updatePassword');
     Route::delete('/user/{user}','UsersController@destroy')
          ->name('users.user.destroy');
 });

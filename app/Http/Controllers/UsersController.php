@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
-use App\Models\User;
+use App\User;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -101,7 +101,7 @@ class UsersController extends Controller
     {
         try {
 
-            $data = $this->getData($request);
+            $data = $this->getData($request, $id);
 
             $user = User::findOrFail($id);
             $user->update($data);
@@ -151,7 +151,7 @@ class UsersController extends Controller
             'last_name' => 'nullable|string|min:0|max:255',
             'email' => 'required|string|min:1|max:255|unique:users,email,' . $id,
             'email_verified_at' => 'nullable|date_format:j/n/Y g:i A',
-            'password' => 'required|string|min:1|max:255',
+            'password' => 'string|min:1|max:255',
             'remember_token' => 'nullable|string|min:0|max:100',
             'role_id' => 'nullable',
         ];
@@ -159,6 +159,38 @@ class UsersController extends Controller
         $data = $request->validate($rules);
 
 
+        return $data;
+    }
+
+
+    public function editPassword($id, Request $request) {
+        $user = User::findOrFail($id);
+        return view('admin.users.editPassword', compact('user'));
+    }
+
+    public function updatePassword($id, Request $request) {
+        try {
+            $data = $this->validatePassword($request);
+            $user = User::findOrFail($id);
+
+            $data['password'] = bcrypt($data['password']);
+            $user->update($data);
+
+            return redirect()->route('users.user.index')
+                ->with('success_message', 'Contraseña actualizada');
+        } catch (Exception $exception) {
+            $errors = $exception->errors();
+            return back()->withInput()
+                ->withErrors($errors);
+        }
+    }
+
+    private function validatePassword(Request $request)
+    {
+        $rules = [
+            'password' => 'required|string|min:1|max:255',
+        ];
+        $data = $request->validate($rules);
         return $data;
     }
 

@@ -24,9 +24,9 @@
 </div>
 
 
-
+@if(!isset($user->password))
 <div class="form-group {{ $errors->has('password') ? 'is_invalid' : '' }}">
-    <label for="password" class="col-md-2 control-label">Contrasena</label>
+    <label for="password" class="col-md-2 control-label">Contraseña</label>
     <div class="col-md-10">
         <input type="password" class="form-control" name="password" type="text" id="password" value="{{ old('password', optional($user)->password) }}" minlength="1" maxlength="255" required="true" >
         {!! $errors->first('password', '<p class="invalid-feedback">:message</p>') !!}
@@ -34,7 +34,7 @@
 
     </div>
 </div>
-
+@endif
 
 
 <div class="form-group {{ $errors->has('role_id') ? 'is_invalid' : '' }}">

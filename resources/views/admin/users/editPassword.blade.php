@@ -23,7 +23,7 @@
         </div>
 
         <div class="panel-body">
-
+            <br><br>
             @if ($errors->any())
                 <ul class="alert alert-danger">
                     @foreach ($errors->all() as $error)
@@ -32,13 +32,17 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('users.user.update', $user->id) }}" id="edit_user_form" name="edit_user_form" accept-charset="UTF-8" class="form-horizontal">
-            {{ csrf_field() }}
-            <input name="_method" type="hidden" value="PUT">
-            @include ('admin.users.form', [
-                                        'user' => $user,
-                                      ])
-
+            <form method="POST" action="{{ route('users.user.updatePassword', $user->id) }}" id="edit_user_form"
+                  name="edit_user_form" accept-charset="UTF-8" class="form-horizontal">
+                {{ csrf_field() }}
+                <input name="_method" type="hidden" value="PUT">
+                <label for="password" class="col-md-2 control-label">Nueva contraseña</label>
+                <div class="col-md-10">
+                    <input type="password" class="form-control" name="password" type="text" id="password" value="" minlength="1" maxlength="255" required="true" >
+                    {!! $errors->first('password', '<p class="invalid-feedback">:message</p>') !!}
+                    <input type="checkbox" onclick="showPassword()">Mostrar contrasena
+                    <br><br>
+                </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input class="btn btn-primary" type="submit" value="Actualizar">
@@ -55,7 +59,7 @@
     <script>
         function showPassword() {
             let password = $('#password').get(0);
-            if (password.type === 'password'){
+            if (password.type === 'password') {
                 password.type = 'text';
             } else {
                 password.type = 'password ';
