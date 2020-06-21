@@ -13,12 +13,12 @@ class RoleSeeder extends Seeder
     {
         $role = new \App\Models\Role();
         $role->name = 'admin';
-        $role->description = 'Administrador';
+        $role->description = 'Cuenta administrador';
         $role->save();
 
         $role = new \App\Models\Role();
-        $role->name = 'admin';
-        $role->description = 'Administrador';
+        $role->name = 'user';
+        $role->description = 'Cuenta usuario';
         $role->save();
     }
 }
