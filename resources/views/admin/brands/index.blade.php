@@ -19,10 +19,12 @@
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">Marcas</h4>
+                <h4 class="ml-3">Marcas</h4>
             </div>
-
-            <div class="btn-group btn-group-sm pull-right" role="group">
+            <a  class="btn btn-info ml-3" href="{{route('spares.index')}}" >
+                Volver atras <span class="fa fa-backspace" aria-hidden="true"></span>
+            </a>
+            <div class="btn-group" role="group">
                 <a href="{{ route('brands.create') }}" class="btn btn-success" title="Create New Brand">
                     Agregar marca <span class="fa fa-plus" aria-hidden="true"></span>
                 </a>

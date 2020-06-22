@@ -32,7 +32,7 @@
 
         @if(count($stores) == 0)
             <div class="panel-body text-center">
-                <h4>No Stores Available.</h4>
+                <h4>No hay tiendas disponibles.</h4>
             </div>
         @else
         <div class="panel-body panel-body-with-table">

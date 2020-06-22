@@ -82,13 +82,15 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body col-12">
-                        <table id="table" class="table table-bordered table-responsive-md">
+                        <table id="table" class="table table-responsive-xl
+                         table-hover table-bordered">
                             <thead class="bg-secondary">
                             <tr>
                                 <th>Codigo</th>
-                                <th>Imagen</th>
+                                <th>Descripcion</th>
                                 <th>Categoria</th>
                                 <th>Marca</th>
+                                <th>Nacion</th>
                                 <th>Medida</th>
                                 <th>Codigo respuesto</th>
                                 <th>Venta</th>
@@ -102,11 +104,11 @@
                             <tbody>
                             @foreach($spares as $spare)
                                 <tr>
-                                    <td>{{ $spare->id }}</td>
-                                    <td><img src="{{ $spare->image }}" class="img-fluid"
-                                             style="min-height:5vh; max-height: 9vh"></td>
+                                    <td>{{ $spare->code }}</td>
+                                    <td>{{ $spare->description }}</td>
                                     <td>{{ optional($spare->category)->name }}</td>
                                     <td>{{ optional($spare->brand)->name }}</td>
+                                    <td>{{ $spare->nationality }}</td>
                                     <td>{{ $spare->measure }}</td>
                                     <td>{{ $spare->product_code }}</td>
                                     <td>{{ $spare->price }}</td>
@@ -114,38 +116,26 @@
                                         <td>{{ $spare->investment }}</td>
                                     @endif
                                     <td>
-                                        <a class="text-primary show-image"
-                                           style="cursor: pointer"
-                                           data-productImg="{{$spare->image}}"
-                                           data-productDesc="{{$spare->description}}"
-                                           data-productCode="{{$spare->code}}"
-                                        >
-                                            {{ $spare->original_code }}
-                                        </a>
+                                        {{ $spare->original_code }}
                                     </td>
                                     <td>
-                                        <div class="btn-group">
-
-                                            <a href="{{ route('spares.show',$spare->id)}}" class="btn btn-warning">
-                                                <i class='fas fa-eye'></i>
-                                            </a>
-
-                                            <a href="{{ route('spares.edit', $spare->id)}}"
-                                               class="btn btn-primary">
-                                                <i class='fas fa-pencil-alt'></i>
-                                            </a>
-
-                                            <form action="{{ route('spares.destroy', $spare->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
+                                        <form action="{{ route('spares.destroy', $spare->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <div class="btn-group">
+                                                <a class="btn btn-warning show-information" data-product="{{$spare}}">
+                                                    <i class='fas fa-eye'></i>
+                                                </a>
+                                                <a href="{{ route('spares.edit', $spare->id)}}"
+                                                   class="btn btn-primary">
+                                                    <i class='fas fa-pencil-alt'></i>
+                                                </a>
                                                 <button type="submit" class="btn btn-danger"
                                                         data-toggle="modal" data-target="#deleteModal">
                                                     <i class='fas fa-trash-alt'></i>
                                                 </button>
-                                            </form>
-
-                                        </div>
-
+                                            </div>
+                                        </form>
                                     </td>
 
                                 </tr>
@@ -157,6 +147,7 @@
                                 <th>Imagen</th>
                                 <th>Categoria</th>
                                 <th>Marca</th>
+                                <th>Nacion</th>
                                 <th>Medida</th>
                                 <th>Codigo respuesto</th>
                                 <th>Venta</th>
@@ -174,20 +165,71 @@
             </div>
         </div>
         {{--        Modal to show the image--}}
-        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <strong><h3 class="modal-title" id="modalLabel"></h3></strong>
+                    <div class="modal-header bg-secondary">
+                        <strong><h3 class="modal-title" id="modal-label">
+
+                            </h3></strong>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p id="modalBody">
+                        <div class="row mb-2">
+                            <div class="col-7">
+                                <img src="" alt="No image" class="img-fluid img-rounded" id="product-image">
+                            </div>
+                            <div class="col-5">
+                                <ul class="list-group mb-1">
+                                    <li class="list-group-item">
+                                        <b>Codigo:</b> <a class="float-right" id="product-code-modal"></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Codigo original:</b> <a class="float-right" id="product-original-code-modal"></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Codigo producto:</b> <a class="float-right" id="product-pro-code-modal"></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Descripcion:</b> <a class="float-right" id="product-description-modal"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
 
-                        </p>
-                        <img src="" alt="No image" class="img-fluid" id="product-image">
+                        <div class="row">
+                            <li class="list-group-item col-6">
+                                <b>Categoria</b> <a class="float-right" id="product-category-modal"></a>
+                            </li>
+                            <li class="list-group-item col-6">
+                                <b>Nacion</b> <a class="float-right" id="product-nacionality-modal"></a>
+                            </li>
+                            <li class="list-group-item col-4">
+                                <b>Marca</b> <a class="float-right" id="product-brand-modal"></a>
+                            </li>
+                            <li class="list-group-item col-4">
+                                <b>Medida</b> <a class="float-right" id="product-measure-modal"></a>
+                            </li>
+                            <li class="list-group-item col-4">
+                                <b>Cantidad</b> <a class="float-right" id="product-quantity-modal"></a>
+                            </li>
+                            <li class="list-group-item col-4">
+                                <b>Venta</b> <a class="float-right" id="product-price-modal"></a>
+                            </li>
+                            <li class="list-group-item col-4">
+                                <b>Venta mayor</b> <a class="float-right" id="product-pricem-modal"></a>
+                            </li>
+                            @if(auth()->user()->Role->name == 'admin')
+                            <li class="list-group-item col-4">
+                                <b>Compra</b> <a class="float-right" id="product-investment-modal"></a>
+                            </li>
+                            @endif
+                            <li class="list-group-item col-12">
+                                <b>Linea de carro</b> <a class="float-right" id="product-code-carline"></a>
+                            </li>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -19,12 +19,14 @@
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">Categorias</h4>
+                <h4 class="mt ml-3">Categorias</h4>
             </div>
-
-            <div class="btn-group btn-group-sm pull-right" role="group">
+            <a  class="btn btn-info ml-3" href="{{route('spares.index')}}" >
+                Volver atras <span class="fa fa-backspace" aria-hidden="true"></span>
+            </a>
+            <div class="btn-group" role="group">
                 <a href="{{ route('categories.create') }}" class="btn btn-success" title="Create New Category">
-                    <span class="fa fa-plus" aria-hidden="true"></span>
+                    Agregar categoria<span class="fa fa-plus" aria-hidden="true"></span>
                 </a>
             </div>
 
@@ -35,10 +37,10 @@
                 <h4>No hay registros disponibles.</h4>
             </div>
         @else
-        <div class="panel-body panel-body-with-table">
+        <div class="card-body col-12">
             <div class="table-responsive">
 
-                <table class="table table-striped ">
+                <table class="table table-striped table-bordered ">
                     <thead>
                         <tr>
                             <th>Nombre</th>

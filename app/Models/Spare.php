@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Spare extends Model
 {
-    
+
 
     /**
      * The database table used by the model.
@@ -53,14 +53,14 @@ class Spare extends Model
      * @var array
      */
     protected $dates = [];
-    
+
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
     protected $casts = [];
-    
+
     /**
      * Get the Category for this model.
      *
@@ -100,7 +100,6 @@ class Spare extends Model
     {
         return $this->hasOne('App\Models\PurchaseSpare','spare_id','id');
     }
-
     /**
      * Get the saleDetail for this model.
      *
