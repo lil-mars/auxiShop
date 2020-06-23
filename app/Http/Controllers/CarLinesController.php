@@ -54,11 +54,11 @@ class CarLinesController extends Controller
             CarLine::create($data);
 
             return redirect()->route('car_lines.index')
-                ->with('success_message', 'Car Line was successfully added.');
+                ->with('success_message', 'Linea de carro se agrego correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
@@ -109,11 +109,11 @@ class CarLinesController extends Controller
             $carLine->update($data);
 
             return redirect()->route('car_lines.index')
-                ->with('success_message', 'Car Line was successfully updated.');
+                ->with('success_message', 'Linea de carro se actualizo correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
@@ -131,11 +131,11 @@ class CarLinesController extends Controller
             $carLine->delete();
 
             return redirect()->route('car_lines.index')
-                ->with('success_message', 'Car Line was successfully deleted.');
+                ->with('success_message', 'Linea de carro se elimino correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 

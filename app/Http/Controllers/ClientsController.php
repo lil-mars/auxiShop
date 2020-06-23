@@ -50,7 +50,7 @@ class ClientsController extends Controller
             Client::create($data);
 
             return redirect()->route('clients.client.index')
-                ->with('success_message', 'Client was successfully added.');
+                ->with('success_message', 'Cliente se agrego correctamente.');
         } catch (Exception $exception) {
 
             $errors = $exception->errors();
@@ -106,7 +106,7 @@ class ClientsController extends Controller
             $client->update($data);
 
             return redirect()->route('clients.client.index')
-                ->with('success_message', 'Client was successfully updated.');
+                ->with('success_message', 'Cliente se actualizo correctamente.');
         } catch (Exception $exception) {
 
             $errors = $exception->errors();
@@ -129,7 +129,7 @@ class ClientsController extends Controller
             $client->delete();
 
             return redirect()->route('clients.client.index')
-                ->with('success_message', 'Client was successfully deleted.');
+                ->with('success_message', 'Cliente se elimino correctamente.');
         } catch (Exception $exception) {
 
             $errors = $exception->errors();

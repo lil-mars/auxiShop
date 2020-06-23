@@ -50,11 +50,11 @@ class StoresController extends Controller
             Store::create($data);
 
             return redirect()->route('stores.store.index')
-                ->with('success_message', 'Store was successfully added.');
+                ->with('success_message', 'Tienda se agrego correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
@@ -105,11 +105,11 @@ class StoresController extends Controller
             $store->update($data);
 
             return redirect()->route('stores.store.index')
-                ->with('success_message', 'Store was successfully updated.');
+                ->with('success_message', 'Tienda se actualizo correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
@@ -127,11 +127,11 @@ class StoresController extends Controller
             $store->delete();
 
             return redirect()->route('stores.store.index')
-                ->with('success_message', 'Store was successfully deleted.');
+                ->with('success_message', 'Tienda se elimino correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 

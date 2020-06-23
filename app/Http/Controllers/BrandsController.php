@@ -53,11 +53,11 @@ class BrandsController extends Controller
             Brand::create($data);
 
             return redirect()->route('brands.index')
-                ->with('success_message', 'Brand was successfully added.');
+                ->with('success_message', 'Marca se agrego correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
@@ -108,7 +108,7 @@ class BrandsController extends Controller
             $brand->update($data);
 
             return redirect()->route('brands.index')
-                ->with('success_message', 'Brand was successfully updated.');
+                ->with('success_message', 'Marca se actualizo correctamente.');
         } catch (Exception $exception) {
             $errors = $exception->errors();
             return back()->withInput()
@@ -130,11 +130,11 @@ class BrandsController extends Controller
             $brand->delete();
 
             return redirect()->route('brands.index')
-                ->with('success_message', 'Brand was successfully deleted.');
+                ->with('success_message', 'Marca se elimino correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 

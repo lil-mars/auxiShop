@@ -52,7 +52,7 @@ class UsersController extends Controller
             User::create($data);
 
             return redirect()->route('users.user.index')
-                ->with('success_message', 'User was successfully added.');
+                ->with('success_message', 'Usuario se agrego correctamente.');
         } catch (Exception $exception) {
             $errors = $exception->errors();
             return back()->withInput()
@@ -107,7 +107,7 @@ class UsersController extends Controller
             $user->update($data);
 
             return redirect()->route('users.user.index')
-                ->with('success_message', 'User was successfully updated.');
+                ->with('success_message', 'Usuario se actualizo correctamente.');
         } catch (Exception $exception) {
             $errors = $exception->errors();
             return back()->withInput()
@@ -129,11 +129,11 @@ class UsersController extends Controller
             $user->delete();
 
             return redirect()->route('users.user.index')
-                ->with('success_message', 'User was successfully deleted.');
+                ->with('success_message', 'Usuario se elimino correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 

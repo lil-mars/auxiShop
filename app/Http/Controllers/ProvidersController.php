@@ -50,11 +50,11 @@ class ProvidersController extends Controller
             Provider::create($data);
 
             return redirect()->route('providers.provider.index')
-                ->with('success_message', 'Provider was successfully added.');
+                ->with('success_message', 'Proveedor se agrego correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
@@ -105,11 +105,11 @@ class ProvidersController extends Controller
             $provider->update($data);
 
             return redirect()->route('providers.provider.index')
-                ->with('success_message', 'Provider was successfully updated.');
+                ->with('success_message', 'Proveedor se actualizo correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
@@ -127,11 +127,11 @@ class ProvidersController extends Controller
             $provider->delete();
 
             return redirect()->route('providers.provider.index')
-                ->with('success_message', 'Provider was successfully deleted.');
+                ->with('success_message', 'Proveedor se elimino correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 

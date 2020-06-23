@@ -25,6 +25,8 @@ $(document).on('click', '.show-information', function () {
     $('#product-price-modal').text(product['price']);
     $('#product-brand-modal').text(product['brand']['name']);
     $('#product-pricem-modal').text(product['price_m']);
+    $('#product-created-at-modal').text(product['created_at']);
+    $('#product-updated-at-modal').text(product['updated_at']);
     $('#product-investment-modal').text(product['investment']);
     $('#info-modal').modal('show');
 

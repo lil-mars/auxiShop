@@ -58,7 +58,7 @@ class SparesController extends Controller
             Spare::create($data);
 
             return redirect()->route('spares.index')
-                ->with('success_message', 'Repuesto agregado correctamente !!');
+                ->with('success_message', 'Repuesto agregado correctamente.');
         } catch (Exception $exception) {
             $errors = $exception->errors();
             return back()->withInput()
@@ -115,7 +115,7 @@ class SparesController extends Controller
             $spare->update($data);
 
             return redirect()->route('spares.index')
-                ->with('success_message', 'Repuesto actualizado !!');
+                ->with('success_message', 'Repuesto actualizado.');
         } catch (Exception $exception) {
             $errors = $exception->errors();
             return back()->withInput()
@@ -137,10 +137,10 @@ class SparesController extends Controller
             $spare->delete();
 
             return redirect()->route('spares.index')
-                ->with('success_message', 'Repuesto eliminado !!');
+                ->with('success_message', 'Repuesto eliminado.');
         } catch (Exception $exception) {
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 

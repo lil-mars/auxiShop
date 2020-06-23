@@ -29,8 +29,8 @@ class RolesController extends Controller
      */
     public function create()
     {
-        
-        
+
+
         return view('roles.create');
     }
 
@@ -44,17 +44,17 @@ class RolesController extends Controller
     public function store(Request $request)
     {
         try {
-            
+
             $data = $this->getData($request);
-            
+
             Role::create($data);
 
             return redirect()->route('roles.role.index')
-                ->with('success_message', 'Role was successfully added.');
+                ->with('success_message', 'Rol se agrego correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
@@ -82,7 +82,7 @@ class RolesController extends Controller
     public function edit($id)
     {
         $role = Role::findOrFail($id);
-        
+
 
         return view('roles.edit', compact('role'));
     }
@@ -98,19 +98,19 @@ class RolesController extends Controller
     public function update($id, Request $request)
     {
         try {
-            
+
             $data = $this->getData($request);
-            
+
             $role = Role::findOrFail($id);
             $role->update($data);
 
             return redirect()->route('roles.role.index')
-                ->with('success_message', 'Role was successfully updated.');
+                ->with('success_message', 'Rol se actualizo correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
-        }        
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
+        }
     }
 
     /**
@@ -127,28 +127,28 @@ class RolesController extends Controller
             $role->delete();
 
             return redirect()->route('roles.role.index')
-                ->with('success_message', 'Role was successfully deleted.');
+                ->with('success_message', 'Rol se elimino correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
     {
         $rules = [
                 'name' => 'required|string|min:1|max:25',
-            'description' => 'required|string|min:1|max:255', 
+            'description' => 'required|string|min:1|max:255',
         ];
-        
+
         $data = $request->validate($rules);
 
 

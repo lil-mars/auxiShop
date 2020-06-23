@@ -56,11 +56,11 @@ class PurchasesController extends Controller
             Purchase::create($data);
             $queries = DB::getQueryLog();
             return redirect()->route('purchases.purchase.index')
-                ->with('success_message', 'Purchase was successfully added.');
+                ->with('success_message', 'Compra se agrego correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
@@ -111,11 +111,11 @@ class PurchasesController extends Controller
             $purchase->update($data);
 
             return redirect()->route('purchases.purchase.index')
-                ->with('success_message', 'Purchase was successfully updated.');
+                ->with('success_message', 'Compra se actualizo correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
@@ -138,11 +138,11 @@ class PurchasesController extends Controller
             $purchase->delete();
 
             return redirect()->route('purchases.purchase.index')
-                ->with('success_message', 'Purchase was successfully deleted.');
+                ->with('success_message', 'Compra se elimino correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 

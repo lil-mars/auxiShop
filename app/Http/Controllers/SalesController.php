@@ -55,11 +55,11 @@ class SalesController extends Controller
             Sale::create($data);
 
             return redirect()->route('sales.sale.index')
-                ->with('success_message', 'Sale was successfully added.');
+                ->with('success_message', 'Venta se agrego correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
@@ -112,11 +112,11 @@ class SalesController extends Controller
             $sale->update($data);
 
             return redirect()->route('sales.sale.index')
-                ->with('success_message', 'Sale was successfully updated.');
+                ->with('success_message', 'Venta se actualizo correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
@@ -134,11 +134,11 @@ class SalesController extends Controller
             $sale->delete();
 
             return redirect()->route('sales.sale.index')
-                ->with('success_message', 'Sale was successfully deleted.');
+                ->with('success_message', 'Venta se elimino correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 

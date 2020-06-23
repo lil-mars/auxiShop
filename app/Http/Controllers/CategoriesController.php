@@ -54,11 +54,11 @@ class CategoriesController extends Controller
             Category::create($data);
 
             return redirect()->route('categories.index')
-                ->with('success_message', 'Category was successfully added.');
+                ->with('success_message', 'Categoria se agrego correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
@@ -109,11 +109,11 @@ class CategoriesController extends Controller
             $category->update($data);
 
             return redirect()->route('categories.index')
-                ->with('success_message', 'Category was successfully updated.');
+                ->with('success_message', 'Categoria se actualizo correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
@@ -131,11 +131,11 @@ class CategoriesController extends Controller
             $category->delete();
 
             return redirect()->route('categories.index')
-                ->with('success_message', 'Category was successfully deleted.');
+                ->with('success_message', 'Categoria se elimino correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 

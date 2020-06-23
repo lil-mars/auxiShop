@@ -60,11 +60,11 @@ class PurchaseSparesController extends Controller
             PurchaseSpare::create($data);
 
             return redirect()->route('purchases.purchase.show', $id)
-                ->with('success_message', 'Purchase Spare was successfully added.');
+                ->with('success_message', 'Repuesto se agrego correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
@@ -116,11 +116,11 @@ class PurchaseSparesController extends Controller
             $purchaseSpare->update($data);
 
             return redirect()->route('purchase_spares.purchase_spare.index')
-                ->with('success_message', 'Purchase Spare was successfully updated.');
+                ->with('success_message', 'Repuesto se actualizo correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 
@@ -147,11 +147,11 @@ class PurchaseSparesController extends Controller
             $purchaseSpare->delete();
 
             return redirect()->route('purchase_spares.purchase_spare.index')
-                ->with('success_message', 'Purchase Spare was successfully deleted.');
+                ->with('success_message', 'Repuesto se elimino correctamente.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
 

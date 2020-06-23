@@ -187,7 +187,8 @@
                                         <b>Codigo:</b> <a class="float-right" id="product-code-modal"></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Codigo original:</b> <a class="float-right" id="product-original-code-modal"></a>
+                                        <b>Codigo original:</b> <a class="float-right"
+                                                                   id="product-original-code-modal"></a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Codigo producto:</b> <a class="float-right" id="product-pro-code-modal"></a>
@@ -221,11 +222,17 @@
                             <li class="list-group-item col-4">
                                 <b>Venta mayor</b> <a class="float-right" id="product-pricem-modal"></a>
                             </li>
-                            @if(auth()->user()->Role->name == 'admin')
                             <li class="list-group-item col-4">
-                                <b>Compra</b> <a class="float-right" id="product-investment-modal"></a>
+                                @if(auth()->user()->Role->name == 'admin')
+                                    <b>Compra</b> <a class="float-right" id="product-investment-modal"></a>
+                                @endif
                             </li>
-                            @endif
+                            <li class="list-group-item col-6">
+                                <b>Fecha creacion</b> <a class="float-right" id="product-created-at-modal"></a>
+                            </li>
+                            <li class="list-group-item col-6">
+                                <b>Ultima actulizacion</b> <a class="float-right" id="product-updated-at-modal"></a>
+                            </li>
                             <li class="list-group-item col-12">
                                 <b>Linea de carro</b> <a class="float-right" id="product-code-carline"></a>
                             </li>
