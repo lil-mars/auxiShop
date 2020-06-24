@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Purchase extends Model
@@ -71,16 +72,19 @@ class Purchase extends Model
     }
 
 
+    public function count_spares(){
+        return $this->purchase_spare->sum('quantity');
+    }
     /**
      * Get created_at in array format
      *
      * @param  string  $value
      * @return array
      */
-    public function getCreatedAtAttribute($value)
-    {
-        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
-    }
+//    public function getCreatedAtAttribute($value)
+//    {
+//        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
+//    }
 
     /**
      * Get updated_at in array format
@@ -88,9 +92,15 @@ class Purchase extends Model
      * @param  string  $value
      * @return array
      */
-    public function getUpdatedAtAttribute($value)
-    {
-        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
-    }
 
+    public function get_creation(){
+        $now = Carbon::now();
+        $diff = $this->updated_at->diffForHumans($now);
+        return $diff;
+    }
+    public function get_last_update(){
+        $now = Carbon::now();
+        $diff = $this->updated_at->diffForHumans($now);
+        return $diff;
+    }
 }

@@ -76,9 +76,9 @@ class Spare extends Model
      *
      * @return App\Models\CarLine
      */
-    public function CarLine()
+    public function car_lines()
     {
-        return $this->belongsTo('App\Models\CarLine','car_line_id','id');
+        return $this->belongsToMany('App\Models\CarLine','spare_car_line','spare_id', 'car_line_id');
     }
 
     /**

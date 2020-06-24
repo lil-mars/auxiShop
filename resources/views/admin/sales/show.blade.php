@@ -48,200 +48,205 @@
             </div>
 
         </div>
-            <div class="card card-gray-dark">
-                <div class="card-header">
-                    <h3 class="card-title">Anadir Productos</h3>
-
-
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <form action="{{route('sales.spare.store', $sale->id)}}" method="post">
-                        @csrf
-                        <input type="hidden" name="sale_id" value="{{ $sale->id }}">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label for="select2">Producto</label>
-
-                                    <select class="form-control" id="select2"
-                                            tabindex="-1" aria-hidden="true" name="spare_id">
-                                        <option value="" selected>--- Selecciona el producto ---</option>
-                                        @foreach($spares as $spare)
-                                            <option value="{{ $spare->id }}" >
-                                                <img src="https://as.com/tikitakas/imagenes/2018/09/04/portada/1536049975_673302_1536050849_noticia_normal.jpg" class="img-flag">
-                                                {{ $spare->code . ' ' . $spare->description . $spare->brand->name . ' Precio:' . $spare->price . 'Bs'  }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Cantidad</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">&#x2683;</span>
-                                        </div>
-                                        <input type="number" class="form-control" name="quantity" id="quantity">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Precio unidad</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Bs</span>
-                                        </div>
-                                        <input type="number" class="form-control" id="unit_price" name="unit_price" readonly>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Precio total</label>
-                                    <div class="input-group ">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Bs</span>
-                                        </div>
-                                        <input type="number"  class="form-control" id="price" name="price" readonly>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Descuento</label>
-                                    <div class="input-group ">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Bs</span>
-                                        </div>
-                                        <input type="number" class="form-control" id="discount" name="discount">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Precio Real</label>
-                                    <div class="input-group ">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Bs</span>
-                                        </div>
-                                        <input type="number" class="form-control" id="real_price" name="real_price" readonly>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- /.col -->
-                        </div>
-                        <div>
-                            <button class="btn btn-primary">
-                                Agregar
-                            </button>
-                        </div>
-                        <!-- /.row -->
-                    </form>
-                </div>
-            </div>
-
-
-                <!-- /.card-body -->
-            </div>
-            <div class="card card-gray-dark">
-                <div class="card-header">
-                    <h3 class="card-title">Venta</h3>
-
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body p-0">
-                    <br>
-                    @if(count($sale->saleDetail) == 0)
-                        <div class="panel-body text-center">
-                            Agrega productos a la venta
-                        </div>
-                    @else
-                        <table class="table  table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <th>Marca</th>
-                                <th>Descripcion</th>
-                                <th>Precio (BS)</th>
-                                <th>Cantidad</th>
-                                <th>Precio</th>
-                                <th>Descuento</th>
-                                <th>Precio real</th>
-                                <th>Borrar</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($sale->saleDetail as $sale_spare)
-                                <tr>
-                                    <td>{{ $sale_spare->spare->brand->name }}</td>
-                                    <td>{{ $sale_spare->spare->description }}</td>
-                                    <td>{{ $sale_spare->spare->price }}</td>
-                                    <td>{{ $sale_spare->quantity }}</td>
-                                    <td>{{ $sale_spare->price }}</td>
-                                    <td>{{ $sale_spare->discount }}</td>
-                                    <td>{{ $sale_spare->real_price }}</td>
-                                    <td>
-                                        <form action="{{ route('sales.spare.destroy',[$sale->id,$sale_spare->id]) }}" method="post">
-                                            @method('delete')
-                                            @csrf
-                                            <button type="submit" class="btn btn-danger" title="Borrar">
-                                                <span class="fa fa-trash" aria-hidden="true"></span>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <th colspan="6">Precio total</th>
-                                <td colspan="1">{{ $sale->total_price }}</td>
-                                <td colspan="1"></td>
-                            </tr>
-                            </tfoot>
-                        </table>
-                    @endif
-                </div>
-                <!-- /.card-body -->
-            </div>
         <div class="card card-gray-dark">
             <div class="card-header">
-                Datos
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="card-body">
-                <dt>Cliente</dt>
-                <dd>{{ optional($sale->Client)->get_full_name() }}</dd>
-                <dt>Tienda</dt>
-                <dd>{{ optional($sale->Store)->name }}</dd>
-                <dt>Usuario</dt>
-                <dd>{{ optional($sale->User)->get_full_name() }}</dd>
-                <dt>Precio Total</dt>
-                <dd>{{ $sale->total_price }}</dd>
-                <dt>Cantidad</dt>
-                <dd>{{ $sale->total_amount }}</dd>
-                <dt>Creacion</dt>
-                <dd>{{ $sale->created_at }}</dd>
-                <dt>Actualizacion</dt>
-                <dd>{{ $sale->updated_at }}</dd>
+                <h3 class="card-title">Anadir Productos</h3>
+
 
             </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form action="{{route('sales.spare.store', $sale->id)}}" method="post">
+                    @csrf
+                    <input type="hidden" name="sale_id" value="{{ $sale->id }}">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="select2">Producto</label>
+
+                                <select class="form-control" id="select2" name="spare_id" tabindex="-1" class="js-states form-control-lg">
+                                    <option value="" selected>--- Selecciona el producto ---</option>
+                                    @foreach($categories as $category)
+                                        <optgroup label="{{$category->name}}">
+                                            @foreach($category->spares as $spare)
+                                                <option value="{{ $spare->id }}">
+                                                    {{ 'Codigo:'. $spare->code.' Original:'.$spare->original_code . ' Desc:' . $spare->description .' Marca:'. $spare->brand->name . ' Precio:' . $spare->price . 'Bs'  }}
+                                                </option>
+                                            @endforeach
+                                        </optgroup>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Cantidad</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">&#x2683;</span>
+                                    </div>
+                                    <input type="number" class="form-control" name="quantity" id="quantity">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Precio unidad</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Bs</span>
+                                    </div>
+                                    <input type="number" class="form-control" id="unit_price" name="unit_price"
+                                           readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Precio total</label>
+                                <div class="input-group ">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Bs</span>
+                                    </div>
+                                    <input type="number" class="form-control" id="price" name="price" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Descuento</label>
+                                <div class="input-group ">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Bs</span>
+                                    </div>
+                                    <input type="number" class="form-control" id="discount" name="discount">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Precio Real</label>
+                                <div class="input-group ">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Bs</span>
+                                    </div>
+                                    <input type="number" class="form-control" id="real_price" name="real_price"
+                                           readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- /.col -->
+                    </div>
+                    <div>
+                        <button class="btn btn-primary">
+                            Agregar
+                        </button>
+                    </div>
+                    <!-- /.row -->
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.card-body -->
+    </div>
+    <div class="card card-gray-dark">
+        <div class="card-header">
+            <h3 class="card-title">Venta</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0">
+            <br>
+            @if(count($sale->saleDetail) == 0)
+                <div class="panel-body text-center">
+                    Agrega productos a la venta
+                </div>
+            @else
+                <table class="table  table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>Marca</th>
+                        <th>Descripcion</th>
+                        <th>Precio (BS)</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Descuento</th>
+                        <th>Precio real</th>
+                        <th>Borrar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($sale->saleDetail as $sale_spare)
+                        <tr>
+                            <td>{{ $sale_spare->spare->brand->name }}</td>
+                            <td>{{ $sale_spare->spare->description }}</td>
+                            <td>{{ $sale_spare->spare->price }}</td>
+                            <td>{{ $sale_spare->quantity }}</td>
+                            <td>{{ $sale_spare->price }}</td>
+                            <td>{{ $sale_spare->discount }}</td>
+                            <td>{{ $sale_spare->real_price }}</td>
+                            <td>
+                                <form action="{{ route('sales.spare.destroy',[$sale->id,$sale_spare->id]) }}"
+                                      method="post">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger" title="Borrar">
+                                        <span class="fa fa-trash" aria-hidden="true"></span>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th colspan="6">Precio total</th>
+                        <td colspan="1">{{ $sale->total_price }}</td>
+                        <td colspan="1"></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            @endif
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <div class="card card-gray-dark">
+        <div class="card-header">
+            Datos
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <dt>Cliente</dt>
+            <dd>{{ optional($sale->Client)->get_full_name() }}</dd>
+            <dt>Tienda</dt>
+            <dd>{{ optional($sale->Store)->name }}</dd>
+            <dt>Usuario</dt>
+            <dd>{{ optional($sale->User)->get_full_name() }}</dd>
+            <dt>Precio Total</dt>
+            <dd>{{ $sale->total_price }}</dd>
+            <dt>Cantidad</dt>
+            <dd>{{ $sale->total_amount }}</dd>
+            <dt>Creacion</dt>
+            <dd>{{ $sale->created_at }}</dd>
+            <dt>Actualizacion</dt>
+            <dd>{{ $sale->updated_at }}</dd>
 
         </div>
+
+    </div>
     </div>
 
 @endsection

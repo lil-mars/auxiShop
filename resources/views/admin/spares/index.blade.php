@@ -82,8 +82,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body col-12">
-                        <table id="table" class="table table-responsive-xl
-                         table-hover table-bordered">
+                        <table id="table" class="table table-responsive-xl table-hover table-bordered">
                             <thead class="bg-secondary">
                             <tr>
                                 <th>Codigo</th>

@@ -17,6 +17,7 @@ $factory->define(\App\Models\Client::class, function (Faker $faker) {
         'address' => $faker->address,
         'phone' => '411251252',
         'fax' => $faker->postcode,
+        'nit' => $faker->numberBetween(444444),
         'ci' => $faker->bankAccountNumber,
         'created_at' => $date,
         'updated_at' => $date,

@@ -43,12 +43,13 @@
                 <table class="table table-striped " id="table">
                     <thead>
                     <tr>
-                        <th>id</th>
+                        <th>ID</th>
                         <th>Compañía</th>
                         <th>Nombre (Apellidos y nombres)</th>
-                        <th>Occupation</th>
-                        <th>Phone</th>
-                        <th>Ci</th>
+                        <th>Telefono</th>
+                        <th>CI</th>
+                        <th>NIT</th>
+                        <th>Compras</th>
                         <th>Opciones</th>
                     </tr>
                     </thead>
@@ -58,9 +59,10 @@
                             <td>{{ $clients->id }}</td>
                             <td>{{ $clients->company_name }}</td>
                             <td>{{ $clients->get_full_name() }}</td>
-                            <td>{{ $clients->occupation }}</td>
                             <td>{{ $clients->phone }}</td>
                             <td>{{ $clients->ci }}</td>
+                            <td>{{ $clients->nit }}</td>
+                            <td>{{ $clients->countSales() }}</td>
                             <td>
 
                                 <form method="POST" action="{!! route('clients.client.destroy', $clients->id) !!}" accept-charset="UTF-8">

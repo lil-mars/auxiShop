@@ -100,7 +100,7 @@ class ClientsController extends Controller
     {
         try {
 
-            $data = $this->getData($request,$id);
+            $data = $this->getData($request, $id);
 
             $client = Client::findOrFail($id);
             $client->update($data);
@@ -145,10 +145,10 @@ class ClientsController extends Controller
      * @param Illuminate\Http\Request\Request $request
      * @return array
      */
-    protected function getData(Request $request,$id='')
+    protected function getData(Request $request, $id = '')
     {
         $rules = [
-            'company_name' => 'required|string|min:0|max:20',
+            'company_name' => 'required|string|min:0|max:40',
             'father_last_name' => 'required|string|min:0|max:20',
             'mother_last_name' => 'nullable|string|min:0|max:20',
             'second_name' => 'nullable|string|min:0|max:20',
@@ -157,7 +157,8 @@ class ClientsController extends Controller
             'address' => 'nullable|string|min:0|max:100',
             'phone' => 'nullable|string|min:0|max:20',
             'fax' => 'nullable|string|min:0|max:20',
-            'ci' => 'required|string|min:1|max:30|unique:clients,ci,'.$id,
+            'nit' => 'required|string|min:1|max:40|unique:clients,nit,'. $id,
+            'ci' => 'required|string|min:1|max:30|unique:clients,ci,' . $id,
         ];
 
         $data = $request->validate($rules);

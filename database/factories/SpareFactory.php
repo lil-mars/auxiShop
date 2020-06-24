@@ -10,7 +10,6 @@ $factory->define(\App\Models\Spare::class, function (Faker $faker) {
     return [
         'code'=> $faker->bankAccountNumber,
         'category_id' => $faker->numberBetween(1,5),
-        'car_line_id' => $faker->numberBetween(1,5),
         'brand_id' => $faker->numberBetween(1,5),
         'description' => $faker->text(50),
         'nationality' => $faker->country,

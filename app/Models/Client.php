@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
@@ -24,7 +25,7 @@ class Client extends Model
     protected $keyType = 'string';
     public $incrementing = false;
 
-
+    public $timestamps= true;
     /**
      * Attributes that should be mass-assignable.
      *
@@ -40,7 +41,10 @@ class Client extends Model
         'address',
         'phone',
         'fax',
-        'ci'
+        'nit',
+        'ci',
+        'created_at',
+        'updated_at'
     ];
 
     /**
@@ -48,23 +52,35 @@ class Client extends Model
      *
      * @var array
      */
-    protected $dates = [];
+
+
+
+    public function getUpdatedAt()
+    {
+        $now = Carbon::now();
+        $diff = $this->updated_at->diffForHumans($now);
+        return $diff;
+    }
+
 
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
-    protected $casts = [];
+
 
     /**
      * Get the sale for this model.
      *
      * @return App\Models\Sale
      */
-    public function sale()
+    public function countSales() {
+        return $this->sales->count();
+    }
+    public function sales()
     {
-        return $this->hasOne('App\Models\Sale', 'client_id', 'id');
+        return $this->hasMany('App\Models\Sale', 'client_id', 'id');
     }
 
     public function get_full_name()
@@ -82,10 +98,6 @@ class Client extends Model
      * @param string $value
      * @return array
      */
-    public function getCreatedAtAttribute($value)
-    {
-        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
-    }
 
     /**
      * Get updated_at in array format
@@ -93,9 +105,9 @@ class Client extends Model
      * @param string $value
      * @return array
      */
-    public function getUpdatedAtAttribute($value)
-    {
-        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
-    }
+//    public function getUpdatedAtAttribute($value)
+//    {
+//        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
+//    }
 
 }

@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('styles')
+    <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
+@endsection
 @section('content')
 
     @if(Session::has('success_message'))
@@ -32,21 +34,19 @@
 
         @if(count($providers) == 0)
             <div class="panel-body text-center">
-                <h4>No Providers Available.</h4>
+                <h4>No hay proveedores.</h4>
             </div>
         @else
         <div class="panel-body panel-body-with-table">
-            <div class="table-responsive">
 
-                <table class="table table-striped ">
+                <table class="table table-hover table-bordered table-responsive-md" id="table">
                     <thead>
                         <tr>
                             <th>Compañía</th>
                             <th>Nombre completo</th>
                             <th>Ocupacion</th>
-                            <th>Codigo postal</th>
                             <th>Telefono</th>
-                            <th>Fax</th>
+                            <th>Compras</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -56,9 +56,8 @@
                             <td>{{ $provider->company_name }}</td>
                             <td>{{ $provider->get_full_name() }}</td>
                             <td>{{ $provider->occupation }}</td>
-                            <td>{{ $provider->postal_code }}</td>
                             <td>{{ $provider->phone }}</td>
-                            <td>{{ $provider->fax }}</td>
+                            <td>{{ $provider->count_purchases() }}</td>
                             <td>
 
                                 <form method="POST" action="{!! route('providers.provider.destroy', $provider->id) !!}" accept-charset="UTF-8">
@@ -85,8 +84,6 @@
                     @endforeach
                     </tbody>
                 </table>
-
-            </div>
         </div>
 
         <div class="panel-footer">
@@ -97,3 +94,9 @@
 
     </div>
 @endsection
+@section('scripts')
+    <script src="{{ asset('js/spare/datatables.min.js') }}"></script>
+    <script src="{{ asset('js/spare/datatableconfig.js') }}"></script>
+
+@endsection
+

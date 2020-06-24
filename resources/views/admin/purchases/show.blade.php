@@ -62,12 +62,16 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label>Producto</label>
-                                <select class="form-control" id="select2"
-                                        tabindex="-1" aria-hidden="true" name="spare_id">
-                                    @foreach($spares as $spare)
-                                        <option value="{{ $spare->id }}">
-                                            {{ $spare->code . ' ' . $spare->description . $spare->brand->name .' Precio:'. $spare->price }}
-                                        </option>
+                                <select class="form-control" id="select2" name="spare_id" tabindex="-1" class="js-states form-control-lg">
+                                    <option value="" selected>--- Selecciona el producto ---</option>
+                                    @foreach($categories as $category)
+                                        <optgroup label="{{$category->name}}">
+                                            @foreach($category->spares as $spare)
+                                                <option value="{{ $spare->id }}">
+                                                    {{ 'Codigo:'. $spare->code.' Original:'.$spare->original_code . ' Desc:' . $spare->description .' Marca:'. $spare->brand->name . ' Precio:' . $spare->price . 'Bs'  }}
+                                                </option>
+                                            @endforeach
+                                        </optgroup>
                                     @endforeach
                                 </select>
                             </div>

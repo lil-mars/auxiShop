@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
@@ -103,16 +104,17 @@ class Sale extends Model
     }
 
 
+    public function get_total_discount(){
+        $discount = $this->saleDetail->sum('discount');
+        return $discount;
+    }
     /**
      * Get created_at in array format
      *
      * @param  string  $value
      * @return array
      */
-    public function getCreatedAtAttribute($value)
-    {
-        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
-    }
+
 
     /**
      * Get updated_at in array format
@@ -120,9 +122,15 @@ class Sale extends Model
      * @param  string  $value
      * @return array
      */
-    public function getUpdatedAtAttribute($value)
-    {
-        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
+    public function get_creation(){
+        $now = Carbon::now();
+        $diff = $this->updated_at->diffForHumans($now);
+        return $diff;
+    }
+    public function get_last_update(){
+        $now = Carbon::now();
+        $diff = $this->updated_at->diffForHumans($now);
+        return $diff;
     }
 
 }

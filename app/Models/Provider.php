@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Provider extends Model
 {
-    public function get_full_name() {
+    public function get_full_name()
+    {
         return $this->last_name
-            . ' ' .$this->name;
+            . ' ' . $this->name;
     }
 
 
@@ -20,10 +22,10 @@ class Provider extends Model
     protected $table = 'providers';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $incrementing = false;
@@ -35,17 +37,17 @@ class Provider extends Model
      * @var array
      */
     protected $fillable = [
-                  'company_name',
-                  'name',
-                  'last_name',
-                  'occupation',
-                  'address',
-                  'city',
-                  'postal_code',
-                  'country',
-                  'phone',
-                  'fax'
-              ];
+        'company_name',
+        'name',
+        'last_name',
+        'occupation',
+        'address',
+        'city',
+        'postal_code',
+        'country',
+        'phone',
+        'fax'
+    ];
 
     /**
      * The attributes that should be mutated to dates.
@@ -66,9 +68,14 @@ class Provider extends Model
      *
      * @return App\Models\Purchase
      */
-    public function purchase()
+    public function count_purchases()
     {
-        return $this->hasOne('App\Models\Purchase','provider_id','id');
+        return $this->purchases->count();
+    }
+
+    public function purchases()
+    {
+        return $this->hasMany('App\Models\Purchase', 'provider_id', 'id');
     }
 
     /**
@@ -78,30 +85,30 @@ class Provider extends Model
      */
     public function spareProvider()
     {
-        return $this->hasOne('App\Models\SpareProvider','provider_id','id');
+        return $this->hasOne('App\Models\SpareProvider', 'provider_id', 'id');
     }
 
 
     /**
      * Get created_at in array format
      *
-     * @param  string  $value
+     * @param string $value
      * @return array
      */
-    public function getCreatedAtAttribute($value)
-    {
-        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
-    }
+//    public function getCreatedAtAttribute($value)
+//    {
+//        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
+//    }
 
     /**
      * Get updated_at in array format
      *
-     * @param  string  $value
+     * @param string $value
      * @return array
      */
-    public function getUpdatedAtAttribute($value)
-    {
-        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
-    }
+//    public function getUpdatedAtAttribute($value)
+//    {
+//        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
+//    }
 
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CarLine extends Model
 {
-    
+
     /**
      * Indicates if the model should be timestamped.
      *
@@ -45,14 +45,14 @@ class CarLine extends Model
      * @var array
      */
     protected $dates = [];
-    
+
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
     protected $casts = [];
-    
+
     /**
      * Get the spares for this model.
      *
@@ -60,8 +60,9 @@ class CarLine extends Model
      */
     public function spares()
     {
-        return $this->hasMany('App\Models\Spare','car_line_id','id');
+        return $this->belongsToMany('App\Models\Spare','spare_car_line','car_line_id', 'spare_id');
     }
+
 
 
 

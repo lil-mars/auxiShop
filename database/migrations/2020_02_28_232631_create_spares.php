@@ -29,7 +29,6 @@ class CreateSpares extends Migration
             $table->bigIncrements('id');
             $table->string('code',50)->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
-            $table->unsignedBigInteger('car_line_id')->nullable();
             $table->unsignedBigInteger('brand_id')->nullable();
             $table->string('description')->nullable();
             $table->string('nationality',60)->nullable();
@@ -51,11 +50,22 @@ class CreateSpares extends Migration
                 ->references('id')
                 ->on('brands')
                 ->onDelete('cascade');
+            $table->timestamps();
+        });
+        Schema::create('spare_car_line', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('spare_id')->nullable();
+            $table->unsignedBigInteger('car_line_id')->nullable();
+
+            $table->foreign('spare_id')
+                ->references('id')
+                ->on('spares')
+                ->onDelete('cascade');
+
             $table->foreign('car_line_id')
                 ->references('id')
                 ->on('car_lines')
                 ->onDelete('cascade');
-            $table->timestamps();
         });
     }
 
@@ -70,5 +80,6 @@ class CreateSpares extends Migration
         Schema::dropIfExists('car_lines');
         Schema::dropIfExists('brands');
         Schema::dropIfExists('spares');
+        Schema::dropIfExists('spare_car_line');
     }
 }

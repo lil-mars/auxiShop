@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Client;
 use App\Models\Sale;
 use App\Models\Spare;
@@ -73,9 +74,9 @@ class SalesController extends Controller
     public function show($id)
     {
         $sale = Sale::with('client','store','user')->findOrFail($id);
-        $spares = Spare::all();
+        $categories = Category::all();
 
-        return view('admin.sales.show', compact('sale', 'spares'));
+        return view('admin.sales.show', compact('sale', 'categories'));
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Provider;
 use App\Models\Purchase;
 use App\Models\Spare;
@@ -74,8 +75,8 @@ class PurchasesController extends Controller
     public function show($id)
     {
         $purchase = Purchase::with('provider')->findOrFail($id);
-        $spares = Spare::all();
-        return view('admin.purchases.show', compact('purchase', 'spares'));
+        $categories = Category::all();
+        return view('admin.purchases.show', compact('purchase', 'categories'));
     }
 
     /**
