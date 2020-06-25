@@ -9,7 +9,7 @@
             <h4 class="mt-5 mb-5">{{ isset($client->name) ? $client->get_full_name() : 'Cliente' }}</h4>
         </span>
 
-            <div class="pull-right">
+            <div class="float-left">
 
                 <form method="POST" action="{!! route('clients.client.destroy', $client->id) !!}"
                       accept-charset="UTF-8">
@@ -36,7 +36,13 @@
                         </button>
                     </div>
                 </form>
-
+            </div>
+            <div class="float-right">
+                <p>
+                    <a href="javascript:history.go(-1)" title="Return to the previous page" class="btn btn-outline-danger">
+                        Volver atras <i class="fa fa-backward"></i>
+                    </a>
+                </p>
             </div>
 
         </div>
@@ -130,8 +136,7 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body p-0">
-            <br>
-            <table class="table  table-bordered table-hover">
+            <table class="table  table-bordered table-hover table-responsive-sm">
                 <thead>
                 <tr>
                     <th>Tienda</th>
@@ -141,6 +146,7 @@
                     <th>Cantidad</th>
                     <th>Creacion</th>
                     <th>Ultima actulizacion</th>
+                    <th>Opciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -153,6 +159,10 @@
                         <td>{{$sale->total_amount}}</td>
                         <td>{{$sale->get_creation()}}</td>
                         <td>{{$sale->get_last_update()}}</td>
+                        <td><a href="{{ route('sales.sale.show', $sale->id ) }}" class="btn btn-warning"
+                               title="Show Sale">
+                                <span class="fa fa-eye" aria-hidden="true"></span>
+                            </a></td>
                     @endforeach
                 </tr>
                 </tbody>

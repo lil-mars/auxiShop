@@ -1,5 +1,8 @@
 @extends('layouts.master')
-
+@section('styles')
+    <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/select2.css')}}">
+@endsection
 @section('content')
 
     <div class="panel panel-default">

@@ -71,7 +71,12 @@ class Spare extends Model
         return $this->belongsTo('App\Models\Category','category_id','id');
     }
 
+    public function has_car_line($id) {
+
+        return $this->car_lines->contains($id);
+    }
     /**
+     *
      * Get the CarLine for this model.
      *
      * @return App\Models\CarLine
@@ -148,9 +153,6 @@ class Spare extends Model
      * @param  string  $value
      * @return array
      */
-    public function getUpdatedAtAttribute($value)
-    {
-        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
-    }
+
 
 }

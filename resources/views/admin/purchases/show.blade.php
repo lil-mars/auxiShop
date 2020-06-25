@@ -7,7 +7,7 @@
         <span class="pull-left">
             <h4 class="">{{ isset($title) ? $title : 'Compra'.' '. $purchase->id }}</h4>
         </span>
-            <div class="pull-right">
+            <div class="float-left">
 
                 <form method="POST" action="{!! route('purchases.purchase.destroy', $purchase->id) !!}"
                       accept-charset="UTF-8">
@@ -36,6 +36,13 @@
                     </div>
                 </form>
 
+            </div>
+            <div class="float-right">
+                <p>
+                    <a href="javascript:history.go(-1)" title="Return to the previous page" class="btn btn-outline-danger">
+                        Volver atras <i class="fa fa-backward"></i>
+                    </a>
+                </p>
             </div>
 
         </div>

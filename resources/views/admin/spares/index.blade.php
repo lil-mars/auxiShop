@@ -122,7 +122,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <div class="btn-group">
-                                                <a class="btn btn-warning show-information" data-product="{{$spare}}">
+                                                <a class="btn btn-warning show-information" data-product="{{$spare}}" data-carlines="{{$spare->car_lines}}">
                                                     <i class='fas fa-eye'></i>
                                                 </a>
                                                 <a href="{{ route('spares.edit', $spare->id)}}"
@@ -171,7 +171,7 @@
                         <strong><h3 class="modal-title" id="modal-label">
 
                             </h3></strong>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>

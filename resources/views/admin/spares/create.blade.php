@@ -1,5 +1,8 @@
 @extends('layouts.master')
-
+@section('styles')
+    <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/select2.css')}}">
+@endsection
 @section('content')
 
     <div class="container-fluid">
@@ -48,7 +51,6 @@
 
 @endsection
 @section('scripts')
-
     <script src="{{asset('js/spare/showImage.js')}}">
     </script>
 @endsection

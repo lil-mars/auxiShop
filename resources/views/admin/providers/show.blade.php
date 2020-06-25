@@ -124,9 +124,9 @@
                     <th>Precio</th>
                     <th>Cantidad</th>
                     <th>Contacto</th>
-                    <th>Detalles</th>
                     <th>Creacion</th>
                     <th>Ultima actulizacion</th>
+                    <th>Opciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -135,15 +135,12 @@
                         <td>{{$purchase->total_price}}</td>
                         <td>{{$purchase->count_spares()}}</td>
                         <td>{{$purchase->contact}}</td>
-                        <td>
-                            <ul class="list-group">
-                                @foreach($purchase->purchase_spare as $purchase_spare)
-                                    <li class="list-group-item text-bold">{{$purchase_spare->spare->description}}</li>
-                                @endforeach
-                            </ul>
-                        </td>
                         <td>{{$purchase->get_creation()}}</td>
                         <td>{{$purchase->get_last_update()}}</td>
+                        <td><a href="{{ route('purchases.purchase.show', $purchase->id ) }}" class="btn btn-warning"
+                               title="Show Sale">
+                                <span class="fa fa-eye" aria-hidden="true"></span>
+                            </a></td>
                     @endforeach
                 </tr>
                 </tbody>

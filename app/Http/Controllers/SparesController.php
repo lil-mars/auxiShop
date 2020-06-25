@@ -55,11 +55,16 @@ class SparesController extends Controller
 
             $data = $this->validation($request);
 
-            Spare::create($data);
+            $spare = Spare::create($data);
+            $values = array_values($request['car_lines']);
+
+            $lastSpare = Spare::orderBy('id','desc')->first();
+            $lastSpare->car_lines()->sync($values);
 
             return redirect()->route('spares.index')
                 ->with('success_message', 'Repuesto agregado correctamente.');
         } catch (Exception $exception) {
+            dd($exception);
             $errors = $exception->errors();
             return back()->withInput()
                 ->withErrors($errors);
@@ -113,6 +118,9 @@ class SparesController extends Controller
 
             $spare = Spare::findOrFail($id);
             $spare->update($data);
+
+            $values = array_values($request['car_lines']);
+            $spare->car_lines()->sync($values);
 
             return redirect()->route('spares.index')
                 ->with('success_message', 'Repuesto actualizado.');

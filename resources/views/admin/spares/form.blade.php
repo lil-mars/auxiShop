@@ -2,7 +2,8 @@
 <div class="form-group {{ $errors->has('code') ? 'has-error' : '' }}">
     <label for="code" class="col-md-2 control-label">Codigo</label>
     <div class="col-md-10">
-        <input class="form-control" name="code" type="text" id="code" value="{{ old('code', optional($spare)->code) }}" maxlength="50" >
+        <input class="form-control" name="code" type="text" id="code"
+               value="{{ old('code', optional($spare)->code) }}" maxlength="50" >
         {!! $errors->first('code', '<p class="help-block text-danger">:message</p>') !!}
     </div>
 </div>
@@ -24,17 +25,17 @@
 </div>
 
 <div class="form-group {{ $errors->has('car_line_id') ? 'has-error' : '' }}">
-    <label for="car_line_id" class="col-md-2 control-label">Linea de carro</label>
+    <label for="car_lines" class="col-md-2 control-label">Linea de carro</label>
     <div class="col-md-10">
-        <select class="form-control" id="car_line_id" name="car_line_id">
-        	    <option value="" style="display: none;" {{ old('car_line_id', optional($spare)->car_line_id ?: '') == '' ? 'selected' : '' }} disabled selected>Linea de carro</option>
+        <select class="form-control" id="car_lines"
+                name="car_lines[]" multiple="multiple">
+
         	@foreach ($CarLines as $key => $CarLine)
-			    <option value="{{ $key }}" {{ old('car_line_id', optional($spare)->car_line_id) == $key ? 'selected' : '' }}>
+			    <option value="{{ $key }}" {{ old('car_line_id', $spare->has_car_line($key)) ? 'selected' : '' }} >
 			    	{{ $CarLine }}
 			    </option>
 			@endforeach
         </select>
-
         {!! $errors->first('car_line_id', '<p class="help-block text-danger">:message</p>') !!}
     </div>
 </div>
@@ -145,5 +146,8 @@
         </div>
     </div>
 </div>
-
+@section('scripts')
+    <script src="{{asset('js/spare/carline.js')}}">
+    </script>
+@endsection
 
