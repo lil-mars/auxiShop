@@ -2,19 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a6344b7-60f9-4a93-bcd9-e7d5362b97b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/select2.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/spare/carline.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/purchase/select2provider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/sale/select2client.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SaleDetailsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SaleDetailsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SalesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SalesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Clients.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Spare.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Spare.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/spare/modalconfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/spare/modalconfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/sale/sale.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/sale/sale.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/clients/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/clients/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/providers/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/providers/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/purchases/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/purchases/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/purchases/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/purchases/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/purchases/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/purchases/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/sales/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/sales/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/sales/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/sales/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/sales/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/sales/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/sales/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/sales/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/sales/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/sales/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/spares/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/spares/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/spares/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/spares/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/spares/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/spares/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/spares/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/spares/index.blade.php" afterDir="false" />
     </list>
@@ -63,8 +69,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -216,17 +222,7 @@
     <option name="allServicesViewState">
       <serviceView>
         <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@dfb0bd93" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@dfb0bd93" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@72da9dc1" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-          </expand>
+          <expand />
           <select />
         </treeState>
       </serviceView>
@@ -291,7 +287,8 @@
       <workItem from="1593000292667" duration="11984000" />
       <workItem from="1593040492878" duration="152000" />
       <workItem from="1593092279119" duration="7142000" />
-      <workItem from="1593109067348" duration="9775000" />
+      <workItem from="1593109067348" duration="9998000" />
+      <workItem from="1593176904461" duration="8112000" />
     </task>
     <task id="LOCAL-00001" summary="Finishing all the migrations and adding some Models &#10;- We need relations and Seeds for the DB :D">
       <created>1584135780363</created>

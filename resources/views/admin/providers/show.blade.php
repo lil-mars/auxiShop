@@ -130,8 +130,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    @foreach($provider->purchases as $purchase)
+                @foreach($provider->purchases as $purchase)
+                    <tr>
                         <td>{{$purchase->total_price}}</td>
                         <td>{{$purchase->count_spares()}}</td>
                         <td>{{$purchase->contact}}</td>
@@ -141,8 +141,8 @@
                                title="Show Sale">
                                 <span class="fa fa-eye" aria-hidden="true"></span>
                             </a></td>
-                    @endforeach
-                </tr>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

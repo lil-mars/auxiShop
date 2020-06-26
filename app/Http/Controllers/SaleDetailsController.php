@@ -19,7 +19,7 @@ class SaleDetailsController extends Controller
      */
     public function index()
     {
-        $saleDetailsObjects = SaleDetail::with('spare','sale')->paginate(25);
+        $saleDetailsObjects = SaleDetail::with('spare', 'sale')->paginate(25);
 
         return view('sale_details.index', compact('saleDetailsObjects'));
     }
@@ -31,10 +31,10 @@ class SaleDetailsController extends Controller
      */
     public function create()
     {
-        $Spares = Spare::pluck('code','id')->all();
-        $Sales = Sale::pluck('total_price','id')->all();
+        $Spares = Spare::pluck('code', 'id')->all();
+        $Sales = Sale::pluck('total_price', 'id')->all();
 
-        return view('sale_details.create', compact('Spares','Sales'));
+        return view('sale_details.create', compact('Spares', 'Sales'));
     }
 
     /**
@@ -47,20 +47,25 @@ class SaleDetailsController extends Controller
     public function store(Request $request)
     {
         try {
-            $data = $this->getData($request);
-            SaleDetail::create($data);
-            $sale = Sale::find($request->sale_id);
-            $sale->total_price += $request->real_price;
-            $sale->total_amount += $request->quantity;
-            $sale->save();
 
             $spare = Spare::find($request->spare_id);
-            $spare->quantity -= $request->quantity;
-            $spare->save();
+            if ($spare->quantity >= $request->quantity) {
 
+                $data = $this->getData($request);
+                SaleDetail::create($data);
 
-            return redirect()->route('sales.sale.show',[$request->sale_id])
-                ->with('success_message', 'Detalles de venta se agrego correctamente.');
+                $sale = Sale::find($request->sale_id);
+                $sale->total_price += $request->real_price;
+                $sale->total_amount += $request->quantity;
+                $sale->save();
+
+                $spare->quantity -= $request->quantity;
+                $spare->save();
+                return redirect()->route('sales.sale.show', [$request->sale_id])
+                    ->with('success_message', 'Detalles de venta se agrego correctamente.');
+            }
+            return back()->withInput()
+                ->withErrors(['error' => 'La cantidad maxima del producto es: '.$spare->quantity]);
         } catch (Exception $exception) {
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
@@ -76,7 +81,7 @@ class SaleDetailsController extends Controller
      */
     public function show($id)
     {
-        $saleDetails = SaleDetail::with('spare','sale')->findOrFail($id);
+        $saleDetails = SaleDetail::with('spare', 'sale')->findOrFail($id);
 
         return view('sale_details.show', compact('saleDetails'));
     }
@@ -91,10 +96,10 @@ class SaleDetailsController extends Controller
     public function edit($id)
     {
         $saleDetails = SaleDetail::findOrFail($id);
-        $Spares = Spare::pluck('code','id')->all();
-        $Sales = Sale::pluck('total_price','id')->all();
+        $Spares = Spare::pluck('code', 'id')->all();
+        $Sales = Sale::pluck('total_price', 'id')->all();
 
-        return view('sale_details.edit', compact('saleDetails','Spares','Sales'));
+        return view('sale_details.edit', compact('saleDetails', 'Spares', 'Sales'));
     }
 
     /**

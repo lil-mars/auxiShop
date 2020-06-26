@@ -150,8 +150,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
                     @foreach($client->sales as $sale)
+                <tr>
                         <td>{{optional($sale->Store)->name }}</td>
                         <td>{{$sale->User->get_full_name()}}</td>
                         <td>{{$sale->total_price}}</td>
@@ -163,8 +163,8 @@
                                title="Show Sale">
                                 <span class="fa fa-eye" aria-hidden="true"></span>
                             </a></td>
-                    @endforeach
                 </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

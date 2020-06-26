@@ -54,6 +54,7 @@
                                 <div class="form-group col-lg-4 col-6">
                                     <input value="{{ old('code') }}" type="text" name="code"
                                            class="form-control" placeholder="Codigo">
+
                                 </div>
                                 <div class="form-group col-lg-4 col-6">
                                     <input value="{{ old('description') }}" type="text" name="description"
@@ -61,11 +62,21 @@
                                 </div>
                                 <div class="form-group col-lg-4 col-6">
                                     <input value="{{ old('category') }}" type="text" name="category"
-                                           class="form-control" placeholder="Categoria">
+                                           class="form-control" placeholder="Categoria" list="categories">
+                                    <datalist id="categories">
+                                        @foreach($categories as $category)
+                                            <option value="{{$category}}"></option>
+                                        @endforeach
+                                    </datalist>
                                 </div>
                                 <div class="form-group col-lg-4 col-6">
                                     <input value="" type="text" name="brand"
-                                           class="form-control" placeholder="Marca">
+                                           class="form-control" placeholder="Marca" list="brands">
+                                    <datalist id="brands">
+                                        @foreach($brands as $brand)
+                                            <option value="{{$brand}}"></option>
+                                        @endforeach
+                                    </datalist>
                                 </div>
                                 <div class="form-group col-lg-4 col-6">
                                     <input value="{{ old('originalCode') }}" type="text" name="original_code"

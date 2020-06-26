@@ -12,7 +12,13 @@
 
         </div>
     @endif
-
+    @if ($errors->any())
+        <ul class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
     <div class="panel panel-default">
         <div class="panel-heading clearfix mb-4">
 
@@ -77,8 +83,9 @@
                                     @foreach($categories as $category)
                                         <optgroup label="{{$category->name}}">
                                             @foreach($category->spares as $spare)
-                                                <option value="{{ $spare->id }}">
-                                                    {{ 'Codigo:'. $spare->code.' Original:'.$spare->original_code . ' Desc:' . $spare->description .' Marca:'. $spare->brand->name . ' Precio:' . $spare->price . 'Bs'  }}
+                                                <option value="{{ $spare->id }}" >
+                                                    {{ 'Codigo:'. $spare->code.' Original:'.$spare->original_code . ' Desc:' . $spare->description .' Marca:'. $spare->brand->name.' Cantidad: '.$spare->quantity . ' Precio:' . $spare->price . 'Bs'  }}
+                                                    <p class="hide">{!!  $spare->category->name !!}</p>
                                                 </option>
                                             @endforeach
                                         </optgroup>
@@ -96,7 +103,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">&#x2683;</span>
                                     </div>
-                                    <input type="number" class="form-control" name="quantity" id="quantity">
+                                    <input type="number" class="form-control" name="quantity" id="quantity" min="1">
                                 </div>
                             </div>
                         </div>
@@ -131,7 +138,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Bs</span>
                                     </div>
-                                    <input type="number" class="form-control" id="discount" name="discount">
+                                    <input type="number" class="form-control" id="discount" name="discount" min="0" >
                                 </div>
                             </div>
                         </div>

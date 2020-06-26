@@ -44,7 +44,10 @@
 
         </div>
     </div>
-
 @endsection
+@section('scripts')
+    <script src="{{asset('js/sale/select2client.js')}}"></script>
+@endsection
+
 
 

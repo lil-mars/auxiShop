@@ -3,7 +3,7 @@
     <label for="client_id" class="col-md-2 control-label">Cliente</label>
     <div class="col-md-10">
         <select class="form-control" id="client_id" name="client_id">
-        	    <option value="" style="display: none;" {{ old('client_id', optional($sale)->client_id ?: '') == '' ? 'selected' : '' }} disabled selected>Select client</option>
+        	    <option value="" style="display: none;" {{ old('client_id', optional($sale)->client_id ?: '') == '' ? 'selected' : '' }} disabled selected>Seleccionar cliente</option>
         	@foreach ($Clients as $key => $Client)
 			    <option value="{{ $key }}" {{ old('client_id', optional($sale)->client_id) == $key ? 'selected' : '' }}>
 			    	{{ $Client->get_full_name() }}
@@ -33,5 +33,6 @@
     </div>
 </div>
 <input type="hidden" value="{{auth()->user()->id }}" name="user_id" {{ optional($sale)->user_id ? 'disabled' : '' }}>
+
 
 

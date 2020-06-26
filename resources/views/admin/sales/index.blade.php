@@ -41,10 +41,8 @@
                 <h4>No hay ventas disponibles.</h4>
             </div>
         @else
-        <div class="panel-body panel-body-with-table">
-            <div class="table-responsive">
-
-                <table class="table table-striped ">
+        <div class="card">
+                <table class="table table-striped table-responsive-sm">
                     <thead>
                         <tr>
                             <th>Cliente</th>
@@ -52,6 +50,8 @@
                             <th>Usuario</th>
                             <th>Precio total</th>
                             <th>Cantidad</th>
+                            <th>Creacion</th>
+                            <th>Opciones</th>
 
                             <th></th>
                         </tr>
@@ -64,6 +64,7 @@
                             <td>{{ optional($sale->User)->get_full_name() }}</td>
                             <td>{{ $sale->total_price }}</td>
                             <td>{{ $sale->total_amount }}</td>
+                            <td>{{ $sale->get_creation() }}</td>
                             <td>
                                 <form method="POST" action="{!! route('sales.sale.destroy', $sale->id) !!}" accept-charset="UTF-8">
                                 <input name="_method" value="DELETE" type="hidden">
@@ -88,7 +89,6 @@
                     </tbody>
                 </table>
 
-            </div>
         </div>
 
         <div class="panel-footer">

@@ -22,7 +22,7 @@ class SalesController extends Controller
      */
     public function index()
     {
-        $sales = Sale::with('client','store','user')->paginate(25);
+        $sales = Sale::with('client', 'store', 'user')->paginate(25);
 
         return view('admin.sales.index', compact('sales'));
     }
@@ -35,9 +35,9 @@ class SalesController extends Controller
     public function create()
     {
         $Clients = Client::all()->keyBy('id');
-        $Stores = Store::pluck('name','id')->all();
+        $Stores = Store::pluck('name', 'id')->all();
 
-        return view('admin.sales.create', compact('Clients','Stores'));
+        return view('admin.sales.create', compact('Clients', 'Stores'));
     }
 
     /**
@@ -53,6 +53,7 @@ class SalesController extends Controller
 
             $data = $this->getData($request);
 
+            $data['user_id'] = $request->user()->id;
             Sale::create($data);
 
             return redirect()->route('sales.sale.index')
@@ -73,7 +74,7 @@ class SalesController extends Controller
      */
     public function show($id)
     {
-        $sale = Sale::with('client','store','user')->findOrFail($id);
+        $sale = Sale::with('client', 'store', 'user')->findOrFail($id);
         $categories = Category::all();
 
         return view('admin.sales.show', compact('sale', 'categories'));
@@ -90,9 +91,9 @@ class SalesController extends Controller
     {
         $sale = Sale::findOrFail($id);
         $Clients = Client::all()->keyBy('id');
-        $Stores = Store::pluck('name','id')->all();
+        $Stores = Store::pluck('name', 'id')->all();
 
-        return view('admin.sales.edit', compact('sale','Clients','Stores'));
+        return view('admin.sales.edit', compact('sale', 'Clients', 'Stores'));
     }
 
     /**

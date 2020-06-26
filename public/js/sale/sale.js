@@ -30,3 +30,4 @@ function showPrice(unitPrice, quantity, discount = 0) {
     $('#price').val(format_price);
     $('#real_price').val(format_price - discount);
 }
+

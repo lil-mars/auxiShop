@@ -31,7 +31,7 @@
                 name="car_lines[]" multiple="multiple">
 
         	@foreach ($CarLines as $key => $CarLine)
-			    <option value="{{ $key }}" {{ old('car_line_id', $spare->has_car_line($key)) ? 'selected' : '' }} >
+			    <option value="{{ $key }}" {{ old('car_line_id', optional($spare)->has_car_line($key)) ? 'selected' : '' }} >
 			    	{{ $CarLine }}
 			    </option>
 			@endforeach

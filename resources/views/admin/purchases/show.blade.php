@@ -75,7 +75,8 @@
                                         <optgroup label="{{$category->name}}">
                                             @foreach($category->spares as $spare)
                                                 <option value="{{ $spare->id }}">
-                                                    {{ 'Codigo:'. $spare->code.' Original:'.$spare->original_code . ' Desc:' . $spare->description .' Marca:'. $spare->brand->name . ' Precio:' . $spare->price . 'Bs'  }}
+                                                    {{ 'Codigo:'. $spare->code.' Original:'.$spare->original_code . ' Desc:' . $spare->description .' Marca:'. $spare->brand->name .' Cantidad:'. $spare->quantity . ' Precio:' . $spare->price . 'Bs'  }}
+                                                    <p class="hide">{!!  $spare->category->name !!}</p>
                                                 </option>
                                             @endforeach
                                         </optgroup>
@@ -93,7 +94,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">&#x2683;</span>
                                     </div>
-                                    <input type="number" class="form-control" name="quantity" id="quantity">
+                                    <input type="number" class="form-control" name="quantity" id="quantity" min="1">
                                 </div>
                             </div>
                         </div>
@@ -211,9 +212,9 @@
                 <dt>Contacto</dt>
                 <dd>{{ $purchase->contact }}</dd>
                 <dt>Fecha creacion</dt>
-                <dd>{{ $purchase->created_at }}</dd>
+                <dd>{{ $purchase->get_last_update() }}</dd>
                 <dt>Fecha actualizacion</dt>
-                <dd>{{ $purchase->updated_at }}</dd>
+                <dd>{{ $purchase->get_creation() }}</dd>
 
             </dl>
         </div>

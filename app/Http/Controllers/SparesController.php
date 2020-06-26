@@ -25,7 +25,9 @@ class SparesController extends Controller
     public function index()
     {
         $spares = Spare::all();
-        return view('admin.spares.index',compact('spares'));
+        $categories = Category::pluck('name');
+        $brands = Brand::pluck('name');
+        return view('admin.spares.index', compact('spares', 'categories', 'brands'));
     }
 
     /**
@@ -35,10 +37,10 @@ class SparesController extends Controller
      */
     public function create()
     {
-        $Categories = Category::pluck('name','id')->all();
-        $CarLines = CarLine::pluck('name','id')->all();
-        $Brands = Brand::pluck('name','id')->all();
-        return view('admin.spares.create', compact('Categories','CarLines','Brands'));
+        $Categories = Category::pluck('name', 'id')->all();
+        $CarLines = CarLine::pluck('name', 'id')->all();
+        $Brands = Brand::pluck('name', 'id')->all();
+        return view('admin.spares.create', compact('Categories', 'CarLines', 'Brands'));
     }
 
     /**
@@ -56,11 +58,11 @@ class SparesController extends Controller
             $data = $this->validation($request);
 
             $spare = Spare::create($data);
-            $values = array_values($request['car_lines']);
-
-            $lastSpare = Spare::orderBy('id','desc')->first();
-            $lastSpare->car_lines()->sync($values);
-
+            if ($request['car_lines']) {
+                $values = array_values($request['car_lines']);
+                $lastSpare = Spare::orderBy('id', 'desc')->first();
+                $lastSpare->car_lines()->sync($values);
+            }
             return redirect()->route('spares.index')
                 ->with('success_message', 'Repuesto agregado correctamente.');
         } catch (Exception $exception) {
@@ -80,7 +82,7 @@ class SparesController extends Controller
      */
     public function show($id)
     {
-        $spare = Spare::with('category','carline','brand')->findOrFail($id);
+        $spare = Spare::with('category', 'carline', 'brand')->findOrFail($id);
 
         return view('admin.spares.show', compact('spare'));
     }
@@ -95,11 +97,11 @@ class SparesController extends Controller
     public function edit($id)
     {
         $spare = Spare::findOrFail($id);
-        $Categories = Category::pluck('name','id')->all();
-        $CarLines = CarLine::pluck('name','id')->all();
-        $Brands = Brand::pluck('name','id')->all();
+        $Categories = Category::pluck('name', 'id')->all();
+        $CarLines = CarLine::pluck('name', 'id')->all();
+        $Brands = Brand::pluck('name', 'id')->all();
 
-        return view('admin.spares.edit', compact('spare','Categories','CarLines','Brands'));
+        return view('admin.spares.edit', compact('spare', 'Categories', 'CarLines', 'Brands'));
     }
 
     /**
@@ -114,13 +116,14 @@ class SparesController extends Controller
     {
         try {
 
-            $data = $this->validation($request,$id);
+            $data = $this->validation($request, $id);
 
             $spare = Spare::findOrFail($id);
             $spare->update($data);
-
-            $values = array_values($request['car_lines']);
-            $spare->car_lines()->sync($values);
+            if ($request['car_lines']) {
+                $values = array_values($request['car_lines']);
+                $spare->car_lines()->sync($values);
+            }
 
             return redirect()->route('spares.index')
                 ->with('success_message', 'Repuesto actualizado.');
@@ -171,8 +174,8 @@ class SparesController extends Controller
             'description' => 'nullable|string|min:0|max:255',
             'nationality' => 'nullable|string|min:0|max:60',
             'measure' => 'nullable|string|min:0|max:50',
-            'product_code' => 'nullable|string|min:0|max:30|unique:spares,product_code,'.$id,
-            'original_code' => 'nullable|string|min:0|max:50|unique:spares,original_code,'.$id,
+            'product_code' => 'nullable|string|min:0|max:30|unique:spares,product_code,' . $id,
+            'original_code' => 'nullable|string|min:0|max:50|unique:spares,original_code,' . $id,
             'quantity' => 'nullable|numeric|min:-2147483648|max:2147483647',
             'price' => 'required|numeric|min:-999999.99|max:999999.99',
             'price_m' => 'required|numeric|min:-999999.99|max:999999.99',
@@ -185,21 +188,25 @@ class SparesController extends Controller
     }
 
 
-    public function filter(Request $request) {
+    public function filter(Request $request)
+    {
+        $categories = Category::pluck('name');
+        $brands = Brand::pluck('name');
+
         $filters = array_filter($request->all(), function ($value) {
             return !is_null($value);
         });
         // Filter products
         $spares = Spare::all();
         $spares = $spares->filter(function ($product) use ($filters) {
-            foreach ($filters as $key => $filter ) {
-                if (strripos($product[$key],$filter) === false){
+            foreach ($filters as $key => $filter) {
+                if (strripos($product[$key], $filter) === false) {
                     return false;
                 }
             }
             return true;
         });
-        return view('admin.spares.index', compact('spares'));
+        return view('admin.spares.index', compact('spares','categories', 'brands'));
     }
 
 }
