@@ -146,8 +146,4 @@
         </div>
     </div>
 </div>
-@section('scripts')
-    <script src="{{asset('js/spare/carline.js')}}">
-    </script>
-@endsection
 

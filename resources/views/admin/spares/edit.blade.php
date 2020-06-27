@@ -55,7 +55,8 @@
 
 @endsection
 @section('scripts')
-
+    <script src="{{asset('js/spare/carline.js')}}">
+    </script>
     <script src="{{asset('js/spare/showImage.js')}}">
     </script>
 @endsection

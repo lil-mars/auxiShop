@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(\App\Models\Spare::class, function (Faker $faker) {
     $date = $faker->dateTimeBetween('-5 years');
     return [
-        'code'=> $faker->bankAccountNumber,
+        'code'=> 'B' . $faker->randomNumber(5),
         'category_id' => $faker->numberBetween(1,5),
         'brand_id' => $faker->numberBetween(1,5),
         'description' => $faker->text(50),

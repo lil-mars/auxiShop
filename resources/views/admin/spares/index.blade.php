@@ -92,13 +92,13 @@
                         </form>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body col-12">
-                        <table id="table" class="table table-responsive-xl table-hover table-bordered">
+                    <div class="card-body">
+                        <table id="table" class="table table-responsive table-hover table-bordered" style="width: 100%">
                             <thead class="bg-secondary">
                             <tr>
-                                <th>Codigo</th>
+                                <th >Codigo</th>
                                 <th>Descripcion</th>
-                                <th>Categoria</th>
+                                <th hidden>Categoria</th>
                                 <th>Marca</th>
                                 <th>Nacion</th>
                                 <th>Medida</th>
@@ -107,25 +107,25 @@
                                 @if(auth()->user()->Role->name == 'admin')
                                     <th>Compra</th>
                                 @endif
-                                <th>Cod. Original</th>
+                                <th hidden>Cod. Original</th>
                                 <th>Opciones</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($spares as $spare)
                                 <tr>
-                                    <td>{{ $spare->code }}</td>
-                                    <td>{{ $spare->description }}</td>
-                                    <td>{{ optional($spare->category)->name }}</td>
+                                    <td width="5%">{{ $spare->code }}</td>
+                                    <td width="30%">{{ $spare->description }}</td>
+                                    <td hidden>{{ optional($spare->category)->name }}</td>
                                     <td>{{ optional($spare->brand)->name }}</td>
                                     <td>{{ $spare->nationality }}</td>
                                     <td>{{ $spare->measure }}</td>
-                                    <td>{{ $spare->product_code }}</td>
+                                    <td >{{ $spare->product_code }}</td>
                                     <td>{{ $spare->price }}</td>
                                     @if(auth()->user()->Role->name == 'admin')
                                         <td>{{ $spare->investment }}</td>
                                     @endif
-                                    <td>
+                                    <td hidden>
                                         {{ $spare->original_code }}
                                     </td>
                                     <td>
@@ -155,7 +155,7 @@
                             <tr>
                                 <th>Codigo</th>
                                 <th>Imagen</th>
-                                <th>Categoria</th>
+                                <th hidden>Categoria</th>
                                 <th>Marca</th>
                                 <th>Nacion</th>
                                 <th>Medida</th>
@@ -164,7 +164,7 @@
                                 @if(auth()->user()->Role->name == 'admin')
                                     <th>Compra</th>
                                 @endif
-                                <th>Cod. Original</th>
+                                <th hidden>Cod. Original</th>
                                 <th>Opciones</th>
                             </tr>
                             </tfoot>

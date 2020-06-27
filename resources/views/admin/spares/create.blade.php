@@ -28,7 +28,7 @@
                                 @endforeach
                             </ul>
                         @endif
-                        <form method="POST" action="{{ route('spares.store') }}" accept-charset="UTF-8"
+                        <form method=POST" action="{{ route('spares.store') }}" accept-charset="UTF-8"
                               id="create_spare_form" name="create_spare_form" class="form-horizontal">
 
                             {{ csrf_field() }}
@@ -51,6 +51,8 @@
 
 @endsection
 @section('scripts')
+    <script src="{{asset('js/spare/carline.js')}}">
+    </script>
     <script src="{{asset('js/spare/showImage.js')}}">
     </script>
 @endsection

@@ -27,7 +27,7 @@ class CreateSpares extends Migration
         });
         Schema::create('spares', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('code',50)->nullable();
+            $table->string('code',6)->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('brand_id')->nullable();
             $table->string('description')->nullable();
