@@ -63,6 +63,7 @@ class SparesController extends Controller
                 $lastSpare = Spare::orderBy('id', 'desc')->first();
                 $lastSpare->car_lines()->sync($values);
             }
+
             return redirect()->route('spares.index')
                 ->with('success_message', 'Repuesto agregado correctamente.');
         } catch (Exception $exception) {

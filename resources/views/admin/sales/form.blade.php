@@ -21,7 +21,7 @@
         <select class="form-control" id="store_id" name="store_id">
         	    <option value="" style="display: none;"
                         {{ old('store_id', optional($sale)->store_id ?: '') == '' ? 'selected' : '' }} disabled selected
-                >Select store</option>
+                >Seleccionar tienda</option>
         	@foreach ($Stores as $key => $Store)
 			    <option value="{{ $key }}" {{ old('store_id', optional($sale)->store_id) == $key ? 'selected' : '' }}>
 			    	{{ $Store }}

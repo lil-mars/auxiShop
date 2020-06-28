@@ -189,7 +189,7 @@
                     <div class="modal-body">
                         <div class="row mb-2">
                             <div class="col-7">
-                                <img src="" alt="No image" class="img-fluid img-rounded" id="product-image">
+                                <img src="" alt="No image" class="img-fluid img-fluid" id="product-image">
                             </div>
                             <div class="col-5">
                                 <ul class="list-group mb-1">

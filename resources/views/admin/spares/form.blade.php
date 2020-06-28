@@ -3,7 +3,7 @@
     <label for="code" class="col-md-2 control-label">Codigo</label>
     <div class="col-md-10">
         <input class="form-control" name="code" type="text" id="code"
-               value="{{ old('code', optional($spare)->code) }}" maxlength="50" >
+               value="{{ old('code', optional($spare)->code) }}" maxlength="6" >
         {!! $errors->first('code', '<p class="help-block text-danger">:message</p>') !!}
     </div>
 </div>
