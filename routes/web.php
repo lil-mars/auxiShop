@@ -145,7 +145,9 @@ Route::group([
 Route::resource('purchases.spare', 'PurchaseSparesController');
 Route::resource('sales.spare', 'SaleDetailsController');
 
-
+Route::post('categoriesStoreAndBack','CategoriesController@storeAndBack')->name('categoryStoreAndBack');
+Route::post('carlineStoreAndBack','CarLinesController@storeAndBack')->name('carlineStoreAndBack');
+Route::post('brandsStoreAndBack','BrandsController@storeAndBack')->name('brandStoreAndBack');
 
 Route::group([
     'middleware' => ['auth', 'role:admin'],

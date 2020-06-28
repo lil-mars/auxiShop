@@ -61,6 +61,18 @@ class CategoriesController extends Controller
                 ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
         }
     }
+    public function storeAndBack(Request $request) {
+        try {
+            $data = $this->validation($request);
+
+            $cat = Category::create($data);
+            return back();
+        } catch (Exception $exception) {
+
+            return back()->withInput()
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
+        }
+    }
 
     /**
      * Display the specified category.

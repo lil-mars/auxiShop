@@ -62,6 +62,22 @@ class CarLinesController extends Controller
         }
     }
 
+    public function storeAndBack(Request $request)
+    {
+        try {
+
+            $data = $this->getData($request);
+
+            CarLine::create($data);
+
+            return back();
+        } catch (Exception $exception) {
+
+            return back()->withInput()
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
+        }
+    }
+
     /**
      * Display the specified car line.
      *

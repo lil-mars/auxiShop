@@ -12,9 +12,25 @@
                     <div class="">
                         <h3 class="">Nuevo repuesto</h3>
                     </div>
-                    <a href="{{ route('spares.index') }}" class="btn btn-primary">
+                    <button href="{{ route('spares.index') }}" class="btn btn-secondary">
                         Volver atras
                         <span class="fas fa-backspace"></span>
+                    </button>
+
+                    <button href="{{ route('spares.index') }}" class="btn btn-success" data-toggle="modal"
+                            data-target="#brandsForm">
+                        Nueva marca
+                        <span class="fas fa-plus"></span>
+                    </button>
+                    <button href="{{ route('spares.index') }}" class="btn btn-warning" data-toggle="modal"
+                            data-target="#carlineForm">
+                        Nueva linea carro
+                        <span class="fas fa-plus"></span>
+                    </button>
+                    <a href="{{ route('spares.index') }}" class="btn btn-info" data-toggle="modal"
+                       data-target="#categoriesForm">
+                        Nueva categoria
+                        <span class="fas fa-plus"></span>
                     </a>
                 </div>
 
@@ -46,9 +62,113 @@
 
             </div>
         </div>
-
     </div>
 
+
+    <div class="modal fade" id="categoriesForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nueva categoria</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="{{route('categoryStoreAndBack')}}">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name" class="col-form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                        <div>
+                            <h6 class="text-bold">Todas las categorias</h6>
+                            <ul class="list-group">
+                                @foreach($Categories as $category)
+                                    <li class="list-group-item">{{$category}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Agregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="carlineForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nueva linea de carro</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="{{route('carlineStoreAndBack')}}">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name" class="col-form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                        <div>
+                            <h6 class="text-bold">Todas Lineas de carro</h6>
+                            <ul class="list-group">
+                                @foreach($CarLines as $carline)
+                                    <li class="list-group-item">{{$carline}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Agregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="brandsForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nueva marca</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="{{route('brandStoreAndBack')}}">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name" class="col-form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                        <div>
+                            <h6 class="text-bold">Todas las marcas</h6>
+                            <ul class="list-group">
+                                @foreach($Brands as $brand)
+                                    <li class="list-group-item">{{$brand}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Agregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('scripts')
     <script src="{{asset('js/spare/carline.js')}}">

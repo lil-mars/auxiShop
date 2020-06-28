@@ -52,8 +52,22 @@ class BrandsController extends Controller
 
             Brand::create($data);
 
-            return redirect()->route('brands.index')
-                ->with('success_message', 'Marca se agrego correctamente.');
+            return back();
+        } catch (Exception $exception) {
+
+            return back()->withInput()
+                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
+        }
+    }
+    public function storeAndBack(Request $request)
+    {
+        try {
+
+            $data = $this->getData($request);
+
+            Brand::create($data);
+
+            return back();
         } catch (Exception $exception) {
 
             return back()->withInput()
