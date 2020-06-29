@@ -44,7 +44,6 @@ class ClientsController extends Controller
     public function store(Request $request)
     {
         try {
-
             $data = $this->getData($request);
 
             Client::create($data);

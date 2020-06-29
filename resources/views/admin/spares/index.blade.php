@@ -18,30 +18,32 @@
 
         </div>
     @endif
-    <a href="{{route('spares.create')}}">
-        <button class="btn btn-primary m-2">
-            Agregar respuesto
-            <span class="fa fa-plus"></span>
-        </button>
-    </a>
-    <a href="{{route('brands.index')}}">
-        <button class="btn btn-success m-2">
-            Marcas
-            <span class="fa fa-list"></span>
-        </button>
-    </a>
-    <a href="{{route('car_lines.index')}}">
-        <button class="btn btn-warning m-2">
-            Linea de carros
-            <span class="fa fa-list"></span>
-        </button>
-    </a>
-    <a href="{{route('categories.index')}}">
-        <button class="btn btn-secondary m-2">
-            Categoria
-            <span class="fa fa-list"></span>
-        </button>
-    </a>
+    @if(auth()->user()->Role->name == 'admin')
+        <a href="{{route('spares.create')}}">
+            <button class="btn btn-primary m-2">
+                Agregar respuesto
+                <span class="fa fa-plus"></span>
+            </button>
+        </a>
+        <a href="{{route('brands.index')}}">
+            <button class="btn btn-success m-2">
+                Marcas
+                <span class="fa fa-list"></span>
+            </button>
+        </a>
+        <a href="{{route('car_lines.index')}}">
+            <button class="btn btn-warning m-2">
+                Linea de carros
+                <span class="fa fa-list"></span>
+            </button>
+        </a>
+        <a href="{{route('categories.index')}}">
+            <button class="btn btn-secondary m-2">
+                Categoria
+                <span class="fa fa-list"></span>
+            </button>
+        </a>
+    @endif
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
@@ -96,7 +98,7 @@
                         <table id="table" class="table table-responsive table-hover table-bordered" style="width: 100%">
                             <thead class="bg-secondary">
                             <tr>
-                                <th >Codigo</th>
+                                <th>Codigo</th>
                                 <th>Descripcion</th>
                                 <th hidden>Categoria</th>
                                 <th>Marca</th>
@@ -120,7 +122,7 @@
                                     <td>{{ optional($spare->brand)->name }}</td>
                                     <td>{{ $spare->nationality }}</td>
                                     <td>{{ $spare->measure }}</td>
-                                    <td >{{ $spare->product_code }}</td>
+                                    <td>{{ $spare->product_code }}</td>
                                     <td>{{ $spare->price }}</td>
                                     @if(auth()->user()->Role->name == 'admin')
                                         <td>{{ $spare->investment }}</td>
@@ -133,17 +135,23 @@
                                             @csrf
                                             @method('DELETE')
                                             <div class="btn-group">
-                                                <a class="btn btn-warning show-information" data-product="{{$spare}}" data-carlines="{{$spare->car_lines}}">
+
+                                                <a class="btn btn-warning show-information" data-product="{{$spare}}"
+                                                   data-carlines="{{$spare->car_lines}}">
                                                     <i class='fas fa-eye'></i>
                                                 </a>
-                                                <a href="{{ route('spares.edit', $spare->id)}}"
-                                                   class="btn btn-primary">
-                                                    <i class='fas fa-pencil-alt'></i>
-                                                </a>
-                                                <button type="submit" class="btn btn-danger"
-                                                        data-toggle="modal" data-target="#deleteModal">
-                                                    <i class='fas fa-trash-alt'></i>
-                                                </button>
+                                                @if(auth()->user()->Role->name == 'admin')
+                                                    <a href="{{ route('spares.edit', $spare->id)}}"
+                                                       class="btn btn-primary">
+                                                        <i class='fas fa-pencil-alt'></i>
+                                                    </a>
+                                                @endif
+                                                @if(auth()->user()->Role->name == 'admin')
+                                                    <button type="submit" class="btn btn-danger"
+                                                            data-toggle="modal" data-target="#deleteModal">
+                                                        <i class='fas fa-trash-alt'></i>
+                                                    </button>
+                                                @endif
                                             </div>
                                         </form>
                                     </td>

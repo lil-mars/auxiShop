@@ -12,25 +12,24 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/layout', function () {
-    return view('layout');
-});
 
-Route::resource('spares', 'SparesController')->middleware(['auth']);
-Route::resource('brands', 'BrandsController')->middleware(['auth']);
-Route::resource('categories', 'CategoriesController')->middleware(['auth']);
-Route::resource('car_lines', 'CarLinesController')->middleware(['auth']);
+//Spares
+Route::resource('spares', 'SparesController')->except(['index'])->middleware(['auth', 'role:admin']);
+Route::get('spares', 'SparesController@index')->middleware(['auth'])->name('spares.index');
+
+Route::resource('brands', 'BrandsController')->middleware(['auth', 'role:admin' ]);
+Route::resource('categories', 'CategoriesController')->middleware(['auth','role:admin']);
+Route::resource('car_lines', 'CarLinesController')->middleware(['auth','role:admin']);
 
 Auth::routes(['register' => false, 'reset'=>false]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware(['auth']);
-Route::get('filter-products', 'SparesController@filter')->name('filter-products');
+Route::get('filter-products', 'SparesController@filter')->name('filter-products')->middleware(['auth']);
 
 
-// Not using
-
-
+// Clients allow all users
 Route::group([
     'prefix' => 'clients',
+    'middleware' => ['auth']
 ], function () {
     Route::get('/', 'ClientsController@index')
          ->name('clients.clients.index');
@@ -48,8 +47,10 @@ Route::group([
          ->name('clients.clients.destroy');
 });
 
+//Providers only admin
 Route::group([
     'prefix' => 'providers',
+    'middleware' => ['auth', 'role:admin']
 ], function () {
     Route::get('/', 'ProvidersController@index')
          ->name('providers.provider.index');
@@ -69,6 +70,7 @@ Route::group([
 
 Route::group([
     'prefix' => 'clients',
+    'middleware' => ['auth'],
 ], function () {
     Route::get('/', 'ClientsController@index')
          ->name('clients.client.index');
@@ -86,8 +88,10 @@ Route::group([
          ->name('clients.client.destroy');
 });
 
+// Stores only users
 Route::group([
     'prefix' => 'stores',
+    'middleware' => ['auth'],
 ], function () {
     Route::get('/', 'StoresController@index')
          ->name('stores.store.index');
@@ -104,8 +108,10 @@ Route::group([
     Route::delete('/store/{store}','StoresController@destroy')
          ->name('stores.store.destroy');
 });
+// Sales allow all users
 Route::group([
     'prefix' => 'sales',
+    'middleware' => ['auth'],
 ], function () {
     Route::get('/', 'SalesController@index')
          ->name('sales.sale.index');
@@ -123,8 +129,10 @@ Route::group([
          ->name('sales.sale.destroy');
 });
 
+// Purchases only admin
 Route::group([
     'prefix' => 'purchases',
+    'middleware' => ['auth', 'role:admin'],
 ], function () {
     Route::get('/', 'PurchasesController@index')
          ->name('purchases.purchase.index');
@@ -142,12 +150,12 @@ Route::group([
          ->name('purchases.purchase.destroy');
 });
 
-Route::resource('purchases.spare', 'PurchaseSparesController');
-Route::resource('sales.spare', 'SaleDetailsController');
+Route::resource('purchases.spare', 'PurchaseSparesController')->middleware(['auth']);
+Route::resource('sales.spare', 'SaleDetailsController')->middleware(['auth']);
 
-Route::post('categoriesStoreAndBack','CategoriesController@storeAndBack')->name('categoryStoreAndBack');
-Route::post('carlineStoreAndBack','CarLinesController@storeAndBack')->name('carlineStoreAndBack');
-Route::post('brandsStoreAndBack','BrandsController@storeAndBack')->name('brandStoreAndBack');
+Route::post('categoriesStoreAndBack','CategoriesController@storeAndBack')->name('categoryStoreAndBack')->middleware(['auth', 'role:admin']);
+Route::post('carlineStoreAndBack','CarLinesController@storeAndBack')->name('carlineStoreAndBack')->middleware(['auth', 'role:admin']);
+Route::post('brandsStoreAndBack','BrandsController@storeAndBack')->name('brandStoreAndBack')->middleware(['auth', 'role:admin']);
 
 Route::group([
     'middleware' => ['auth', 'role:admin'],

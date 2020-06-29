@@ -12,10 +12,10 @@
                     <div class="">
                         <h3 class="">Nuevo repuesto</h3>
                     </div>
-                    <button href="{{ route('spares.index') }}" class="btn btn-secondary">
+                    <a href="{{ route('spares.index') }}" class="btn btn-secondary">
                         Volver atras
                         <span class="fas fa-backspace"></span>
-                    </button>
+                    </a>
 
                     <button href="{{ route('spares.index') }}" class="btn btn-success" data-toggle="modal"
                             data-target="#brandsForm">

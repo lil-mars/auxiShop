@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -31,7 +30,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
 
@@ -78,7 +78,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
 
                     {{--    Home         --}}
                     <li class="nav-item">
@@ -115,29 +116,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
                     {{--                    Users--}}
                     @if (auth()->user()->Role->name == 'admin')
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fas fa-user"></i>
-                            <p>
-                                Usuarios
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('users.user.index')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Lista</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('users.user.create')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Agregar usuario</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fas fa-user"></i>
+                                <p>
+                                    Usuarios
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('users.user.index')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Lista</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('users.user.create')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Agregar usuario</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     @endif
                     {{--    Clientes      --}}
                     <li class="nav-item has-treeview">
@@ -164,53 +165,57 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </ul>
                     </li>
                     {{--    Providers       --}}
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fas fa-user-tie"></i>
-                            <p>
-                                Proveedores
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('providers.provider.index')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Lista</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('providers.provider.create')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Agregar proveedor</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    @if (auth()->user()->Role->name == 'admin')
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fas fa-user-tie"></i>
+                                <p>
+                                    Proveedores
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('providers.provider.index')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Lista</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('providers.provider.create')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Agregar proveedor</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
                     {{--    Purchases       --}}
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fas fa-shopping-bag"></i>
-                            <p>
-                                Compras
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('purchases.purchase.index')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Lista</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('purchases.purchase.create')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Agregar compra</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    @if (auth()->user()->Role->name == 'admin')
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fas fa-shopping-bag"></i>
+                                <p>
+                                    Compras
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('purchases.purchase.index')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Lista</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('purchases.purchase.create')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Agregar compra</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
                     {{--    Stores      --}}
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
@@ -227,12 +232,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <p>Lista</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{route('stores.store.create')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Agregar tienda</p>
-                                </a>
-                            </li>
+                            @if (auth()->user()->Role->name == 'admin')
+                                <li class="nav-item">
+                                    <a href="{{route('stores.store.create')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Agregar tienda</p>
+                                    </a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
                     {{--    Sales       --}}
@@ -260,14 +267,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </ul>
                     </li>
                     {{--    Stats       --}}
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-chart-area"></i>
-                            <p>
-                                Estadisticas
-                            </p>
-                        </a>
-                    </li>
+                    @if (auth()->user()->Role->name == 'admin')
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-area"></i>
+                                <p>
+                                    Estadisticas
+                                </p>
+                            </a>
+                        </li>
+                    @endif
 
                 </ul>
             </nav>
