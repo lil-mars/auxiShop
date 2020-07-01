@@ -265,7 +265,3 @@
     </div>
 
 @endsection
-@section('scripts')
-    <script src="{{asset('js/sale/sale.js')}}">
-    </script>
-@endsection

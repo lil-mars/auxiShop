@@ -24,7 +24,6 @@ $(document).ready(function () {
         $('#product-pro-code-modal').text(product['product_code']);
         $('#product-description-modal').text(product['description']);
         $('#product-category-modal').text(product['category']['name']);
-        $('#product-nacionality-modal').text(product['nationality']);
         $('#product-measure-modal').text(product['measure']);
         $('#product-quantity-modal').text(product['quantity']);
         $('#product-price-modal').text(product['price']);

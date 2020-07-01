@@ -54,21 +54,24 @@ class Store extends Model
     /**
      * Get the sale for this model.
      *
-     * @return App\Models\Sale
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function sale()
     {
         return $this->hasOne('App\Models\Sale','store_id','id');
     }
 
+    public function spares(){
+        return $this->belongsToMany('App\Models\Spare', 'store_spare','store_id','spare_id');
+    }
     /**
      * Get the storeSpare for this model.
      *
      * @return App\Models\StoreSpare
      */
-    public function storeSpare()
+    public function store_spares()
     {
-        return $this->hasOne('App\Models\StoreSpare','store_id','id');
+        return $this->hasMany('App\Models\StoreSpare','store_id','id');
     }
 
 

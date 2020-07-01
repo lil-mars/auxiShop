@@ -4,8 +4,62 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8fc83016bf2e7217813c2b98368743ad",
+    "content-hash": "bdf74ee5d05825eeac9e242cd0550f3f",
     "packages": [
+        {
+            "name": "asdfx/laravel-fullcalendar",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/agjmills/laravel-fullcalendar.git",
+                "reference": "bbe11d3ecd202973bfce08f813a0df7f72aa2c70"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/agjmills/laravel-fullcalendar/zipball/bbe11d3ecd202973bfce08f813a0df7f72aa2c70",
+                "reference": "bbe11d3ecd202973bfce08f813a0df7f72aa2c70",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.0|^6.0|^7.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Asdfx\\LaravelFullcalendar\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Calendar": "Asdfx\\LaravelFullcalendar\\Facades\\Calendar"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Asdfx\\LaravelFullcalendar": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Mills",
+                    "email": "alex@asdfx.us"
+                },
+                {
+                    "name": "Shawn Tunney",
+                    "email": "shawn.tunney@gmail.com"
+                }
+            ],
+            "description": "Laravel helper for FullCalendar.io",
+            "time": "2020-05-21T07:23:59+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",
@@ -374,6 +428,7 @@
                     "email": "jakub.onderka@gmail.com"
                 }
             ],
+            "abandoned": "php-parallel-lint/php-console-color",
             "time": "2018-09-29T17:23:10+00:00"
         },
         {
@@ -420,6 +475,7 @@
                 }
             ],
             "description": "Highlight PHP code in terminal",
+            "abandoned": "php-parallel-lint/php-console-highlighter",
             "time": "2018-09-29T18:48:56+00:00"
         },
         {

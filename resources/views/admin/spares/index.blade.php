@@ -49,7 +49,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-dark">
                         <h5>Filtros de busqueda:</h5>
                         <form action="{{route('filter-products')}}" method="get">
                             <div class="row">
@@ -90,21 +90,20 @@
                                 </div>
 
                             </div>
-                            <input type="submit" class="btn btn-outline-primary" value="Filtrar">
+                            <input type="submit" class="btn btn-primary" value="Filtrar">
                         </form>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="table" class="table table-responsive table-hover table-bordered" style="width: 100%">
-                            <thead class="bg-secondary">
+                            <thead class="bg-dark">
                             <tr>
-                                <th>Codigo</th>
-                                <th>Descripcion</th>
-                                <th hidden>Categoria</th>
+                                <th width="5%">Codigo</th>
+                                <th width="30%">Descripcion</th>
+                                <th width="7%">Categoria</th>
                                 <th>Marca</th>
-                                <th>Nacion</th>
                                 <th>Medida</th>
-                                <th>Codigo respuesto</th>
+                                <th width="5%">Codigo respuesto</th>
                                 <th>Venta</th>
                                 @if(auth()->user()->Role->name == 'admin')
                                     <th>Compra</th>
@@ -118,11 +117,10 @@
                                 <tr>
                                     <td width="5%">{{ $spare->code }}</td>
                                     <td width="30%">{{ $spare->description }}</td>
-                                    <td hidden>{{ optional($spare->category)->name }}</td>
+                                    <td width="7%">{{ optional($spare->category)->name }}</td>
                                     <td>{{ optional($spare->brand)->name }}</td>
-                                    <td>{{ $spare->nationality }}</td>
                                     <td>{{ $spare->measure }}</td>
-                                    <td>{{ $spare->product_code }}</td>
+                                    <td width="5%">{{ $spare->product_code }}</td>
                                     <td>{{ $spare->price }}</td>
                                     @if(auth()->user()->Role->name == 'admin')
                                         <td>{{ $spare->investment }}</td>
@@ -161,13 +159,12 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>Codigo</th>
-                                <th>Imagen</th>
-                                <th hidden>Categoria</th>
+                                <th width="5%">Codigo</th>
+                                <th width="30%">Decripcion</th>
+                                <th width="7%">Categoria</th>
                                 <th>Marca</th>
-                                <th>Nacion</th>
                                 <th>Medida</th>
-                                <th>Codigo respuesto</th>
+                                <th width="5%">Codigo respuesto</th>
                                 <th>Venta</th>
                                 @if(auth()->user()->Role->name == 'admin')
                                     <th>Compra</th>
@@ -223,9 +220,6 @@
                                 <b>Categoria</b> <a class="float-right" id="product-category-modal"></a>
                             </li>
                             <li class="list-group-item col-6">
-                                <b>Nacion</b> <a class="float-right" id="product-nacionality-modal"></a>
-                            </li>
-                            <li class="list-group-item col-4">
                                 <b>Marca</b> <a class="float-right" id="product-brand-modal"></a>
                             </li>
                             <li class="list-group-item col-4">
@@ -250,6 +244,14 @@
                             </li>
                             <li class="list-group-item col-6">
                                 <b>Ultima actulizacion</b> <a class="float-right" id="product-updated-at-modal"></a>
+                            </li>
+                            <li class="list-group-item col-12">
+                                <b>Linea de carro</b> <a class="float-right" id="product-code-carline"></a>
+                            </li>
+                    {{--Tiendas--}}
+                            <h6>Tiendas</h6>
+                            <li class="list-group-item col-12">
+                                <b>Linea de carro</b> <a class="float-right" id="product-code-carline"></a>
                             </li>
                             <li class="list-group-item col-12">
                                 <b>Linea de carro</b> <a class="float-right" id="product-code-carline"></a>

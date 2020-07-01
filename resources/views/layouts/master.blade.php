@@ -107,10 +107,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('spares.create')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Agregar repuesto</p>
-                                </a>
+                                @if (auth()->user()->Role->name == 'admin')
+                                    <a href="{{route('spares.create')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Agregar repuesto</p>
+                                    </a>
+                                @endif
                             </li>
                         </ul>
                     </li>
@@ -258,6 +260,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <p>Lista</p>
                                 </a>
                             </li>
+                            @if (auth()->user()->Role->name == 'admin')
+                                <li class="nav-item">
+                                    <a href="{{route('sales.sale.calendar')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Calendario</p>
+                                    </a>
+                                </li>
+                            @endif
                             <li class="nav-item">
                                 <a href="{{route('sales.sale.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>

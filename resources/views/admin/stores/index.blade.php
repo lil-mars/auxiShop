@@ -67,6 +67,9 @@
                                         <a href="{{ route('stores.store.show', $store->id ) }}" class="btn btn-info" title="Show Store">
                                             <span class="fa fa-eye" aria-hidden="true"></span>
                                         </a>
+                                        <a href="{{ route('stores.store.list', $store->id ) }}" class="btn btn-warning" title="Show Store">
+                                            <span class="fa fa-clipboard-list" aria-hidden="true"></span>
+                                        </a>
                                         <a href="{{ route('stores.store.edit', $store->id ) }}" class="btn btn-primary" title="Edit Store">
                                             <span class="fa fa-pen" aria-hidden="true"></span>
                                         </a>

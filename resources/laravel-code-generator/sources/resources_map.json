@@ -78,5 +78,10 @@
         "model-name": "users",
         "resource-file": "users.json",
         "table-name": "users"
+    },
+    {
+        "model-name": "StoreSpare",
+        "resource-file": "store_spares.json",
+        "table-name": "store_spare"
     }
 ]

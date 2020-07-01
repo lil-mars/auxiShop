@@ -27,6 +27,13 @@ class SalesController extends Controller
         return view('admin.sales.index', compact('sales'));
     }
 
+    public function calendar()
+    {
+        $sales = Sale::all();
+
+        return view('admin.sales.calendar', compact('sales'));
+    }
+
     /**
      * Show the form for creating a new sale.
      *

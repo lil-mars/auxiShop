@@ -12,7 +12,7 @@ $factory->define(\App\Models\Spare::class, function (Faker $faker) {
         'category_id' => $faker->numberBetween(1,5),
         'brand_id' => $faker->numberBetween(1,5),
         'description' => $faker->text(50),
-        'nationality' => $faker->country,
+//        'nationality' => $faker->country,
         'measure' => $faker->hexColor,
         'product_code' => $faker->ean8,
         'original_code' => $faker->ean8,

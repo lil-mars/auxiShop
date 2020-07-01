@@ -79,11 +79,16 @@ class Spare extends Model
      *
      * Get the CarLine for this model.
      *
-     * @return App\Models\CarLine
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function car_lines()
     {
         return $this->belongsToMany('App\Models\CarLine','spare_car_line','spare_id', 'car_line_id');
+    }
+
+    public function stores()
+    {
+        return $this->belongsToMany('App\Models\Store','store_spare','spare_id', 'store_id');
     }
 
     /**

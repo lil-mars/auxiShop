@@ -16,6 +16,7 @@ class CreateSpares extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 50)->nullable();
+            $table->string('nationality', 45)->nullable();
         });
         Schema::create('car_lines', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -31,12 +32,11 @@ class CreateSpares extends Migration
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('brand_id')->nullable();
             $table->string('description')->nullable();
-            $table->string('nationality',60)->nullable();
+//            $table->string('nationality',60)->nullable();
             $table->string('measure',50)->nullable();
             $table->string('product_code',30)->nullable();
             $table->string('original_code',50)->nullable();
             $table->integer('quantity')->nullable();
-
             $table->float('price');
             $table->float('price_m');
             $table->float('investment');
