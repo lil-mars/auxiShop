@@ -23,7 +23,7 @@
         <div class="panel-heading clearfix mb-4">
 
         <span class="pull-left">
-            <h4 class="">{{ isset($title) ? $title : 'Venta ' . $sale->id }}</h4>
+            <h4 class="">{{ isset($title) ? $title : 'Datos de Venta ' }}</h4>
         </span>
 
             <div class="float-left">
@@ -55,7 +55,10 @@
             </div>
             <div class="float-right">
                 <p>
-                    <a href="javascript:history.go(-1)" title="Return to the previous page" class="btn btn-outline-danger">
+                    <a href="#"
+                       onclick="window.location=document.referrer;"
+                       title="Return to the previous page"
+                       class="btn btn-outline-danger">
                         Volver atras <i class="fa fa-backward"></i>
                     </a>
                 </p>
@@ -73,22 +76,26 @@
                 <form action="{{route('sales.spare.store', $sale->id)}}" method="post">
                     @csrf
                     <input type="hidden" name="sale_id" value="{{ $sale->id }}">
+                    <input type="hidden" name="store_id" value="{{ $sale->store->id }}">
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="select2">Producto</label>
 
-                                <select class="form-control" id="select2" name="spare_id" tabindex="-1" class="js-states form-control-lg">
+
+                                <select class="form-control" id="select2" name="spare_id" tabindex="-1"
+                                        class="js-states form-control-lg">
                                     <option value="" selected>--- Selecciona el producto ---</option>
-                                    @foreach($categories as $category)
-                                        <optgroup label="{{$category->name}}">
-                                            @foreach($category->spares as $spare)
-                                                <option value="{{ $spare->id }}" >
-                                                    {{ 'Codigo:'. $spare->code.' Original:'.$spare->original_code . ' Desc:' . $spare->description .' Marca:'. $spare->brand->name.' Cantidad: '.$spare->quantity . ' Precio:' . $spare->price . 'Bs'  }}
-                                                    <p class="hide">{!!  $spare->category->name !!}</p>
-                                                </option>
-                                            @endforeach
-                                        </optgroup>
+                                    @foreach($store_spares as $store_spare)
+                                        <option class="option-spare" value="{{$store_spare->spare->id}}" >
+                                            {{'Codigo:'.$store_spare->spare->code.
+                                             ' Original:'.$store_spare->spare->original_code .
+                                              ' Desc:' .$store_spare->spare->description .
+                                               ' Marca:'.$store_spare->spare->brand->name .
+                                                ' Cantidad:'. $store_spare->quantity .
+                                                 ' Precio:' . $store_spare->spare->price . 'Bs'
+                                                 }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -138,7 +145,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Bs</span>
                                     </div>
-                                    <input type="number" class="form-control" id="discount" name="discount" min="0" >
+                                    <input type="number" class="form-control" id="discount" name="discount" min="0">
                                 </div>
                             </div>
                         </div>
@@ -211,7 +218,7 @@
                             <td>{{ $sale_spare->discount }}</td>
                             <td>{{ $sale_spare->real_price }}</td>
                             <td>
-                                <form action="{{ route('sales.spare.destroy',[$sale->id,$sale_spare->id]) }}"
+                                <form action="{{ route('sales.spare.destroy',[$sale->id, $sale_spare->spare->id,$sale->store_id,$sale_spare->id]) }}"
                                       method="post">
                                     @method('delete')
                                     @csrf
@@ -244,24 +251,44 @@
             </div>
         </div>
         <div class="card-body">
-            <dt>Cliente</dt>
-            <dd>{{ optional($sale->Client)->get_full_name() }}</dd>
-            <dt>Tienda</dt>
-            <dd>{{ optional($sale->Store)->name }}</dd>
-            <dt>Usuario</dt>
-            <dd>{{ optional($sale->User)->get_full_name() }}</dd>
-            <dt>Precio Total</dt>
-            <dd>{{ $sale->total_price }}</dd>
-            <dt>Cantidad</dt>
-            <dd>{{ $sale->total_amount }}</dd>
-            <dt>Creacion</dt>
-            <dd>{{ $sale->created_at }}</dd>
-            <dt>Actualizacion</dt>
-            <dd>{{ $sale->updated_at }}</dd>
+            <div class="row">
+                <div class="col-4">
+                    <dt>Cliente</dt>
+                    <dd>{{ optional($sale->Client)->get_full_name() }}</dd>
+                </div>
+                <div class="col-4">
+                    <dt>Tienda</dt>
+                    <dd>{{ optional($sale->Store)->name }}</dd>
+                </div>
+                <div class="col-4">
+                    <dt>Usuario</dt>
+                    <dd>{{ optional($sale->User)->get_full_name() }}</dd>
+                </div>
+                <div class="col-4">
+                    <dt>Precio Total</dt>
+                    <dd>{{ $sale->total_price }}Bs</dd>
+                </div>
+                <div class="col-4">
+
+                    <dt>Cantidad</dt>
+                    <dd>{{ $sale->total_amount }}</dd>
+                </div>
+                <div class="col-4">
+
+                    <dt>Creacion</dt>
+                    <dd>{{ $sale->created_at }}</dd>
+                </div>
+                <div class="col-4">
+
+                    <dt>Actualizacion</dt>
+                    <dd>{{ $sale->updated_at }}</dd>
+                </div>
+            </div>
 
         </div>
 
     </div>
-    </div>
-
+@endsection
+@section('scripts')
+    <script src="{{asset('js/sale/sale.js')}}"></script>
 @endsection

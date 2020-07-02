@@ -1,16 +1,28 @@
 $(document).ready(function () {
-    $('#info-modal').on('hidden.bs.modal',function() {
+    $('#info-modal').on('hidden.bs.modal', function () {
         $('#product-code-carline').empty();
     });
 
     $(document).on('click', '.show-information', function () {
+        // STRINGS
         let string_json = $(this).attr('data-product');
         let carline_json = $(this).attr('data-carlines');
+        let stores_json = $(this).attr('data-stores');
+
+        console.log(stores_json);
+
+        //JSON OBJECTS
         let product = JSON.parse(string_json);
         let carlines = JSON.parse(carline_json);
+        let stores = JSON.parse(stores_json);
 
-        console.log(product);
-        console.log(carlines);
+        console.log(stores);
+        // Cleaning the stores
+        $('.stores_class').text(0);
+        // Filling the stores
+        for (let store of stores) {
+            $('#stores'+store.store_id).text(store.quantity);
+        }
 
         for (let carline of carlines) {
             $('#product-code-carline').append(

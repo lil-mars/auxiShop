@@ -135,7 +135,9 @@
                                             <div class="btn-group">
 
                                                 <a class="btn btn-warning show-information" data-product="{{$spare}}"
-                                                   data-carlines="{{$spare->car_lines}}">
+                                                   data-carlines="{{$spare->car_lines}}"
+                                                   data-stores="{{$spare->store_spare}}"
+                                                >
                                                     <i class='fas fa-eye'></i>
                                                 </a>
                                                 @if(auth()->user()->Role->name == 'admin')
@@ -248,14 +250,14 @@
                             <li class="list-group-item col-12">
                                 <b>Linea de carro</b> <a class="float-right" id="product-code-carline"></a>
                             </li>
-                    {{--Tiendas--}}
-                            <h6>Tiendas</h6>
-                            <li class="list-group-item col-12">
-                                <b>Linea de carro</b> <a class="float-right" id="product-code-carline"></a>
-                            </li>
-                            <li class="list-group-item col-12">
-                                <b>Linea de carro</b> <a class="float-right" id="product-code-carline"></a>
-                            </li>
+                            {{--Tiendas--}}
+                            <br>
+                            <h6 class="text-bold text-center" id="quantityStores">Cantidades segun tiendas</h6>
+                            @foreach($stores as $key=>$name )
+                                <li class="list-group-item col-12">
+                                    <b>{{$name}}</b> <a class="float-right stores_class" id="stores{{$key}}"></a>
+                                </li>
+                            @endforeach
                         </div>
                     </div>
                     <div class="modal-footer">

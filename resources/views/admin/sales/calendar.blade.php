@@ -34,7 +34,12 @@
     </head>
     <body>
 
-    <div class="card col-12">
+    <div class="card ">
+        <div class="card-header bg-dark">
+            <h6 class="card-title">
+                Calendario de ventas
+            </h6>
+        </div>
         <div class="card-body">
             <div id='source-calendar'></div>
         </div>

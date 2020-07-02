@@ -185,7 +185,5 @@
 @section('scripts')
     <script src="{{asset('js/store/select2.js')}}"></script>
     <script src="{{ asset('js/spare/datatables.min.js') }}"></script>
-
     <script src="{{ asset('js/spare/datatableconfig.js') }}"></script>
-
 @endsection

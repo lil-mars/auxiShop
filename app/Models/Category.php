@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    
+
     /**
      * Indicates if the model should be timestamped.
      *
@@ -36,7 +36,8 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-                  'name'
+                  'name',
+                  'country'
               ];
 
     /**
@@ -45,14 +46,14 @@ class Category extends Model
      * @var array
      */
     protected $dates = [];
-    
+
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
     protected $casts = [];
-    
+
     /**
      * Get the spares for this model.
      *

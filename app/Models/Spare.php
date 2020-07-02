@@ -47,6 +47,7 @@ class Spare extends Model
                   'image'
               ];
 
+
     /**
      * The attributes that should be mutated to dates.
      *
@@ -117,7 +118,7 @@ class Spare extends Model
      */
     public function saleDetail()
     {
-        return $this->hasOne('App\Models\SaleDetail','spare_id','id');
+        return $this->hasMany('App\Models\SaleDetail','spare_id','id');
     }
 
     /**
@@ -135,9 +136,9 @@ class Spare extends Model
      *
      * @return App\Models\StoreSpare
      */
-    public function storeSpare()
+    public function store_spare()
     {
-        return $this->hasOne('App\Models\StoreSpare','spare_id','id');
+        return $this->hasMany('App\Models\StoreSpare','spare_id','id');
     }
 
 

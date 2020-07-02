@@ -39,7 +39,8 @@
             </div>
             <div class="float-right">
                 <p>
-                    <a href="javascript:history.go(-1)" title="Return to the previous page" class="btn btn-outline-danger">
+                    <a href="#"
+                       onclick="window.location=document.referrer;" title="Return to the previous page" class="btn btn-outline-danger">
                         Volver atras <i class="fa fa-backward"></i>
                     </a>
                 </p>

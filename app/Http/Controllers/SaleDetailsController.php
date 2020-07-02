@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Sale;
 use App\Models\SaleDetail;
 use App\Models\Spare;
+use App\Models\StoreSpare;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -46,9 +47,13 @@ class SaleDetailsController extends Controller
      */
     public function store(Request $request)
     {
+
         try {
 
-            $spare = Spare::find($request->spare_id);
+            $spare = StoreSpare::where('spare_id',$request->spare_id)
+                ->where('store_id',$request->store_id)
+                ->first();
+
             if ($spare->quantity >= $request->quantity) {
 
                 $data = $this->getData($request);
@@ -134,18 +139,24 @@ class SaleDetailsController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
-    public function destroy($id, $deatil_id)
+    public function destroy($id, $spare_id, $store_id, $deatil_id)
     {
+
         try {
+            $store_spare = StoreSpare::where('spare_id',$spare_id)
+                ->where('store_id',$store_id)
+                ->first();
+
             $saleDetails = SaleDetail::findOrFail($deatil_id);
             $sale = Sale::find($id);
+
             $sale->total_price -= $saleDetails->real_price;
             $sale->total_amount -= $saleDetails->quantity;
+
             $sale->save();
 
-            $spare = $saleDetails->spare;
-            $spare->quantity += $saleDetails->quantity;
-            $spare->save();
+            $store_spare->quantity += $saleDetails->quantity;
+            $store_spare->save();
 
             $saleDetails->delete();
 

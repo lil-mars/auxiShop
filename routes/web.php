@@ -161,8 +161,8 @@ Route::group([
 });
 
 Route::resource('purchases.spare', 'PurchaseSparesController')->middleware(['auth']);
-Route::resource('sales.spare', 'SaleDetailsController')->middleware(['auth']);
-
+Route::resource('sales.spare', 'SaleDetailsController')->except(['destroy'])->middleware(['auth']);
+Route::delete('sales/destroy/{sale}/{spare}/{store}/{detail}', 'SaleDetailsController@destroy')->name('sales.spare.destroy')->middleware(['auth']);
 Route::post('categoriesStoreAndBack', 'CategoriesController@storeAndBack')->name('categoryStoreAndBack')->middleware(['auth', 'role:admin']);
 Route::post('carlineStoreAndBack', 'CarLinesController@storeAndBack')->name('carlineStoreAndBack')->middleware(['auth', 'role:admin']);
 Route::post('brandsStoreAndBack', 'BrandsController@storeAndBack')->name('brandStoreAndBack')->middleware(['auth', 'role:admin']);

@@ -62,8 +62,8 @@ class SalesController extends Controller
 
             $data['user_id'] = $request->user()->id;
             Sale::create($data);
-
-            return redirect()->route('sales.sale.index')
+            $id = Sale::orderBy('id', 'desc')->first()->id;
+            return redirect()->route('sales.sale.show', $id)
                 ->with('success_message', 'Venta se agrego correctamente.');
         } catch (Exception $exception) {
 
@@ -82,9 +82,10 @@ class SalesController extends Controller
     public function show($id)
     {
         $sale = Sale::with('client', 'store', 'user')->findOrFail($id);
-        $categories = Category::all();
+        $store_spares = $sale->store->store_spares;
 
-        return view('admin.sales.show', compact('sale', 'categories'));
+//        $categories = Category::all();
+        return view('admin.sales.show', compact('sale', 'store_spares'));
     }
 
     /**

@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\CarLine;
 use App\Models\Category;
 use App\Models\Spare;
+use App\Models\Store;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -27,7 +28,8 @@ class SparesController extends Controller
         $spares = Spare::all();
         $categories = Category::pluck('name');
         $brands = Brand::pluck('name');
-        return view('admin.spares.index', compact('spares', 'categories', 'brands'));
+        $stores = Store::pluck('name', 'id');
+        return view('admin.spares.index', compact('spares', 'categories', 'brands', 'stores'));
     }
 
     /**

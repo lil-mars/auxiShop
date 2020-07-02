@@ -34,7 +34,8 @@ class StoreSpare extends Model
                   'quantity',
                   'spare_id',
                   'store_id',
-                  'comment'
+                  'comment',
+                    'store_name'
               ];
 
     /**
@@ -56,6 +57,7 @@ class StoreSpare extends Model
      *
      * @return App\Models\Spare
      */
+
     public function spare()
     {
         return $this->belongsTo('App\Models\Spare','spare_id','id');
