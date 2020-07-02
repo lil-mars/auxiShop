@@ -39,7 +39,7 @@
 
     <div class="panel-body">
         <dl class="dl-horizontal">
-            <dt>Name</dt>
+            <dt>Nombre</dt>
             <dd>{{ $carLine->name }}</dd>
 
         </dl>

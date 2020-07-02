@@ -43,6 +43,7 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
+                            <th>Pais</th>
 
                             <th>Opciones</th>
                         </tr>
@@ -51,6 +52,7 @@
                     @foreach($brands as $brand)
                         <tr>
                             <td>{{ $brand->name }}</td>
+                            <td>{{ $brand->country }}</td>
 
                             <td>
 

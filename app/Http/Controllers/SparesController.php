@@ -41,7 +41,7 @@ class SparesController extends Controller
     {
         $Categories = Category::pluck('name', 'id')->all();
         $CarLines = CarLine::pluck('name', 'id')->all();
-        $Brands = Brand::pluck('name', 'id')->all();
+        $Brands = Brand::all();
         return view('admin.spares.create', compact('Categories', 'CarLines', 'Brands'));
     }
 
@@ -101,7 +101,7 @@ class SparesController extends Controller
         $spare = Spare::findOrFail($id);
         $Categories = Category::pluck('name', 'id')->all();
         $CarLines = CarLine::pluck('name', 'id')->all();
-        $Brands = Brand::pluck('name', 'id')->all();
+        $Brands = Brand::all();
 
         return view('admin.spares.edit', compact('spare', 'Categories', 'CarLines', 'Brands'));
     }

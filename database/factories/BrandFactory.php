@@ -7,6 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(\App\Models\Brand::class, function (Faker $faker) {
     return [
-        'name' => $faker->firstNameFemale
+        'name' => $faker->firstNameFemale,
+        'country' => $faker->country
     ];
 });

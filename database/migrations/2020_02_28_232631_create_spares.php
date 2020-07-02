@@ -16,7 +16,6 @@ class CreateSpares extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 50)->nullable();
-            $table->string('nationality', 45)->nullable();
         });
         Schema::create('car_lines', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -25,6 +24,7 @@ class CreateSpares extends Migration
         Schema::create('brands', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 50)->nullable();
+            $table->string('country', 100)->nullable();
         });
         Schema::create('spares', function (Blueprint $table) {
             $table->bigIncrements('id');

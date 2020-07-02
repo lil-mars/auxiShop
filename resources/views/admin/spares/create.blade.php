@@ -156,7 +156,20 @@
                             <h6 class="text-bold">Todas las marcas</h6>
                             <ul class="list-group">
                                 @foreach($Brands as $brand)
-                                    <li class="list-group-item">{{$brand}}</li>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <li class="list-group-item">
+                                                <b>Nombre:</b>
+                                                {{$brand->name}}
+                                            </li>
+                                        </div>
+                                        <div class="col-6">
+                                            <li class="list-group-item">
+                                                <b>Pais:</b>
+                                                {{$brand->country}}
+                                            </li>
+                                        </div>
+                                    </div>
                                 @endforeach
                             </ul>
                         </div>

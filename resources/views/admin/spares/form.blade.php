@@ -45,9 +45,9 @@
     <div class="col-md-10">
         <select class="form-control" id="brand_id" name="brand_id">
         	    <option value="" style="display: none;" {{ old('brand_id', optional($spare)->brand_id ?: '') == '' ? 'selected' : '' }} disabled selected>Marca</option>
-        	@foreach ($Brands as $key => $Brand)
-			    <option value="{{ $key }}" {{ old('brand_id', optional($spare)->brand_id) == $key ? 'selected' : '' }}>
-			    	{{ $Brand }}
+        	@foreach ($Brands as $brand)
+			    <option value="{{ $brand->id }}" {{ old('brand_id', optional($spare)->brand_id) == $brand->id ? 'selected' : '' }}>
+			    	{{ $brand->name }}
 			    </option>
 			@endforeach
         </select>

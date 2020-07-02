@@ -43,6 +43,10 @@
             <dd>{{ $brand->name }}</dd>
 
         </dl>
+        <dl class="dl-horizontal">
+            <dt>Pais</dt>
+            <dd>{{ $brand->country }}</dd>
+        </dl>
 
     </div>
 </div>
