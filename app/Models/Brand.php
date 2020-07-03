@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Brand extends Model
 {
-    
+
     /**
      * Indicates if the model should be timestamped.
      *
@@ -21,10 +21,10 @@ class Brand extends Model
     protected $table = 'brands';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $incrementing = false;
@@ -36,8 +36,9 @@ class Brand extends Model
      * @var array
      */
     protected $fillable = [
-                  'name'
-              ];
+        'name',
+        'country'
+    ];
 
     /**
      * The attributes that should be mutated to dates.
@@ -45,14 +46,14 @@ class Brand extends Model
      * @var array
      */
     protected $dates = [];
-    
+
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
     protected $casts = [];
-    
+
     /**
      * Get the spares for this model.
      *
@@ -60,9 +61,8 @@ class Brand extends Model
      */
     public function spares()
     {
-        return $this->hasMany('App\Models\Spare','brand_id','id');
+        return $this->hasMany('App\Models\Spare', 'brand_id', 'id');
     }
-
 
 
 }

@@ -62,7 +62,6 @@ class BrandsController extends Controller
     public function storeAndBack(Request $request)
     {
         try {
-
             $data = $this->getData($request);
 
             Brand::create($data);
@@ -163,6 +162,7 @@ class BrandsController extends Controller
     {
         $rules = [
                 'name' => 'nullable|string|min:0|max:50',
+                'country' => 'nullable|string|min:0|max:100',
         ];
 
         $data = $request->validate($rules);
