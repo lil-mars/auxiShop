@@ -41,8 +41,8 @@
                 <h4>No hay ventas disponibles.</h4>
             </div>
         @else
-        <div class="card m-2">
-                <table class="table table-bordered table-striped table-responsive-sm">
+        <div class="card">
+                <table class="table table-bordered  table-striped table-responsive-sm">
                     <thead class="bg-dark">
                         <tr>
                             <th>Cliente</th>

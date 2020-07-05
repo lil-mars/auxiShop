@@ -40,7 +40,7 @@
         <div class="panel-body panel-body-with-table">
 
                 <table class="table table-hover table-bordered table-responsive-md" id="table">
-                    <thead>
+                    <thead class="bg-dark">
                         <tr>
                             <th>Compañía</th>
                             <th>Nombre completo</th>

@@ -35,11 +35,11 @@
                 <h4>No hay compras disponibles.</h4>
             </div>
         @else
-        <div class="panel-body panel-body-with-table">
-            <div class="table-responsive">
+        <div class="card">
+            <div class="">
 
-                <table class="table table-striped ">
-                    <thead>
+                <table class="table table-striped table-responsive-sm table-bordered">
+                    <thead class="bg-dark">
                         <tr>
                             <th>ID</th>
                             <th>Proveedor</th>

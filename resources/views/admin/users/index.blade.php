@@ -35,17 +35,17 @@
                 <h4>No hay usuarios disponibles.</h4>
             </div>
         @else
-        <div class="panel-body panel-body-with-table">
-            <div class="table-responsive">
+        <div class="">
+            <div class="card">
 
-                <table class="table table-striped ">
-                    <thead>
+                <table class="table table-striped table-bordered table-responsive-md">
+                    <thead class="bg-dark">
                         <tr>
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Email</th>
                             <th>Rol</th>
-                            <th></th>
+                            <th>Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,9 +55,7 @@
                             <td>{{ $user->last_name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ optional($user->Role)->name }}</td>
-
                             <td>
-
                                 <form method="POST" action="{!! route('users.user.destroy', $user->id) !!}" accept-charset="UTF-8">
                                 <input name="_method" value="DELETE" type="hidden">
                                 {{ csrf_field() }}
@@ -77,9 +75,7 @@
                                             <span class="fa fa-trash" aria-hidden="true"></span>
                                         </button>
                                     </div>
-
                                 </form>
-
                             </td>
                         </tr>
                     @endforeach
