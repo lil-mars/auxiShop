@@ -11,7 +11,7 @@ $(document).ready(function() {
     });
     $('#select2').on('input', function () {
         let text = $('#select2 option:selected').html();
-        let price = text.match(/Precio:(\d+(\.\d+)?)/i)[1];
+        let price = text.match(/Compra:(\d+(\.\d+)?)/i)[1];
         $('#unit_price').val(price);
         unitPrice = price;
         showPrice(unitPrice, quantity);

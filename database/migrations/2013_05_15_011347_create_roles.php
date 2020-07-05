@@ -13,6 +13,8 @@ class CreateRoles extends Migration
      */
     public function up()
     {
+//        3 Roles
+//        client, seller, admin
         Schema::create('roles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 25);

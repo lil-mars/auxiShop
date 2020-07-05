@@ -40,8 +40,8 @@
         <div class="card-body col-12">
             <div class="table-responsive">
 
-                <table class="table table-striped " id="table">
-                    <thead>
+                <table class="table table-striped table-bordered " id="table">
+                    <thead class="bg-dark">
                     <tr>
                         <th>ID</th>
                         <th>Compañía</th>
@@ -49,7 +49,7 @@
                         <th>Telefono</th>
                         <th>CI</th>
                         <th>NIT</th>
-                        <th>Compras</th>
+                        <th>Ventas</th>
                         <th>Opciones</th>
                     </tr>
                     </thead>

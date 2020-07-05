@@ -76,7 +76,7 @@
                                         <optgroup label="{{$category->name}}">
                                             @foreach($category->spares as $spare)
                                                 <option value="{{ $spare->id }}">
-                                                    {{ 'Codigo:'. $spare->code.' Original:'.$spare->original_code . ' Desc:' . $spare->description .' Marca:'. $spare->brand->name .' Cantidad:'. $spare->quantity . ' Precio:' . $spare->price . 'Bs'  }}
+                                                    {{ 'Codigo:'. $spare->code.' Original:'.$spare->original_code . ' Desc:' . $spare->description .' Marca:'. $spare->brand->name .' Cantidad:'. $spare->quantity . ' Compra:' . $spare->investment . 'Bs'  }}
                                                     <p class="hide">{!!  $spare->category->name !!}</p>
                                                 </option>
                                             @endforeach
@@ -213,9 +213,9 @@
                 <dt>Contacto</dt>
                 <dd>{{ $purchase->contact }}</dd>
                 <dt>Fecha creacion</dt>
-                <dd>{{ $purchase->get_last_update() }}</dd>
+                <dd>{{ $purchase->created_at }}</dd>
                 <dt>Fecha actualizacion</dt>
-                <dd>{{ $purchase->get_creation() }}</dd>
+                <dd>{{ $purchase->updated_at }}</dd>
 
             </dl>
         </div>

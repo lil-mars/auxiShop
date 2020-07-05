@@ -183,7 +183,7 @@ class SaleDetailsController extends Controller
             'sale_id' => 'required',
             'price' => 'required|numeric|min:0.5|max:999999.99',
             'quantity' => 'required|numeric|min:0.5|max:2147483647',
-            'discount' => 'nullable|numeric|min:0.5|max:999999.99',
+            'discount' => 'nullable|numeric|min:0|max:999999.99',
             'real_price' => 'required|numeric|min:0.5|max:999999.99',
         ];
 

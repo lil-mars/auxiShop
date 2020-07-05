@@ -41,9 +41,9 @@
                 <h4>No hay ventas disponibles.</h4>
             </div>
         @else
-        <div class="card">
-                <table class="table table-striped table-responsive-sm">
-                    <thead>
+        <div class="card m-2">
+                <table class="table table-bordered table-striped table-responsive-sm">
+                    <thead class="bg-dark">
                         <tr>
                             <th>Cliente</th>
                             <th>Tienda</th>
@@ -53,7 +53,6 @@
                             <th>Creacion</th>
                             <th>Opciones</th>
 
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,7 +90,7 @@
 
         </div>
 
-        <div class="panel-footer">
+        <div class="card-footer">
             {!! $sales->render() !!}
         </div>
 

@@ -14,7 +14,7 @@
         {!! $errors->first('client_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
-
+@if(!isset($sale->store_id))
 <div class="form-group {{ $errors->has('store_id') ? 'has-error' : '' }}">
     <label for="store_id" class="col-md-2 control-label">Tienda</label>
     <div class="col-md-10">
@@ -28,10 +28,10 @@
 			    </option>
 			@endforeach
         </select>
-
         {!! $errors->first('store_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+@endif
 <input type="hidden" value="{{auth()->user()->id }}" name="user_id" {{ optional($sale)->user_id ? 'disabled' : '' }}>
 
 
