@@ -64,14 +64,6 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('nationality') ? 'has-error' : '' }}">
-    <label for="nationality" class="col-md-2 control-label">Nacionalidad</label>
-    <div class="col-md-10">
-        <input class="form-control" name="nationality" type="text" id="nationality" value="{{ old('nationality', optional($spare)->nationality) }}" maxlength="60" >
-        {!! $errors->first('nationality', '<p class="help-block text-danger">:message</p>') !!}
-    </div>
-</div>
-
 <div class="form-group {{ $errors->has('measure') ? 'has-error' : '' }}">
     <label for="measure" class="col-md-2 control-label">Medida</label>
     <div class="col-md-10">

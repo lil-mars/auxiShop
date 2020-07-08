@@ -69,6 +69,7 @@ class SparesController extends Controller
             return redirect()->route('spares.index')
                 ->with('success_message', 'Repuesto agregado correctamente.');
         } catch (Exception $exception) {
+            dd($exception);
             $errors = $exception->errors();
             return back()->withInput()
                 ->withErrors($errors);
@@ -194,6 +195,7 @@ class SparesController extends Controller
     {
         $categories = Category::pluck('name');
         $brands = Brand::pluck('name');
+        $stores = Store::pluck('name', 'id');
 
         $filters = array_filter($request->all(), function ($value) {
             return !is_null($value);
@@ -208,7 +210,7 @@ class SparesController extends Controller
             }
             return true;
         });
-        return view('admin.spares.index', compact('spares','categories', 'brands'));
+        return view('admin.spares.index', compact('spares','categories', 'brands', 'stores'));
     }
 
 }

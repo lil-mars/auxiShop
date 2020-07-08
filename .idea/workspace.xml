@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9a6344b7-60f9-4a93-bcd9-e7d5362b97b0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/providers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/providers/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/purchases/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/purchases/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/sales/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/sales/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/stores/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/stores/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Spare.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Spare.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/spares/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/spares/form.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -288,6 +286,8 @@
       <workItem from="1593734460769" duration="5318000" />
       <workItem from="1593906091489" duration="592000" />
       <workItem from="1593976623975" duration="5214000" />
+      <workItem from="1594166168861" duration="526000" />
+      <workItem from="1594212399693" duration="260000" />
     </task>
     <task id="LOCAL-00001" summary="Finishing all the migrations and adding some Models &#10;- We need relations and Seeds for the DB :D">
       <created>1584135780363</created>

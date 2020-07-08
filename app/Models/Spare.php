@@ -36,7 +36,6 @@ class Spare extends Model
                   'car_line_id',
                   'brand_id',
                   'description',
-                  'nationality',
                   'measure',
                   'product_code',
                   'original_code',
