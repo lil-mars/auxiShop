@@ -69,7 +69,6 @@ class SparesController extends Controller
             return redirect()->route('spares.index')
                 ->with('success_message', 'Repuesto agregado correctamente.');
         } catch (Exception $exception) {
-            dd($exception);
             $errors = $exception->errors();
             return back()->withInput()
                 ->withErrors($errors);
