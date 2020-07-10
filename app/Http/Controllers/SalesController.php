@@ -8,6 +8,7 @@ use App\Models\Client;
 use App\Models\Sale;
 use App\Models\Spare;
 use App\Models\Store;
+use App\Models\StoreSpare;
 use App\User;
 use Illuminate\Http\Request;
 use Exception;
@@ -141,6 +142,13 @@ class SalesController extends Controller
     {
         try {
             $sale = Sale::findOrFail($id);
+            foreach ($sale->saleDetail as $detail){
+                $store_spare = StoreSpare::where('spare_id', $detail->spare_id)
+                    ->where('store_id',$sale->store_id)
+                    ->first();
+                $store_spare->quantity += $detail->quantity;
+                $store_spare->save();
+            }
             $sale->delete();
 
             return redirect()->route('sales.sale.index')

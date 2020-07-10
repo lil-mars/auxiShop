@@ -57,7 +57,17 @@ class SaleDetailsController extends Controller
             if ($spare->quantity >= $request->quantity) {
 
                 $data = $this->getData($request);
-                SaleDetail::create($data);
+                $saleDetail = SaleDetail::where('spare_id', $request->spare_id)->first();
+                if($saleDetail){
+                    $saleDetail->quantity += $request->quantity;
+                    $saleDetail->discount += $request->discount;
+                    $saleDetail->price += $request->price;
+                    $saleDetail->real_price += $request->real_price;
+                    $saleDetail->save();
+                }else{
+                    SaleDetail::create($data);
+                }
+
 
                 $sale = Sale::find($request->sale_id);
                 $sale->total_price += $request->real_price;

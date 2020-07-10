@@ -145,7 +145,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Bs</span>
                                     </div>
-                                    <input type="number" class="form-control" id="discount" name="discount" min="0">
+                                    <input type="number" step="0.5" value="0" class="form-control" id="discount" name="discount" min="0">
                                 </div>
                             </div>
                         </div>
