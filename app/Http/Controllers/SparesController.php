@@ -182,7 +182,7 @@ class SparesController extends Controller
             'price' => 'required|numeric|min:-999999.99|max:999999.99',
             'price_m' => 'required|numeric|min:-999999.99|max:999999.99',
             'investment' => 'required|numeric|min:-999999.99|max:999999.99',
-            'image' => 'required|min:0|max:255',
+            'image' => 'required|min:0|max:1000',
         ];
 
         $data = $this->validate($request, $rules);
