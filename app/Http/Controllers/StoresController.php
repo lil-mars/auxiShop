@@ -9,6 +9,7 @@ use App\Models\Store;
 use App\Models\StoreSpare;
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class StoresController extends Controller
 {
@@ -60,29 +61,16 @@ class StoresController extends Controller
         }
     }
 
-    public function storeQuantities(Request $request, $store)
+    public function storeQuantities(Request $request, $store_id)
     {
-        $request['store_id'] = $store;
-        $spare = Spare::find($request['spare_id']);
-        //Check quantity
-        if ($spare->quantity < $request['quantity'] || $request['quantity'] < 1 ) {
-            return back()->with('error_message', 'Cantidad asignada imposible.');
+        $now =date(now());
+        for ($index = 0; $index < count($request->spares); $index++) {
+            $spare_store = StoreSpare::updateOrCreate(
+                ['spare_id' => $request->spares[$index], 'store_id'=> $store_id],
+                ['quantity' => $request->quantities[$index], 'updated_at'=> $now]);
         }
 
-        $spare->quantity -= $request['quantity'];
-        $spare->save();
-        // Creating store_spare or updating
-        if (StoreSpare::where('spare_id', $request['spare_id'])->exists()) {
-            $store_spare = StoreSpare::where('spare_id', $request['spare_id'])->first();
-
-            $store_spare->quantity += $request['quantity'];
-            $store_spare->save();
-
-        } else {
-
-            StoreSpare::create($request->all());
-        }
-        return back()->with('success_message', 'Cantidad agregada a la tienda.');
+        return back()->with('success_message', 'Cantidades agregadas a la tienda.');
 
     }
 
@@ -102,9 +90,13 @@ class StoresController extends Controller
 
     public function list($id)
     {
+        if (Auth::user()->role->id == 1) {
+            $store = Store::findOrFail($id);
+            $spares = Spare::all();
+            return view('admin.stores.list.edit', compact('store', 'spares'));
+        }
         $store = Store::findOrFail($id);
-        $categories = Category::all();
-        return view('admin.stores.list', compact('store', 'categories'));
+        return view('admin.stores.list.index', compact('store'));
     }
 
     /**

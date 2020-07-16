@@ -16,10 +16,10 @@ class StoreSpare extends Model
     protected $table = 'store_spare';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $incrementing = false;
@@ -31,19 +31,23 @@ class StoreSpare extends Model
      * @var array
      */
     protected $fillable = [
-                  'quantity',
-                  'spare_id',
-                  'store_id',
-                  'comment',
-                    'store_name'
-              ];
+        'quantity',
+        'spare_id',
+        'store_id',
+        'comment',
+        'store_name',
+        'updated_at',
+        'created_at'
+    ];
 
     /**
      * The attributes that should be mutated to dates.
      *
      * @var array
      */
-    protected $dates = [];
+    protected $dates = [
+        'updated_at', 'created_at'
+    ];
 
     /**
      * The attributes that should be cast to native types.
@@ -60,7 +64,7 @@ class StoreSpare extends Model
 
     public function spare()
     {
-        return $this->belongsTo('App\Models\Spare','spare_id','id');
+        return $this->belongsTo('App\Models\Spare', 'spare_id', 'id');
     }
 
     /**
@@ -70,14 +74,14 @@ class StoreSpare extends Model
      */
     public function store()
     {
-        return $this->belongsTo('App\Models\Store','store_id','id');
+        return $this->belongsTo('App\Models\Store', 'store_id', 'id');
     }
 
 
     /**
      * Get created_at in array format
      *
-     * @param  string  $value
+     * @param string $value
      * @return array
      */
 //    public function getCreatedAtAttribute($value)

@@ -139,6 +139,9 @@ class Spare extends Model
     {
         return $this->hasMany('App\Models\StoreSpare','spare_id','id');
     }
+    public function get_data_by_store($store_id) {
+        return $this->store_spare->where('store_id', '=', $store_id)->first();
+    }
 
 
     /**

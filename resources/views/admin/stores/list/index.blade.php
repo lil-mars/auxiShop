@@ -1,8 +1,7 @@
 @extends('layouts.master')
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
-
-    @endsectio
+@endsection
 @section('content')
     @if(Session::has('success_message'))
         <div class="alert alert-success">
@@ -62,58 +61,6 @@
             </div>
         </div>
     </div>
-    @if(auth()->user()->Role->name == 'admin')
-        <div class="card m-2">
-            <div class="card-header bg-dark">
-                <h4 class="card-title">Asignar cantidades</h4>
-            </div>
-            <div class="card-body">
-                <form action="{{route('stores.store.quantity', $store->id)}}" method="post">
-                    @csrf
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="select2">Producto</label>
-
-                                <select class="form-control" id="select2" name="spare_id" tabindex="-1"
-                                        class="js-states form-control-lg" required>
-                                    <option value="" selected>--- Selecciona el producto ---</option>
-                                    @foreach($categories as $category)
-                                        <optgroup label="{{$category->name}}">
-                                            @foreach($category->spares as $spare)
-                                                <option value="{{ $spare->id }}">
-                                                    {{ 'Codigo:'. $spare->code.' Original:'.$spare->original_code . ' Desc:' . $spare->description .' Marca:'. $spare->brand->name.' Cantidad: '.$spare->quantity . ' Precio:' . $spare->price . 'Bs'  }}
-                                                    <p class="hide">{!!  $spare->category->name !!}</p>
-                                                </option>
-                                            @endforeach
-                                        </optgroup>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label>Cantidad</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">&#x2683;</span>
-                                    </div>
-                                    <input type="number" class="form-control" name="quantity" id="quantity" min="1"
-                                           required>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary">
-                        Agregar cantidad
-                    </button>
-                </form>
-            </div>
-        </div>
-    @endif
     <div class="card m-2">
         <div class="card-header bg-dark">
             <h5 class="card-title">
