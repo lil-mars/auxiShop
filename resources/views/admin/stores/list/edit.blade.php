@@ -109,9 +109,15 @@
                             <th width="30%">Descripcion</th>
                             <th width="7%">Categoria</th>
                             <th>Marca</th>
-                            <th>Medida</th>
                             <th width="5%">Codigo respuesto</th>
                             <th>Cantidad</th>
+                            <th>
+                                Enviar
+{{--                                <button class="btn btn-primary" id="selectButton" type="button">--}}
+{{--                                    Todos--}}
+{{--                                    <i class="fas fa-check-circle"></i>--}}
+{{--                                </button>--}}
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -121,16 +127,19 @@
                                 <td width="30%">{{ $spare->description }}</td>
                                 <td width="7%">{{ optional($spare->category)->name }}</td>
                                 <td>{{ optional($spare->brand)->name }}</td>
-                                <td>{{ $spare->measure }}</td>
                                 <td width="5%">{{ $spare->product_code }}</td>
                                 <td>
-                                    <input type="text" name="spares[]" value="{{$spare->id}}" hidden>
                                     @if(isset($spare->get_data_by_store($store->id)->quantity))
-                                        <input type="text" class="form-control" name="quantities[]"
-                                               value="{{$spare->get_data_by_store($store->id)->quantity}}">
+                                        <input type="number" min="0" class="form-control" name="quantities[]"
+                                               value="{{$spare->get_data_by_store($store->id)->quantity}}"
+                                               id="quantity{{$spare->id}}" disabled>
                                     @else
-                                        <input type="text" class="form-control" name="quantities[]" value="0">
+                                        <input type="number" min="0" class="form-control" name="quantities[]" value="0"
+                                               id="quantity{{$spare->id}}" disabled>
                                     @endif
+                                </td>
+                                <td>
+                                    <input name="states[]" onchange="document.getElementById('quantity{{$spare->id}}').disabled = !this.checked;" type="checkbox" class="form-control checkboxes" value="{{$spare->id}}" >
                                 </td>
                             </tr>
                         @endforeach
@@ -143,9 +152,9 @@
                             <th width="30%">Decripcion</th>
                             <th width="7%">Categoria</th>
                             <th>Marca</th>
-                            <th>Medida</th>
                             <th width="5%">Codigo respuesto</th>
                             <th>Cantidad</th>
+                            <th>Enviar</th>
 
                         </tr>
                         </tfoot>
@@ -160,4 +169,24 @@
 @endsection
 @section('scripts')
     <script src="{{asset('js/store/showSpin.js')}}"></script>
+    <script>
+        $(document).ready(() => {
+            let wasClicked = false;
+            // $('.checkboxes').change((event) =>{
+            //     let element = event.target;
+            //     element.attr('value');
+            //     }
+            // );
+            // $('#selectButton').click(()=>{
+            //     if (!wasClicked){
+            //         $('.checkboxes').prop('checked',true);
+            //     }
+            //     else{
+            //         $('.checkboxes').prop('checked',false);
+            //     }
+            //     wasClicked = !wasClicked;
+            // });
+
+        });
+    </script>
 @endsection

@@ -108,7 +108,7 @@ class Spare extends Model
      */
     public function purchaseSpare()
     {
-        return $this->hasOne('App\Models\PurchaseSpare','spare_id','id');
+        return $this->hasMany('App\Models\PurchaseSpare','spare_id','id');
     }
     /**
      * Get the saleDetail for this model.
@@ -127,7 +127,7 @@ class Spare extends Model
      */
     public function spareProvider()
     {
-        return $this->hasOne('App\Models\SpareProvider','spare_id','id');
+        return $this->hasMany('App\Models\SpareProvider','spare_id','id');
     }
 
     /**
@@ -139,6 +139,8 @@ class Spare extends Model
     {
         return $this->hasMany('App\Models\StoreSpare','spare_id','id');
     }
+
+
     public function get_data_by_store($store_id) {
         return $this->store_spare->where('store_id', '=', $store_id)->first();
     }
@@ -157,6 +159,16 @@ class Spare extends Model
      * @param  string  $value
      * @return array
      */
-
+    public function update_quantity() {
+        $quantity = 0;
+        foreach ($this->purchaseSpare as $purchase_spare) {
+            $quantity += $purchase_spare->quantity;
+        }
+        foreach ($this->store_spare as $store_spare) {
+            $quantity += $store_spare->quantity;
+        }
+        $this->quantity = $quantity;
+        $this->save();
+    }
 
 }

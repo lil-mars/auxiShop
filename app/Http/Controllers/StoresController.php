@@ -63,15 +63,22 @@ class StoresController extends Controller
 
     public function storeQuantities(Request $request, $store_id)
     {
-        $now =date(now());
-        for ($index = 0; $index < count($request->spares); $index++) {
-            $spare_store = StoreSpare::updateOrCreate(
-                ['spare_id' => $request->spares[$index], 'store_id'=> $store_id],
-                ['quantity' => $request->quantities[$index], 'updated_at'=> $now]);
+        try {
+            $now =date(now());
+            for ($index = 0; $index < count($request->states); $index++) {
+                $spare_store = StoreSpare::updateOrCreate(
+                    ['spare_id' => $request->states[$index], 'store_id'=> $store_id],
+                    ['quantity' => $request->quantities[$index], 'updated_at'=> $now]
+                );
+                $spare = Spare::find($request->states[$index]);
+                $spare->update_quantity();
+            }
+
+            return back()->with('success_message', 'Cantidades agregadas a la tienda.');
+        }catch (Exception $exception) {
+            return back()->withInput()
+                ->with('error_message', 'Error inesperado mientras se intentaba realizar tu peticion.');
         }
-
-        return back()->with('success_message', 'Cantidades agregadas a la tienda.');
-
     }
 
     /**

@@ -8,6 +8,7 @@ use App\Models\CarLine;
 use App\Models\Category;
 use App\Models\Spare;
 use App\Models\Store;
+use App\Models\StoreSpare;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -60,6 +61,8 @@ class SparesController extends Controller
             $data = $this->validation($request);
 
             $spare = Spare::create($data);
+
+//            Adding car lines
             if ($request['car_lines']) {
                 $values = array_values($request['car_lines']);
                 $lastSpare = Spare::orderBy('id', 'desc')->first();

@@ -30,10 +30,10 @@ class PurchaseSparesController extends Controller
      */
     public function create()
     {
-        $Purchases = Purchase::pluck('contact','id')->all();
-        $Spares = Spare::pluck('code','id')->all();
+        $Purchases = Purchase::pluck('contact', 'id')->all();
+        $Spares = Spare::pluck('code', 'id')->all();
 
-        return view('purchase_spares.create', compact('Purchases','Spares'));
+        return view('purchase_spares.create', compact('Purchases', 'Spares'));
     }
 
     /**
@@ -46,7 +46,7 @@ class PurchaseSparesController extends Controller
     public function store(Request $request, $id)
     {
         try {
-
+//            Validate
             $data = $this->getData($request);
 
             $purchase = Purchase::find($id);
@@ -56,8 +56,13 @@ class PurchaseSparesController extends Controller
             $spare = Spare::find($request->spare_id);
             $spare->quantity += $request->quantity;
             $spare->save();
-
-            PurchaseSpare::create($data);
+//              Create
+            PurchaseSpare::updateOrCreate(
+                [
+                    'purchase_id' => $data['purchase_id'], 'spare_id' => $data['purchase_id'],
+                    $data
+                ]
+            );
 
             return redirect()->route('purchases.purchase.show', $id)
                 ->with('success_message', 'Repuesto se agrego correctamente.');
@@ -77,7 +82,7 @@ class PurchaseSparesController extends Controller
      */
     public function show($id)
     {
-        $purchaseSpare = PurchaseSpare::with('purchase','spare')->findOrFail($id);
+        $purchaseSpare = PurchaseSpare::with('purchase', 'spare')->findOrFail($id);
 
         return view('purchase_spares.show', compact('purchaseSpare'));
     }
@@ -92,10 +97,10 @@ class PurchaseSparesController extends Controller
     public function edit($id)
     {
         $purchaseSpare = PurchaseSpare::findOrFail($id);
-        $Purchases = Purchase::pluck('contact','id')->all();
-        $Spares = Spare::pluck('code','id')->all();
+        $Purchases = Purchase::pluck('contact', 'id')->all();
+        $Spares = Spare::pluck('code', 'id')->all();
 
-        return view('purchase_spares.edit', compact('purchaseSpare','Purchases','Spares'));
+        return view('purchase_spares.edit', compact('purchaseSpare', 'Purchases', 'Spares'));
     }
 
     /**

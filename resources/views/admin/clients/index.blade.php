@@ -43,7 +43,7 @@
                 <table class="table table-striped table-bordered " id="table">
                     <thead class="bg-dark">
                     <tr>
-                        <th>ID</th>
+
                         <th>Compañía</th>
                         <th>Nombre (Apellidos y nombres)</th>
                         <th>Telefono</th>
@@ -56,7 +56,7 @@
                     <tbody>
                     @foreach($clientsObjects as $clients)
                         <tr>
-                            <td>{{ $clients->id }}</td>
+
                             <td>{{ $clients->company_name }}</td>
                             <td>{{ $clients->get_full_name() }}</td>
                             <td>{{ $clients->phone }}</td>
