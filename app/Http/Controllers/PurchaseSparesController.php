@@ -57,19 +57,24 @@ class PurchaseSparesController extends Controller
             $spare->quantity += $request->quantity;
             $spare->save();
 //              Create
-            PurchaseSpare::updateOrCreate(
-                [
-                    'purchase_id' => $data['purchase_id'], 'spare_id' => $data['purchase_id'],
-                    $data
-                ]
-            );
+            $purchaseSpare = PurchaseSpare::where('purchase_id',$data['purchase_id'])
+                ->where('spare_id', $data['spare_id'])
+                ->first();
+            if (!$purchaseSpare){
+                $purchaseSpare = PurchaseSpare::create($data);
+            }
+            else {
+                $purchaseSpare->quantity += $data['quantity'];
+                $purchaseSpare->price += $data['price'];
+                $purchaseSpare->save();
+            }
 
             return redirect()->route('purchases.purchase.show', $id)
                 ->with('success_message', 'Repuesto se agrego correctamente.');
         } catch (Exception $exception) {
-
+            $errors = $exception->errors();
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
+                ->withErrors($errors);
         }
     }
 
@@ -171,10 +176,10 @@ class PurchaseSparesController extends Controller
     {
         $rules = [
             'purchase_id' => 'nullable',
-            'spare_id' => 'nullable',
+            'spare_id' => 'required',
             'unit_price' => 'nullable|numeric|min:-999999.99|max:999999.99',
             'price' => 'nullable|numeric|min:-999999.99|max:999999.99',
-            'quantity' => 'nullable|numeric|min:-2147483648|max:2147483647',
+            'quantity' => 'required|numeric|min:-2147483648|max:2147483647',
         ];
 
         $data = $request->validate($rules);

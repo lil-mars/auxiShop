@@ -7,7 +7,15 @@
         <span class="pull-left">
             <h4 class="">{{ isset($title) ? $title : 'Compra'.' '. $purchase->id }}</h4>
         </span>
+            @if ($errors->any())
+                <ul class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
             <div class="float-left">
+
 
                 <form method="POST" action="{!! route('purchases.purchase.destroy', $purchase->id) !!}"
                       accept-charset="UTF-8">
@@ -40,7 +48,8 @@
             <div class="float-right">
                 <p>
                     <a href="#"
-                       onclick="window.location=document.referrer;" title="Return to the previous page" class="btn btn-outline-danger">
+                       onclick="window.location=document.referrer;" title="Return to the previous page"
+                       class="btn btn-outline-danger">
                         Volver atras <i class="fa fa-backward"></i>
                     </a>
                 </p>
@@ -70,7 +79,8 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label>Producto</label>
-                                <select class="form-control" id="select2" name="spare_id" tabindex="-1" class="js-states form-control-lg">
+                                <select class="form-control" id="select2" name="spare_id" tabindex="-1"
+                                        class="js-states form-control-lg">
                                     <option value="" selected>--- Selecciona el producto ---</option>
                                     @foreach($categories as $category)
                                         <optgroup label="{{$category->name}}">
@@ -106,7 +116,8 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">$</span>
                                     </div>
-                                    <input type="number" class="form-control" id="unit_price" name="unit_price" readonly>
+                                    <input type="number" class="form-control" id="unit_price" name="unit_price"
+                                           readonly>
                                 </div>
                             </div>
                         </div>
@@ -172,7 +183,9 @@
                                 <td>{{ $purchase_spare->quantity }}</td>
                                 <td>{{ $purchase_spare->price }}</td>
                                 <td>
-                                    <form action="{{ route('purchases.spare.destroy',[$purchase->id,$purchase_spare->id]) }}" method="post">
+                                    <form
+                                        action="{{ route('purchases.spare.destroy',[$purchase->id,$purchase_spare->id]) }}"
+                                        method="post">
                                         @method('delete')
                                         @csrf
                                         <button type="submit" class="btn btn-danger" title="Borrar">
@@ -184,10 +197,10 @@
                         @endforeach
                         </tbody>
                         <tfoot>
-                            <tr>
-                                <th colspan="4">Precio total</th>
-                                <td colspan="1">{{ $purchase->total_price }}</td>
-                            </tr>
+                        <tr>
+                            <th colspan="4">Precio total</th>
+                            <td colspan="1">{{ $purchase->total_price }}</td>
+                        </tr>
                         </tfoot>
                     </table>
                 @endif
@@ -199,7 +212,8 @@
                 Datos
                 <div class="card-tools">
 
-                    <button type="button" id="hide-button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                    <button type="button" id="hide-button" class="btn btn-tool" data-card-widget="collapse"><i
+                            class="fas fa-minus"></i>
                     </button>
                 </div>
             </div>
