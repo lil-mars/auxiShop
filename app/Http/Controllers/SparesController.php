@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\CarLine;
 use App\Models\Category;
 use App\Models\Spare;
 use App\Models\Store;
-use App\Models\StoreSpare;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -181,11 +179,10 @@ class SparesController extends Controller
             'measure' => 'nullable|string|min:0|max:50',
             'product_code' => 'nullable|string|min:0|max:30|unique:spares,product_code,' . $id,
             'original_code' => 'nullable|string|min:0|max:50|unique:spares,original_code,' . $id,
-            'quantity' => 'nullable|numeric|min:-2147483648|max:2147483647',
             'price' => 'required|numeric|min:-999999.99|max:999999.99',
             'price_m' => 'required|numeric|min:-999999.99|max:999999.99',
             'investment' => 'required|numeric|min:-999999.99|max:999999.99',
-            'image' => 'required|min:0|max:1000',
+            'image' => 'required|min:0|max:2000',
         ];
 
         $data = $this->validate($request, $rules);

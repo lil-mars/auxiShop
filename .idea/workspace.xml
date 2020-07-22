@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9a6344b7-60f9-4a93-bcd9-e7d5362b97b0" name="Default Changelist" comment="">
+    <list default="true" id="9a6344b7-60f9-4a93-bcd9-e7d5362b97b0" name="Default Changelist" comment="Removing quantity input and modifying size of image 2000 char">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shopping.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shopping.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PurchaseSparesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PurchaseSparesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/purchases/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/purchases/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_28_232631_create_spares.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_28_232631_create_spares.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/spares/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/spares/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
     </list>
@@ -38,18 +37,25 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="Remote conn" type="feb32156:DbDataSourceImpl" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="Remote conn" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="Remote conn" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="saleAux: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="saleAux: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Remote conn" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="saleAux: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="spares: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -215,17 +221,7 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@3ad59f2a" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@3ad59f2a" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@754c89f6" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@3ad59f2a" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5a537e1f" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@85e0229e" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
           </expand>
           <select />
@@ -320,6 +316,8 @@
       <workItem from="1594930144717" duration="1123000" />
       <workItem from="1595034309756" duration="7920000" />
       <workItem from="1595124802303" duration="5499000" />
+      <workItem from="1595204203717" duration="2299000" />
+      <workItem from="1595431294553" duration="1935000" />
     </task>
     <task id="LOCAL-00001" summary="Finishing all the migrations and adding some Models &#10;- We need relations and Seeds for the DB :D">
       <created>1584135780363</created>

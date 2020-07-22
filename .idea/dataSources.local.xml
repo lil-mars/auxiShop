@@ -31,7 +31,7 @@
         <introspection-scope>
           <node kind="schema">
             <name qname="@" />
-            <name qname="auxiShop" />
+            <name qname="amavisd" />
             <name qname="saleAux" />
           </node>
         </introspection-scope>

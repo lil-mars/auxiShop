@@ -40,7 +40,7 @@ class CreateSpares extends Migration
             $table->float('price');
             $table->float('price_m');
             $table->float('investment');
-            $table->string('image',1000)->nullable();
+            $table->string('image',2000)->nullable();
 
             $table->foreign('category_id')
                 ->references('id')

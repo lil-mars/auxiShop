@@ -88,14 +88,6 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('quantity') ? 'has-error' : '' }}">
-    <label for="quantity" class="col-md-2 control-label">Cantidad</label>
-    <div class="col-md-10">
-        <input class="form-control" name="quantity" type="number" id="quantity" value="{{ old('quantity', optional($spare)->quantity) }}" min="-2147483648" max="2147483647" >
-        {!! $errors->first('quantity', '<p class="help-block text-danger">:message</p>') !!}
-    </div>
-</div>
-
 <div class="form-group {{ $errors->has('price') ? 'has-error' : '' }}">
     <label for="price" class="col-md-2 control-label">Precio</label>
     <div class="col-md-10">
