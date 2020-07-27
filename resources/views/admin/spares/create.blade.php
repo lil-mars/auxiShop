@@ -137,7 +137,7 @@
 
     <div class="modal fade" id="brandsForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Nueva marca</h5>
@@ -151,7 +151,8 @@
                         <div class="form-group">
                             <label for="name" class="col-form-label">Nombre:</label>
                             <input type="text" class="form-control" id="name" name="name">
-
+                        </div>
+                        <div class="form-group">
                             <label for="country" class="col-form-label">Pais:</label>
                             <select name="country" class="form-control" id="country">
                                 <option value="Elegir" id="AF">Elegir opción</option>
@@ -223,14 +224,18 @@
                                 <option value="Estados Unidos" id="US">Estados Unidos</option>
                                 <option value="Estonia" id="EE">Estonia</option>
                                 <option value="c" id="ET">Etiopía</option>
-                                <option value="Ex-República Yugoslava de Macedonia" id="MK">Ex-República Yugoslava de Macedonia</option>
+                                <option value="Ex-República Yugoslava de Macedonia" id="MK">Ex-República Yugoslava de
+                                    Macedonia
+                                </option>
                                 <option value="Filipinas" id="PH">Filipinas</option>
                                 <option value="Finlandia" id="FI">Finlandia</option>
                                 <option value="Francia" id="FR">Francia</option>
                                 <option value="Gabón" id="GA">Gabón</option>
                                 <option value="Gambia" id="GM">Gambia</option>
                                 <option value="Georgia" id="GE">Georgia</option>
-                                <option value="Georgia del Sur y las islas Sandwich del Sur" id="GS">Georgia del Sur y las islas Sandwich del Sur</option>
+                                <option value="Georgia del Sur y las islas Sandwich del Sur" id="GS">Georgia del Sur y
+                                    las islas Sandwich del Sur
+                                </option>
                                 <option value="Ghana" id="GH">Ghana</option>
                                 <option value="Gibraltar" id="GI">Gibraltar</option>
                                 <option value="Granada" id="GD">Granada</option>
@@ -263,10 +268,13 @@
                                 <option value="Islas de Cocos o Keeling" id="CC">Islas de Cocos o Keeling</option>
                                 <option value="Islas Faroe" id="FO">Islas Faroe</option>
                                 <option value="Islas Fiyi" id="FJ">Islas Fiyi</option>
-                                <option value="Islas Malvinas Islas Falkland" id="FK">Islas Malvinas Islas Falkland</option>
+                                <option value="Islas Malvinas Islas Falkland" id="FK">Islas Malvinas Islas Falkland
+                                </option>
                                 <option value="Islas Marianas del norte" id="MP">Islas Marianas del norte</option>
                                 <option value="Islas Marshall" id="MH">Islas Marshall</option>
-                                <option value="Islas menores de Estados Unidos" id="UM">Islas menores de Estados Unidos</option>
+                                <option value="Islas menores de Estados Unidos" id="UM">Islas menores de Estados
+                                    Unidos
+                                </option>
                                 <option value="Islas Palau" id="PW">Islas Palau</option>
                                 <option value="Islas Salomón" d="SB">Islas Salomón</option>
                                 <option value="Islas Tokelau" id="TK">Islas Tokelau</option>
@@ -338,7 +346,9 @@
                                 <option value="República Centroafricana" id="CF">República Centroafricana</option>
                                 <option value="República Checa" id="CZ">República Checa</option>
                                 <option value="República de Sudáfrica" id="ZA">República de Sudáfrica</option>
-                                <option value="República Democrática del Congo Zaire" id="CD">República Democrática del Congo Zaire</option>
+                                <option value="República Democrática del Congo Zaire" id="CD">República Democrática del
+                                    Congo Zaire
+                                </option>
                                 <option value="República Dominicana" id="DO">República Dominicana</option>
                                 <option value="Reunión" id="RE">Reunión</option>
                                 <option value="Ruanda" id="RW">Ruanda</option>
@@ -349,7 +359,8 @@
                                 <option value="San Kitts y Nevis" id="KN">San Kitts y Nevis</option>
                                 <option value="San Marino" id="SM">San Marino</option>
                                 <option value="San Pierre y Miquelon" id="PM">San Pierre y Miquelon</option>
-                                <option value="San Vicente e Islas Granadinas" id="VC">San Vicente e Islas Granadinas</option>
+                                <option value="San Vicente e Islas Granadinas" id="VC">San Vicente e Islas Granadinas
+                                </option>
                                 <option value="Santa Helena" id="SH">Santa Helena</option>
                                 <option value="Santa Lucía" id="LC">Santa Lucía</option>
                                 <option value="Santo Tomé y Príncipe" id="ST">Santo Tomé y Príncipe</option>
@@ -371,8 +382,11 @@
                                 <option value="Taiwán" id="TW">Taiwán</option>
                                 <option value="Tanzania" id="TZ">Tanzania</option>
                                 <option value="Tayikistán" id="TJ">Tayikistán</option>
-                                <option value="Territorios británicos del océano Indico" id="IO">Territorios británicos del océano Indico</option>
-                                <option value="Territorios franceses del sur" id="TF">Territorios franceses del sur</option>
+                                <option value="Territorios británicos del océano Indico" id="IO">Territorios británicos
+                                    del océano Indico
+                                </option>
+                                <option value="Territorios franceses del sur" id="TF">Territorios franceses del sur
+                                </option>
                                 <option value="Timor Oriental" id="TP">Timor Oriental</option>
                                 <option value="Togo" id="TG">Togo</option>
                                 <option value="Tonga" id="TO">Tonga</option>
@@ -394,21 +408,35 @@
                                 <option value="Zimbabue" id="ZW">Zimbabue</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="image" class="col-form-label">Imagen:</label>
+                            <input type="text" class="form-control" id="image" name="image">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mb-4">Agregar</button>
                         <div>
                             <h6 class="text-bold">Todas las marcas</h6>
                             <ul class="list-group">
                                 @foreach($Brands as $brand)
                                     <div class="row">
-                                        <div class="col-6">
+                                        <div class="col-10">
                                             <li class="list-group-item">
                                                 <b>Nombre:</b>
                                                 {{$brand->name}}
                                             </li>
-                                        </div>
-                                        <div class="col-6">
                                             <li class="list-group-item">
                                                 <b>Pais:</b>
                                                 {{$brand->country}}
+                                            </li>
+                                        </div>
+                                        <div class="col-2">
+                                            <li class="list-group-item card">
+                                                <div class="card-header">
+                                                    <b>Imagen:</b>
+                                                </div>
+                                                <div class="card-body">
+                                                    <img class="img-fluid img-thumbnail" src="{{$brand->image}}" alt="">
+                                                </div>
                                             </li>
                                         </div>
                                     </div>
@@ -418,7 +446,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Agregar</button>
                     </div>
                 </form>
             </div>

@@ -6,6 +6,7 @@
         {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+
 <div class="form-group {{ $errors->has('contry') ? 'has-error' : '' }}">
     <label for="name" class="col-md-2 control-label">Pais</label>
     <div class="col-md-10">
@@ -14,6 +15,23 @@
     </div>
 </div>
 
+<div class="form-group {{ $errors->has('image') ? 'has-error' : '' }}">
+    <label for="image" class="col-md-2 control-label">Link de imagen</label>
+    <div class="col-md-10">
+        <input class="form-control" name="image" type="text" id="image" value="{{ old('image', optional($brand)->image) }}" min="0" max="1000" >
+        {!! $errors->first('image', '<p class="help-block text-danger">:message</p>') !!}
+    </div>
+</div>
+<div class="row">
+    <label for="showImage" class="col-md-2 control-label">Vista previa</label>
+</div>
+<div class="row">
+    <div class="col-md-4 offset-3">
+        <div class="text-center">
+            <img src="" id="showImage" class="rounded img-fluid" alt="Seleciciona una foto">
+        </div>
+    </div>
+</div>
 <datalist id="countries">
     <option value="Afganistán" id="AF">Afganistán</option>
     <option value="Albania" id="AL">Albania</option>
@@ -253,3 +271,4 @@
     <option value="Zambia" id="ZM">Zambia</option>
     <option value="Zimbabue" id="ZW">Zimbabue</option>
 </datalist>
+

@@ -51,8 +51,8 @@ class BrandsController extends Controller
             $data = $this->getData($request);
 
             Brand::create($data);
-
-            return back();
+            return redirect()->route('brands.index')
+                ->with('success_message', 'Marca se agrego correctamente!');
         } catch (Exception $exception) {
 
             return back()->withInput()
@@ -114,12 +114,9 @@ class BrandsController extends Controller
     public function update($id, Request $request)
     {
         try {
-
             $data = $this->getData($request);
-
             $brand = Brand::findOrFail($id);
             $brand->update($data);
-
             return redirect()->route('brands.index')
                 ->with('success_message', 'Marca se actualizo correctamente.');
         } catch (Exception $exception) {
@@ -163,6 +160,7 @@ class BrandsController extends Controller
         $rules = [
                 'name' => 'nullable|string|min:0|max:50',
                 'country' => 'nullable|string|min:0|max:100',
+                'image' => 'nullable|string|min:0|max:1000',
         ];
 
         $data = $request->validate($rules);

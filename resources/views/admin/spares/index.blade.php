@@ -118,9 +118,15 @@
                                     <td width="5%">{{ $spare->code }}</td>
                                     <td width="30%">{{ $spare->description }}</td>
                                     <td width="7%">{{ optional($spare->category)->name }}</td>
-                                    <td>{{ optional($spare->brand)->name }}</td>
+                                    <td>
+                                            {{ optional($spare->brand)->name }}
+                                            @if(isset($spare->brand->image))
+                                                <img class="img-thumbnail img-size-50 align-items-end"
+                                                     src="{{ optional($spare->brand)->image }}" alt="">
+                                            @endif
+                                    </td>
                                     <td>{{ $spare->measure }}</td>
-                                    <td width="5%">{{ $spare->product_code }}</td>
+                                    <td width="7%">{{ $spare->product_code }}</td>
                                     <td>{{ $spare->price }}</td>
                                     @if(auth()->user()->Role->name == 'admin')
                                         <td>{{ $spare->investment }}</td>
@@ -229,6 +235,9 @@
                             </li>
                             <li class="list-group-item col-4">
                                 <b>Cantidad</b> <a class="float-right" id="product-quantity-modal"></a>
+                            </li>
+                            <li class="list-group-item col-4">
+                                <b>Nacionalidad</b> <a class="float-right" id="product-brand-nationality"></a>
                             </li>
                             <li class="list-group-item col-4">
                                 <b>Venta</b> <a class="float-right" id="product-price-modal"></a>

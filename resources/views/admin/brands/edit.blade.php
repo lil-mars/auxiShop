@@ -50,3 +50,7 @@
     </div>
 
 @endsection
+@section('scripts')
+    <script src="{{asset('js/spare/showImage.js')}}">
+    </script>
+@endsection

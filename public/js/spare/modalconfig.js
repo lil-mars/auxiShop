@@ -16,7 +16,7 @@ $(document).ready(function () {
         let carlines = JSON.parse(carline_json);
         let stores = JSON.parse(stores_json);
 
-        console.log(stores);
+        console.log(product);
         // Cleaning the stores
         $('.stores_class').text(0);
         // Filling the stores
@@ -40,6 +40,7 @@ $(document).ready(function () {
         $('#product-quantity-modal').text(product['quantity']);
         $('#product-price-modal').text(product['price']);
         $('#product-brand-modal').text(product['brand']['name']);
+        $('#product-brand-nationality').text(product['brand']['country']);
         $('#product-pricem-modal').text(product['price_m']);
         $('#product-created-at-modal').text(product['created_at']);
         $('#product-updated-at-modal').text(product['updated_at']);

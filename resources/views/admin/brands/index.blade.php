@@ -44,6 +44,7 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Pais</th>
+                            <th>Imagen</th>
 
                             <th>Opciones</th>
                         </tr>
@@ -53,6 +54,9 @@
                         <tr>
                             <td>{{ $brand->name }}</td>
                             <td>{{ $brand->country }}</td>
+                            <td>
+                                <img class="img-fluid img-size-50" src="{{ $brand->image }}" alt="No hay imagen">
+                            </td>
 
                             <td>
 
