@@ -9,19 +9,18 @@ $(document).ready(function () {
         let carline_json = $(this).attr('data-carlines');
         let stores_json = $(this).attr('data-stores');
 
-        console.log(stores_json);
+        // console.log(stores_json);
 
         //JSON OBJECTS
         let product = JSON.parse(string_json);
         let carlines = JSON.parse(carline_json);
         let stores = JSON.parse(stores_json);
 
-        console.log(product);
         // Cleaning the stores
         $('.stores_class').text(0);
         // Filling the stores
         for (let store of stores) {
-            $('#stores'+store.store_id).text(store.quantity);
+            $('#stores' + store.store_id).text(store.quantity);
         }
 
         for (let carline of carlines) {
@@ -35,12 +34,17 @@ $(document).ready(function () {
         $('#product-original-code-modal').text(product['original_code']);
         $('#product-pro-code-modal').text(product['product_code']);
         $('#product-description-modal').text(product['description']);
-        $('#product-category-modal').text(product['category']['name']);
+        if (product['category'])
+            $('#product-category-modal').text(product['category']['name']);
+
         $('#product-measure-modal').text(product['measure']);
         $('#product-quantity-modal').text(product['quantity']);
         $('#product-price-modal').text(product['price']);
-        $('#product-brand-modal').text(product['brand']['name']);
-        $('#product-brand-nationality').text(product['brand']['country']);
+
+        if (product['brand']) {
+            $('#product-brand-modal').text(product['brand']['name']);
+            $('#product-brand-nationality').text(product['brand']['country']);
+        }
         $('#product-pricem-modal').text(product['price_m']);
         $('#product-created-at-modal').text(product['created_at']);
         $('#product-updated-at-modal').text(product['updated_at']);

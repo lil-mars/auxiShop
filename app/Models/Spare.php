@@ -154,16 +154,15 @@ class Spare extends Model
 
 
     /**
-     * Get updated_at in array format
-     *
-     * @param  string  $value
-     * @return array
+     * Update the quantities by the stores
      */
+
     public function update_quantity() {
         $quantity = 0;
-        foreach ($this->purchaseSpare as $purchase_spare) {
-            $quantity += $purchase_spare->quantity;
-        }
+//        foreach ($this->purchaseSpare as $purchase_spare) {
+//            $quantity += $purchase_spare->quantity;
+//        }
+
         foreach ($this->store_spare as $store_spare) {
             $quantity += $store_spare->quantity;
         }

@@ -27,7 +27,7 @@ class PurchasesController extends Controller
      */
     public function index()
     {
-        $purchases = Purchase::with('provider')->paginate(25);
+        $purchases = Purchase::with('provider')->orderBy('created_at', 'desc')->get();
         return view('admin.purchases.index', compact('purchases'));
     }
 
@@ -133,8 +133,8 @@ class PurchasesController extends Controller
             $purchase = Purchase::findOrFail($id);
             foreach ($purchase->purchase_spare as $purchase_spare){
                 $spare = $purchase_spare->spare;
-                $spare->quantity -= $purchase_spare->quantity;
-                $spare->save();
+//                $spare->quantity -= $purchase_spare->quantity;
+//                $spare->save();
             }
             $purchase->delete();
 
@@ -157,7 +157,7 @@ class PurchasesController extends Controller
     protected function getData(Request $request)
     {
         $rules = [
-                'provider_id' => 'nullable',
+            'provider_id' => 'nullable',
             'contact' => 'nullable|string|min:0|max:255',
             'total_price' => 'nullable|numeric|min:-999999.99|max:999999.99',
         ];

@@ -41,7 +41,6 @@
                 <table class="table table-striped table-responsive-sm table-bordered">
                     <thead class="bg-dark">
                         <tr>
-                            <th>ID</th>
                             <th>Proveedor</th>
                             <th>Contacto</th>
                             <th>Precio total</th>
@@ -51,7 +50,6 @@
                     <tbody>
                     @foreach($purchases as $purchase)
                         <tr>
-                            <td>{{ $purchase->id}}</td>
                             <td>{{ optional($purchase->Provider)->get_full_name() }}</td>
                             <td>{{ $purchase->contact }}</td>
                             <td>{{ $purchase->total_price }} BS</td>
@@ -84,11 +82,6 @@
 
             </div>
         </div>
-
-        <div class="panel-footer">
-            {!! $purchases->render() !!}
-        </div>
-
         @endif
 
     </div>

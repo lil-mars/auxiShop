@@ -57,7 +57,7 @@ class SparesController extends Controller
         try {
 
             $data = $this->validation($request);
-
+            $data['quantity'] = 0;
             $spare = Spare::create($data);
 
 //            Adding car lines
@@ -182,7 +182,7 @@ class SparesController extends Controller
             'price' => 'required|numeric|min:-999999.99|max:999999.99',
             'price_m' => 'required|numeric|min:-999999.99|max:999999.99',
             'investment' => 'required|numeric|min:-999999.99|max:999999.99',
-            'image' => 'required|min:0|max:2000',
+            'image' => 'nullable|min:0|max:2000',
         ];
 
         $data = $this->validate($request, $rules);

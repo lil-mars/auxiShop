@@ -53,9 +53,10 @@ class PurchaseSparesController extends Controller
             $purchase->total_price += $request->price;
             $purchase->save();
 
-            $spare = Spare::find($request->spare_id);
-            $spare->quantity += $request->quantity;
-            $spare->save();
+//            $spare = Spare::find($request->spare_id);
+//            $spare->quantity += $request->quantity;
+//            $spare->save();
+
 //              Create
             $purchaseSpare = PurchaseSpare::where('purchase_id',$data['purchase_id'])
                 ->where('spare_id', $data['spare_id'])
@@ -150,9 +151,9 @@ class PurchaseSparesController extends Controller
             $purchase->total_price -= $purchaseSpare->price;
             $purchase->save();
 
-            $spare = Spare::find($purchaseSpare->spare_id);
-            $spare->quantity -= $purchaseSpare->quantity;
-            $spare->save();
+//            $spare = Spare::find($purchaseSpare->spare_id);
+//            $spare->quantity -= $purchaseSpare->quantity;
+//            $spare->save();
 
             $purchaseSpare->delete();
 

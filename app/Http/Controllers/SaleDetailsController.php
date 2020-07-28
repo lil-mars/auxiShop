@@ -50,14 +50,15 @@ class SaleDetailsController extends Controller
 
         try {
 
-            $spare = StoreSpare::where('spare_id',$request->spare_id)
+            $store_spare = StoreSpare::where('spare_id',$request->spare_id)
                 ->where('store_id',$request->store_id)
                 ->first();
-
-            if ($spare->quantity >= $request->quantity) {
-
+            if ($store_spare->quantity >= $request->quantity) {
+                //CREATING OR UPDATING SALE DETAILS
                 $data = $this->getData($request);
-                $saleDetail = SaleDetail::where('spare_id', $request->spare_id)->first();
+                $saleDetail = SaleDetail::where('spare_id', $request->spare_id)
+                    ->where('sale_id', $request->sale_id)
+                    ->first();
                 if($saleDetail){
                     $saleDetail->quantity += $request->quantity;
                     $saleDetail->discount += $request->discount;
@@ -69,18 +70,23 @@ class SaleDetailsController extends Controller
                 }
 
 
+                //UPDATING SPARE QUANTITY
+                $spare = Spare::find($request->spare_id);
+                $spare->quantity -= $request->quantity;
+                $spare->save();
+                //UPDATING SALE PRICE AND AMOUNT
                 $sale = Sale::find($request->sale_id);
                 $sale->total_price += $request->real_price;
                 $sale->total_amount += $request->quantity;
                 $sale->save();
-
-                $spare->quantity -= $request->quantity;
-                $spare->save();
+                //UPDATING STORE SPARE QUANTITY
+                $store_spare->quantity -= $request->quantity;
+                $store_spare->save();
                 return redirect()->route('sales.sale.show', [$request->sale_id])
                     ->with('success_message', 'Detalles de venta se agrego correctamente.');
             }
             return back()->withInput()
-                ->withErrors(['error' => 'La cantidad maxima del producto es: '.$spare->quantity]);
+                ->withErrors(['error' => 'La cantidad maxima del producto es: '.$store_spare->quantity]);
         } catch (Exception $exception) {
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Error inesperado mientras se intentaba realizar tu peticion.']);
@@ -159,10 +165,8 @@ class SaleDetailsController extends Controller
 
             $saleDetails = SaleDetail::findOrFail($deatil_id);
             $sale = Sale::find($id);
-
             $sale->total_price -= $saleDetails->real_price;
             $sale->total_amount -= $saleDetails->quantity;
-
             $sale->save();
 
             $store_spare->quantity += $saleDetails->quantity;
@@ -170,6 +174,8 @@ class SaleDetailsController extends Controller
 
             $saleDetails->delete();
 
+            $spare = Spare::find($spare_id);
+            $spare->update_quantity();
             return back()
                 ->with('success_message', 'Detalles de venta se elimino correctamente.');
         } catch (Exception $exception) {
