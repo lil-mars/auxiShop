@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9a6344b7-60f9-4a93-bcd9-e7d5362b97b0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_28_231945_create_clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_28_231945_create_clients.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/clients/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/clients/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/sales/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/sales/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,18 +40,9 @@
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Remote conn" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Remote conn" type="feb32156:DbDataSourceImpl" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Remote conn" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="saleAux: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="saleAux: schema" type="ebfa3cd1:MariaImplModel$Schema" />
       </path>
     </expand>
     <select />
@@ -221,11 +210,6 @@
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
               <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@8d8e30eb" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@8d8e30eb" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@42e3ebf2" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
           </expand>
           <select />
         </treeState>
@@ -327,7 +311,7 @@
       <workItem from="1595814798740" duration="5322000" />
       <workItem from="1595878581652" duration="6126000" />
       <workItem from="1595961443235" duration="5851000" />
-      <workItem from="1596421988171" duration="850000" />
+      <workItem from="1596421988171" duration="1478000" />
     </task>
     <task id="LOCAL-00001" summary="Finishing all the migrations and adding some Models &#10;- We need relations and Seeds for the DB :D">
       <created>1584135780363</created>
@@ -357,7 +341,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596422544838</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fixing views and controller&#10;- Adding nullable fields and nullable requirement in the controller.&#10;- Updating the database tables  ci -&gt; nullable nit -&gt; nullable">
+      <created>1596423082315</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1596423082315</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,6 +374,7 @@
     <MESSAGE value="Removing quantity input and modifying size of image 2000 char" />
     <MESSAGE value="- Fixing bug that we cannot show the spare if it does not have category or brand.&#10;- Sales can update our quantities of the spare, it was tested." />
     <MESSAGE value="Fixing views and controller&#10;- Adding nullable fields and nullable requirement in the controller." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing views and controller&#10;- Adding nullable fields and nullable requirement in the controller." />
+    <MESSAGE value="Fixing views and controller&#10;- Adding nullable fields and nullable requirement in the controller.&#10;- Updating the database tables  ci -&gt; nullable nit -&gt; nullable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing views and controller&#10;- Adding nullable fields and nullable requirement in the controller.&#10;- Updating the database tables  ci -&gt; nullable nit -&gt; nullable" />
   </component>
 </project>

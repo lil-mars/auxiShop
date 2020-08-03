@@ -41,54 +41,60 @@
                 <h4>No hay ventas disponibles.</h4>
             </div>
         @else
-        <div class="card">
+            <div class="card">
                 <table class="table table-bordered  table-striped table-responsive-sm">
                     <thead class="bg-dark">
-                        <tr>
-                            <th>Cliente</th>
-                            <th>Tienda</th>
-                            <th>Usuario</th>
-                            <th>Precio total</th>
-                            <th>Cantidad</th>
-                            <th>Creacion</th>
-                            <th>Opciones</th>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Tienda</th>
+                        <th>Usuario</th>
+                        <th>Precio total</th>
+                        <th>Cantidad</th>
+                        <th>Creacion</th>
+                        <th>Opciones</th>
 
-                        </tr>
+                    </tr>
                     </thead>
                     <tbody>
                     @foreach($sales as $sale)
-                        <tr>
-                            <td>{{ optional($sale->Client)->get_full_name() }}</td>
-                            <td>{{ optional($sale->Store)->name }}</td>
-                            <td>{{ optional($sale->User)->get_full_name() }}</td>
-                            <td>{{ $sale->total_price }}</td>
-                            <td>{{ $sale->total_amount }}</td>
-                            <td>{{ $sale->get_creation() }}</td>
-                            <td>
-                                <form method="POST" action="{!! route('sales.sale.destroy', $sale->id) !!}" accept-charset="UTF-8">
-                                <input name="_method" value="DELETE" type="hidden">
-                                {{ csrf_field() }}
+                        @if(Auth::user()->role_id==1 || $sale->user_id == Auth::user()->id)
+                            <tr>
+                                <td>{{ optional($sale->Client)->get_full_name() }}</td>
+                                <td>{{ optional($sale->Store)->name }}</td>
+                                <td>{{ optional($sale->User)->get_full_name() }}</td>
+                                <td>{{ $sale->total_price }}</td>
+                                <td>{{ $sale->total_amount }}</td>
+                                <td>{{ $sale->get_creation() }}</td>
+                                <td>
+                                    <form method="POST" action="{!! route('sales.sale.destroy', $sale->id) !!}"
+                                          accept-charset="UTF-8">
+                                        <input name="_method" value="DELETE" type="hidden">
+                                        {{ csrf_field() }}
 
-                                    <div class="btn-group btn-group-xs pull-right" role="group">
-                                        <a href="{{ route('sales.sale.show', $sale->id ) }}" class="btn btn-secondary" title="Show Sale">
-                                            <span class="fa fa-shopping-basket" aria-hidden="true"></span>
-                                        </a>
-                                        <a href="{{ route('sales.sale.edit', $sale->id ) }}" class="btn btn-primary" title="Edit Sale">
-                                            <span class="fa fa-pen" aria-hidden="true"></span>
-                                        </a>
+                                        <div class="btn-group btn-group-xs pull-right" role="group">
+                                            <a href="{{ route('sales.sale.show', $sale->id ) }}"
+                                               class="btn btn-secondary" title="Show Sale">
+                                                <span class="fa fa-shopping-basket" aria-hidden="true"></span>
+                                            </a>
+                                            <a href="{{ route('sales.sale.edit', $sale->id ) }}" class="btn btn-primary"
+                                               title="Edit Sale">
+                                                <span class="fa fa-pen" aria-hidden="true"></span>
+                                            </a>
 
-                                        <button type="submit" class="btn btn-danger" title="Delete Sale" onclick="return confirm(&quot;Click Ok to delete Sale.&quot;)">
-                                            <span class="fa fa-trash" aria-hidden="true"></span>
-                                        </button>
-                                    </div>
-                                </form>
-                            </td>
-                        </tr>
+                                            <button type="submit" class="btn btn-danger" title="Delete Sale"
+                                                    onclick="return confirm(&quot;Click Ok to delete Sale.&quot;)">
+                                                <span class="fa fa-trash" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>
 
-        </div>
+            </div>
 
 
         @endif
