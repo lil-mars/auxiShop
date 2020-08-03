@@ -22,11 +22,11 @@
         	    <option value="" style="display: none;"
                         {{ old('store_id', optional($sale)->store_id ?: '') == '' ? 'selected' : '' }} disabled selected
                 >Seleccionar tienda</option>
-        	@foreach ($Stores as $key => $Store)
-			    <option value="{{ $key }}" {{ old('store_id', optional($sale)->store_id) == $key ? 'selected' : '' }}>
-			    	{{ $Store }}
-			    </option>
-			@endforeach
+            @foreach(Auth::user()->stores as $store)
+                <option value="{{$store->id}}" {{old('store_id', optional($sale)->store_id == $store->id ? 'selected': '')}}>
+                    {{$store->name}}
+                </option>
+            @endforeach
         </select>
         {!! $errors->first('store_id', '<p class="help-block">:message</p>') !!}
     </div>

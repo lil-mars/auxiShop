@@ -175,6 +175,8 @@ Route::group([
         ->name('users.user.index');
     Route::get('/create', 'UsersController@create')
         ->name('users.user.create');
+    Route::get('/{user}/stores', 'UsersController@stores')
+        ->name('users.user.stores');
     Route::get('/show/{user}', 'UsersController@show')
         ->name('users.user.show');
     Route::get('/{user}/edit', 'UsersController@edit')
@@ -185,6 +187,8 @@ Route::group([
         ->name('users.user.store');
     Route::put('user/{user}', 'UsersController@update')
         ->name('users.user.update');
+    Route::post('{user}/stores', 'UsersController@setStores')
+        ->name('users.user.set.stores');
     Route::put('password/{user}', 'UsersController@updatePassword')
         ->name('users.user.updatePassword');
     Route::delete('/user/{user}', 'UsersController@destroy')

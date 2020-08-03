@@ -76,7 +76,7 @@ class Sale extends Model
     /**
      * Get the User for this model.
      *
-     * @return App\Models\User
+     * @return App\User
      */
     public function User()
     {

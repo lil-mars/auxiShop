@@ -70,6 +70,9 @@
                                         <a href="{{ route('users.user.password', $user->id ) }}" class="btn btn-dark" title="Edit User">
                                             <span class="fa fa-key" aria-hidden="true"></span>
                                         </a>
+                                        <a href="{{ route('users.user.stores', $user->id ) }}" class="btn btn-warning" title="Tiendas">
+                                            <span class="fa fa-store" aria-hidden="true"></span>
+                                        </a>
 
                                         <button type="submit" class="btn btn-danger" title="Delete User" onclick="return confirm(&quot;Click Ok to delete User.&quot;)">
                                             <span class="fa fa-trash" aria-hidden="true"></span>

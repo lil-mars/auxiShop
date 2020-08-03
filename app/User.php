@@ -46,4 +46,15 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\Role','role_id','id');
     }
+    public function stores() {
+        return $this->belongsToMany('App\Models\Store','store_users','user_id', 'store_id');
+    }
+    public function hasStore($store_id) {
+        foreach ($this->stores as $store) {
+            if ($store->pivot->store_id == $store_id) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

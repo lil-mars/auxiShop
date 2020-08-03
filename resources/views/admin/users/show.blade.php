@@ -36,25 +36,33 @@
         </div>
 
     </div>
-
-    <div class="panel-body">
-        <dl class="dl-horizontal">
-            <dt>Nombres</dt>
-            <dd>{{ $user->name }}</dd>
-            <dt>Apellidos</dt>
-            <dd>{{ $user->last_name }}</dd>
-            <dt>Email</dt>
-            <dd>{{ $user->email }}</dd>
-            <dt>Fecha de creacion</dt>
-            <dd>{{ $user->created_at }}</dd>
-            <dt>Fecha de actualizacion</dt>
-            <dd>{{ $user->updated_at }}</dd>
-            <dt>Rol</dt>
-            <dd>{{ optional($user->Role)->name }}</dd>
-
-        </dl>
-
+    <div class="row">
+    <div class="col-6">
+        <div class="panel-body">
+            <dl class="dl-horizontal">
+                <dt>Nombres</dt>
+                <dd>{{ $user->name }}</dd>
+                <dt>Apellidos</dt>
+                <dd>{{ $user->last_name }}</dd>
+                <dt>Email</dt>
+                <dd>{{ $user->email }}</dd>
+                <dt>Fecha de creacion</dt>
+                <dd>{{ $user->created_at }}</dd>
+                <dt>Fecha de actualizacion</dt>
+                <dd>{{ $user->updated_at }}</dd>
+                <dt>Rol</dt>
+                <dd>{{ optional($user->Role)->name }}</dd>
+            </dl>
+        </div>
     </div>
+        <div class="col-6">
+            <dt>Tiendas habilitadas</dt>
+            @foreach($user->stores as $store)
+                <dd>{{ optional($store)->name }}</dd>
+            @endforeach
+        </div>
+    </div>
+
 </div>
 
 @endsection

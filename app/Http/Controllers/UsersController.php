@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
+use App\Models\Store;
 use App\User;
 use Illuminate\Http\Request;
 use Exception;
@@ -89,6 +90,13 @@ class UsersController extends Controller
         return view('admin.users.edit', compact('user','Roles'));
     }
 
+    public function stores($id)
+    {
+        $user = User::findOrFail($id);
+        $stores = Store::all();
+        return view('admin.users.stores', compact('user', 'stores'));
+    }
+
     /**
      * Update the specified user in the storage.
      *
@@ -115,6 +123,19 @@ class UsersController extends Controller
         }
     }
 
+
+    public function setStores(Request $request, $user_id) {
+        try {
+            $user = User::find($user_id);
+            $user->stores()->sync($request->stores);
+            return redirect()->route('users.user.index')
+                ->with('success_message', 'Se asignaron las tiendas correctamente !');
+        } catch (Exception $exception){
+            $errors = $exception->errors();
+            return back()->withInput()
+                ->withErrors($errors);
+        }
+    }
     /**
      * Remove the specified user from the storage.
      *
