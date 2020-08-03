@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a6344b7-60f9-4a93-bcd9-e7d5362b97b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_08_02_230631_create_store_users.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/users/stores.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Sale.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Sale.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/sales/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/sales/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/stores/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/stores/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -326,7 +316,7 @@
       <workItem from="1595878581652" duration="6126000" />
       <workItem from="1595961443235" duration="5851000" />
       <workItem from="1596421988171" duration="4466000" />
-      <workItem from="1596483725335" duration="4169000" />
+      <workItem from="1596483725335" duration="4648000" />
     </task>
     <task id="LOCAL-00001" summary="Finishing all the migrations and adding some Models &#10;- We need relations and Seeds for the DB :D">
       <created>1584135780363</created>
@@ -370,7 +360,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596423754801</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Done&#10;Adding stores to a specific user and hiding stores from another users.">
+      <created>1596488044754</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1596488044754</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,6 +395,7 @@
     <MESSAGE value="Fixing views and controller&#10;- Adding nullable fields and nullable requirement in the controller." />
     <MESSAGE value="Fixing views and controller&#10;- Adding nullable fields and nullable requirement in the controller.&#10;- Updating the database tables  ci -&gt; nullable nit -&gt; nullable" />
     <MESSAGE value="Done&#10;Hiding sales from another users in the list of sales" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;Hiding sales from another users in the list of sales" />
+    <MESSAGE value="Done&#10;Adding stores to a specific user and hiding stores from another users." />
+    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;Adding stores to a specific user and hiding stores from another users." />
   </component>
 </project>

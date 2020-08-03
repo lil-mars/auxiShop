@@ -51,6 +51,7 @@
                     </thead>
                     <tbody>
                     @foreach($stores as $store)
+                        @if(Auth::user()->hasStore($store->id))
                         <tr>
                             <td>{{ $store->name }}</td>
                             <td>{{ $store->address }}</td>
@@ -83,6 +84,7 @@
 
                             </td>
                         </tr>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>
