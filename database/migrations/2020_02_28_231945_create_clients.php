@@ -24,8 +24,8 @@ class CreateClients extends Migration
             $table->string('address',100)->nullable();
             $table->string('phone',20)->nullable();
             $table->string('fax',20)->nullable();
-            $table->string('ci',30)->unique();
-            $table->string('nit',40)->unique();
+            $table->string('ci',30)->nullable();
+            $table->string('nit',40)->nullable();
             $table->timestamps();
         });
 

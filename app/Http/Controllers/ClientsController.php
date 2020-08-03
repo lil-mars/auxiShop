@@ -51,7 +51,7 @@ class ClientsController extends Controller
             return redirect()->route('clients.client.index')
                 ->with('success_message', 'Cliente se agrego correctamente.');
         } catch (Exception $exception) {
-
+            dd($exception);
             $errors = $exception->errors();
             return back()->withInput()
                 ->withErrors($errors);
@@ -156,8 +156,8 @@ class ClientsController extends Controller
             'address' => 'nullable|string|min:0|max:100',
             'phone' => 'nullable|string|min:0|max:20',
             'fax' => 'nullable|string|min:0|max:20',
-            'nit' => 'nullable|string|min:1|max:40|unique:clients,nit,'. $id,
-            'ci' => 'nullable|string|min:1|max:30|unique:clients,ci,' . $id,
+            'nit' => 'nullable|string|max:40',
+            'ci' => 'nullable|string|max:30',
         ];
 
         $data = $request->validate($rules);
