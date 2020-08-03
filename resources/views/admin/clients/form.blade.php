@@ -66,7 +66,7 @@
 <div class="form-group {{ $errors->has('ci') ? 'has-error' : '' }}">
     <label for="ci" class="col-md-2 control-label">CI</label>
     <div class="col-md-10">
-        <input class="form-control" name="ci" type="text" id="ci" value="{{ old('ci', optional($client)->ci) }}" minlength="1" maxlength="30" required="true" >
+        <input class="form-control" name="ci" type="text" id="ci" value="{{ old('ci', optional($client)->ci) }}" minlength="1" maxlength="30">
         {!! $errors->first('ci', '<p class="help-block text-danger">:message</p>') !!}
     </div>
 </div>
@@ -74,7 +74,7 @@
 <div class="form-group {{ $errors->has('nit') ? 'has-error' : '' }}">
     <label for="nit" class="col-md-2 control-label">NIT</label>
     <div class="col-md-10">
-        <input class="form-control" name="nit" type="text" id="nit" value="{{ old('nit', optional($client)->nit) }}" minlength="1" maxlength="30" required="true" >
+        <input class="form-control" name="nit" type="text" id="nit" value="{{ old('nit', optional($client)->nit) }}" minlength="1" maxlength="30">
         {!! $errors->first('nit', '<p class="help-block text-danger">:message</p>') !!}
     </div>
 </div>

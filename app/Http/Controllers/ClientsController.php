@@ -147,17 +147,17 @@ class ClientsController extends Controller
     protected function getData(Request $request, $id = '')
     {
         $rules = [
-            'company_name' => 'required|string|min:0|max:40',
-            'father_last_name' => 'required|string|min:0|max:20',
+            'company_name' => 'nullable|string|min:0|max:40',
+            'father_last_name' => 'nullable|string|min:0|max:20',
             'mother_last_name' => 'nullable|string|min:0|max:20',
             'second_name' => 'nullable|string|min:0|max:20',
-            'name' => 'required|string|min:0|max:20',
+            'name' => 'nullable|string|min:0|max:20',
             'occupation' => 'nullable|string|min:0|max:30',
             'address' => 'nullable|string|min:0|max:100',
             'phone' => 'nullable|string|min:0|max:20',
             'fax' => 'nullable|string|min:0|max:20',
-            'nit' => 'required|string|min:1|max:40|unique:clients,nit,'. $id,
-            'ci' => 'required|string|min:1|max:30|unique:clients,ci,' . $id,
+            'nit' => 'nullable|string|min:1|max:40|unique:clients,nit,'. $id,
+            'ci' => 'nullable|string|min:1|max:30|unique:clients,ci,' . $id,
         ];
 
         $data = $request->validate($rules);
