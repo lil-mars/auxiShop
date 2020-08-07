@@ -95,8 +95,6 @@
         <div class="panel-footer">
             {!! $stores->render() !!}
         </div>
-
         @endif
-
     </div>
 @endsection
