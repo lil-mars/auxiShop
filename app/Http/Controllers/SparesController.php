@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SpareResource;
 use App\Models\Brand;
 use App\Models\CarLine;
 use App\Models\Category;
@@ -9,6 +10,8 @@ use App\Models\Spare;
 use App\Models\Store;
 use Illuminate\Http\Request;
 use Exception;
+use DB;
+use Illuminate\View\View;
 
 class SparesController extends Controller
 {
@@ -30,7 +33,33 @@ class SparesController extends Controller
         $stores = Store::pluck('name', 'id');
         return view('admin.spares.index', compact('spares', 'categories', 'brands', 'stores'));
     }
+    public function getSpare(Request $request)
+    {
+        return Spare::with('category')
+            ->with('brand')
+            ->with('stores')
+            ->with('store_spare')
+            ->with('car_lines')
+            ->find($request->get('id'));
+    }
+    public function getStoresAndQuantities(Request $request){
+        $key = $request->get('id');
+        $stores = DB::table("spares")
+            ->select('stores.name as name', 'store_spare.quantity')
+            ->join('store_spare', 'store_spare.spare_id', '=', 'spares.id')
+            ->join('stores', 'stores.id', '=', 'store_spare.store_id')
+            ->where('spares.id', 'like', "%{$key}%")->get();
+        return $stores;
+    }
 
+    public function list()
+    {
+        $categories = Category::pluck('name');
+        $brands = Brand::pluck('name');
+        $stores = Store::pluck('name', 'id');
+        $spares = SpareResource::collection(Spare::all());
+        return view('admin.spares.list', compact('categories', 'brands', 'stores', 'spares'));
+    }
     /**
      * Show the form for creating a new spare.
      *
@@ -189,7 +218,22 @@ class SparesController extends Controller
         return $data;
     }
 
-
+    public function searchSpare(Request $request) {
+        $key = $request->get('search');
+        $spares = DB::table("spares")
+            ->select('spares.id as id', 'categories.name as category', 'brands.name as brand', 'spares.description',
+                'spares.code', 'spares.measure', 'spares.investment', 'spares.price', 'spares.original_code')
+            ->join('categories', 'categories.id', '=', 'spares.category_id')
+            ->join('brands', 'brands.id', '=', 'spares.brand_id')
+            ->where('brands.name', 'like', "%{$key}%")
+            ->orWhere('categories.name', 'like', "%{$key}%")
+            ->orWhere('spares.original_code', 'like', "%{$key}%")
+            ->orWhere('spares.code', 'like', "%{$key}%")
+            ->orWhere('spares.description', 'like', "%{$key}%")
+            ->orWhere('spares.measure', 'like', "%{$key}%")
+            ->paginate(10);
+        return $spares;
+    }
     public function filter(Request $request)
     {
         $categories = Category::pluck('name');

@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('spares-list', 'Api\SpareController@list');
+Route::get('check-admin', 'Api\SpareController@checkAdmin');
+

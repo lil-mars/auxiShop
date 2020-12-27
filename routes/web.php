@@ -16,6 +16,8 @@ Route::get('/', 'HomeController@index');
 //Spares
 Route::resource('spares', 'SparesController')->except(['index'])->middleware(['auth', 'role:admin']);
 Route::get('spares', 'SparesController@index')->middleware(['auth'])->name('spares.index');
+Route::get('spares-list-view', 'SparesController@list');
+// Spares API
 
 Route::resource('brands', 'BrandsController')->middleware(['auth', 'role:admin']);
 Route::resource('categories', 'CategoriesController')->middleware(['auth', 'role:admin']);
@@ -24,6 +26,9 @@ Route::resource('car_lines', 'CarLinesController')->middleware(['auth', 'role:ad
 Auth::routes(['register' => false, 'reset' => false]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware(['auth']);
 Route::get('filter-products', 'SparesController@filter')->name('filter-products')->middleware(['auth']);
+Route::get('search-spare', 'SparesController@searchSpare')->middleware(['auth']);
+Route::get('get-spare', 'SparesController@getSpare');
+Route::get('get-store-spare', 'SparesController@getStoresAndQuantities');
 
 
 // Clients allow all users
