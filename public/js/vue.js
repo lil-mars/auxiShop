@@ -2110,7 +2110,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['isAdmin'],
   data: function data() {
@@ -2144,7 +2143,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/get-spare?id=' + id).then(function (response) {
         _this.spare = response.data;
         _this.image = response.data.image;
-        console.log(_this.spare);
       });
       axios.get('/get-store-spare?id=' + id).then(function (response) {
         _this.stores = response.data;
@@ -2210,7 +2208,6 @@ __webpack_require__.r(__webpack_exports__);
       var beforePage = page - 1;
       this.pagination.next = "/search-spare?search=".concat(search, "&page=").concat(nextPage);
       this.pagination.before = "/search-spare?search=".concat(search, "&page=").concat(beforePage);
-      console.log(this.pagination);
     }
   }
 });
@@ -37944,7 +37941,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(spare.price))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(spare.investment))]),
+                _vm.isAdmin
+                  ? _c("td", [_vm._v(_vm._s(spare.investment))])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c("td", [
                   _c(

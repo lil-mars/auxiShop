@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9a6344b7-60f9-4a93-bcd9-e7d5362b97b0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SparesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SparesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/List.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/List.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/stores/list/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/stores/list/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,17 +36,6 @@
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="saleAux: schema" type="ebfa3cd1:MariaImplModel$Schema" />
       </path>
     </expand>
     <select />
@@ -319,6 +313,7 @@
       <workItem from="1596483725335" duration="5135000" />
       <workItem from="1596817276914" duration="196000" />
       <workItem from="1608996813071" duration="678000" />
+      <workItem from="1610302989944" duration="2076000" />
     </task>
     <task id="LOCAL-00001" summary="Finishing all the migrations and adding some Models &#10;- We need relations and Seeds for the DB :D">
       <created>1584135780363</created>

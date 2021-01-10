@@ -70,97 +70,98 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <form action="{{route('stores.store.quantity', $store->id)}}" method="post">
-                    @csrf
-                    <button class="btn btn-success btn-block" type="submit" id="buttonSubmit">
-                        <div id="spin">
-                            <div class="lds-spinner">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
+                <div class="col-12">
+                    <form action="{{route('stores.store.quantity', $store->id)}}" method="post">
+                        @csrf
+                        <button class="btn btn-success btn-block" type="submit" id="buttonSubmit">
+                            <div id="spin">
+                                <div class="lds-spinner">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                <br>
+                                GUARDANDO LOS CAMBIOS
+                                <br>
                             </div>
-                            <br>
-                            GUARDANDO LOS CAMBIOS
-                            <br>
-                        </div>
-                        <div id="buttonText">
-                            <i class="fa fa-save"></i>
-                            <br>
-                            GUARDAR
-                        </div>
+                            <div id="buttonText">
+                                <i class="fa fa-save"></i>
+                                <br>
+                                GUARDAR
+                            </div>
 
-                    </button>
-                    <br>
-                    <br>
-
-                    <table id="table" class="table table-responsive table-hover table-bordered" style="width: 100%">
-                        <thead class="bg-dark">
-                        <tr>
-                            <th width="5%">Codigo</th>
-                            <th width="30%">Descripcion</th>
-                            <th width="7%">Categoria</th>
-                            <th>Marca</th>
-                            <th width="5%">Codigo respuesto</th>
-                            <th>Cantidad</th>
-                            <th>
-                                Enviar
-{{--                                <button class="btn btn-primary" id="selectButton" type="button">--}}
-{{--                                    Todos--}}
-{{--                                    <i class="fas fa-check-circle"></i>--}}
-{{--                                </button>--}}
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($spares as $spare)
+                        </button>
+                        <br>
+                        <br>
+                        <table id="table" class="table table-responsive table-hover table-bordered">
+                            <thead class="bg-dark">
                             <tr>
-                                <td width="5%">{{ $spare->code }}</td>
-                                <td width="30%">{{ $spare->description }}</td>
-                                <td width="7%">{{ optional($spare->category)->name }}</td>
-                                <td>{{ optional($spare->brand)->name }}</td>
-                                <td width="5%">{{ $spare->product_code }}</td>
-                                <td>
-                                    @if(isset($spare->get_data_by_store($store->id)->quantity))
-                                        <input type="number" min="0" class="form-control" name="quantities[]"
-                                               value="{{$spare->get_data_by_store($store->id)->quantity}}"
-                                               id="quantity{{$spare->id}}" disabled>
-                                    @else
-                                        <input type="number" min="0" class="form-control" name="quantities[]" value="0"
-                                               id="quantity{{$spare->id}}" disabled>
-                                    @endif
-                                </td>
-                                <td>
-                                    <input name="states[]" onchange="document.getElementById('quantity{{$spare->id}}').disabled = !this.checked;" type="checkbox" class="form-control checkboxes" value="{{$spare->id}}" >
-                                </td>
+                                <th width="5%">Codigo</th>
+                                <th width="30%">Descripcion</th>
+                                <th width="7%">Categoria</th>
+                                <th>Marca</th>
+                                <th width="5%">Codigo respuesto</th>
+                                <th>Cantidad</th>
+                                <th>
+                                    Enviar
+                                    {{--                                <button class="btn btn-primary" id="selectButton" type="button">--}}
+                                    {{--                                    Todos--}}
+                                    {{--                                    <i class="fas fa-check-circle"></i>--}}
+                                    {{--                                </button>--}}
+                                </th>
                             </tr>
-                        @endforeach
+                            </thead>
+                            <tbody>
+                            @foreach($spares as $spare)
+                                <tr>
+                                    <td width="5%">{{ $spare->code }}</td>
+                                    <td width="30%">{{ $spare->description }}</td>
+                                    <td width="7%">{{ optional($spare->category)->name }}</td>
+                                    <td>{{ optional($spare->brand)->name }}</td>
+                                    <td width="5%">{{ $spare->product_code }}</td>
+                                    <td>
+                                        @if(isset($spare->get_data_by_store($store->id)->quantity))
+                                            <input type="number" min="0" class="form-control" name="quantities[]"
+                                                   value="{{$spare->get_data_by_store($store->id)->quantity}}"
+                                                   id="quantity{{$spare->id}}" disabled>
+                                        @else
+                                            <input type="number" min="0" class="form-control" name="quantities[]" value="0"
+                                                   id="quantity{{$spare->id}}" disabled>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <input name="states[]" onchange="document.getElementById('quantity{{$spare->id}}').disabled = !this.checked;" type="checkbox" class="form-control checkboxes" value="{{$spare->id}}" >
+                                    </td>
+                                </tr>
+                            @endforeach
 
 
-                        </tbody>
-                        <tfoot>
-                        <tr>
-                            <th width="5%">Codigo</th>
-                            <th width="30%">Decripcion</th>
-                            <th width="7%">Categoria</th>
-                            <th>Marca</th>
-                            <th width="5%">Codigo respuesto</th>
-                            <th>Cantidad</th>
-                            <th>Enviar</th>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th width="5%">Codigo</th>
+                                <th width="30%">Decripcion</th>
+                                <th width="7%">Categoria</th>
+                                <th>Marca</th>
+                                <th width="5%">Codigo respuesto</th>
+                                <th>Cantidad</th>
+                                <th>Enviar</th>
 
-                        </tr>
-                        </tfoot>
+                            </tr>
+                            </tfoot>
 
-                    </table>
-                </form>
+                        </table>
+                    </form>
+                </div>
 
             </div>
         </div>

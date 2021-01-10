@@ -93,7 +93,7 @@ Route::group([
         ->name('clients.client.destroy');
 });
 
-// Stores only users
+// Stores only user
 Route::group([
     'prefix' => 'stores',
     'middleware' => ['auth'],

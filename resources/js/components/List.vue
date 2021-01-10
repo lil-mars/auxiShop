@@ -36,7 +36,7 @@
                     <td>{{spare.measure}}</td>
                     <td>{{spare.original_code}}</td>
                     <td>{{spare.price}}</td>
-                    <td>{{spare.investment}}</td>
+                    <td v-if="isAdmin">{{spare.investment}}</td>
                     <td>
                         <form :action="'spares/'+spare.id" method="POST">
                             <input type="hidden" name="_token" value="DYoNDfr9LYHMVyijoT88sFlrW5xoGwGxLP22gaSF">
@@ -158,7 +158,6 @@
                                 </li>
                                 <li class="list-group-item col-4" v-if="isAdmin">
                                     <b>Compra</b> <a class="float-right" id="product-investment-modal">{{spare.investment}}</a>
-
                                 </li>
                                 <li class="list-group-item col-6">
                                     <b>Fecha creacion</b> <a class="float-right" id="product-created-at-modal">{{spare.created_at}}</a>
@@ -234,7 +233,6 @@
                     .then((response) => {
                         this.spare = response.data;
                         this.image = response.data.image;
-                        console.log(this.spare);
                     });
                 axios.get('/get-store-spare?id=' + id)
                     .then((response) => {
@@ -294,7 +292,6 @@
                 let beforePage = page - 1;
                 this.pagination.next = `/search-spare?search=${search}&page=${nextPage}`;
                 this.pagination.before = `/search-spare?search=${search}&page=${beforePage}`;
-                console.log(this.pagination);
             }
 
         }

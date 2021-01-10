@@ -27,11 +27,7 @@ class SparesController extends Controller
      */
     public function index()
     {
-        $spares = Spare::all();
-        $categories = Category::pluck('name');
-        $brands = Brand::pluck('name');
-        $stores = Store::pluck('name', 'id');
-        return view('admin.spares.index', compact('spares', 'categories', 'brands', 'stores'));
+        return redirect('spares-list-view');
     }
     public function getSpare(Request $request)
     {
